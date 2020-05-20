@@ -5,13 +5,13 @@
     <section id="banner">
         <div id="content">
             <h1>
-                As melhores receitas
+                {{banner.title}}
             </h1>
-            <h3 class="text-3">
-                Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.
+            <h3>
+                {{banner.subtitle}}
             </h3>
         </div>
-        <img id="chef" src="./assets/chef.png" alt="Chef">
+        <img id="{{banner.image_name}}" src="./assets/{{banner.image_name}}.png" alt="{{banner.image_name}}">
     </section>
 
 {% endblock %}
@@ -19,83 +19,26 @@
 {% block main_content %}
 
     <h2>
-        Mais acessadas
+        {{main_title}}
     </h2>
 
     <div id="foods">
 
+    {% for food in data %}
+
         <div class="food">
-            <img src="./assets/burger.png" alt="Triplo bacon burger">
+            <img src="./assets/{{food.image_name}}.png" alt="{{food.name_food}}">
             <div class="description">
                 <h3 class="name-food">
-                    Triplo bacon burger
+                    {{food.name_food}}
                 </h3>
                 <p class="author">
-                    por Jorge Relato
+                    {{food.author}}
                 </p>
             </div>
         </div>
-
-        <div class="food">
-            <img src="./assets/pizza.png" alt="Triplo bacon burger">
-            <div class="description">
-                <h3 class="name-food">
-                    Pizza 4 estações
-                </h3>
-                <p class="author">
-                    por Fabiana Melo
-                </p>
-            </div>
-        </div>
-
-        <div class="food">
-            <img src="./assets/espaguete.png" alt="Triplo bacon burger">
-            <div class="description">
-                <h3 class="name-food">
-                    Espaguete ao alho
-                </h3>
-                <p class="author">
-                    por Júlia Kinoto
-                </p>
-            </div>
-        </div>
-
-        <div class="food">
-            <img src="./assets/lasanha.png" alt="Triplo bacon burger">
-            <div class="description">
-                <h3 class="name-food">
-                    Lasanha mac n’ cheese
-                </h3>
-                <p class="author">
-                    por Juliano Vieira
-                </p>
-            </div>
-        </div>
-
-        <div class="food">
-            <img src="./assets/doce.png" alt="Triplo bacon burger">
-            <div class="description">
-                <h3 class="name-food">
-                    Docinhos pão-do-céu
-                </h3>
-                <p class="author">
-                    por Ricardo Golvea
-                </p>
-            </div>
-        </div>
-
-        <div class="food">
-            <img src="./assets/asinhas.png" alt="Triplo bacon burger">
-            <div class="description">
-                <h3 class="name-food">
-                    Asinhas de frango ao barbecue
-                </h3>
-                <p class="author">
-                    por Vania Steroski
-                </p>
-            </div>
-        </div>
-
+        
+    {% endfor %}
     </div>
 
 {% endblock %}
