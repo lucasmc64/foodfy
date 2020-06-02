@@ -3,15 +3,17 @@
 {% block banner %}
 
     <section id="banner">
-        <div id="content">
-            <h1>
-                {{banner.title}}
-            </h1>
-            <h3>
-                {{banner.subtitle}}
-            </h3>
+        <div class="banner-container">
+            <div id="content">
+                <h1>
+                    {{banner.title}}
+                </h1>
+                <h3>
+                    {{banner.subtitle}}
+                </h3>
+            </div>
+            <img id="{{banner.image_name}}" src="./assets/{{banner.image_name}}.png" alt="{{banner.image_name}}">
         </div>
-        <img id="{{banner.image_name}}" src="./assets/{{banner.image_name}}.png" alt="{{banner.image_name}}">
     </section>
 
 {% endblock %}
@@ -24,21 +26,22 @@
 
     <div id="foods">
 
-    {% for food in data %}
+        {% for food in data %}
 
-        <div class="food">
-            <img src="./assets/{{food.image_name}}.png" alt="{{food.name_food}}">
-            <div class="description">
-                <h3 class="name-food">
-                    {{food.name_food}}
-                </h3>
-                <p class="author">
-                    {{food.author}}
-                </p>
+            <div class="food">
+                <img src="./assets/{{food.image_name}}.png" alt="{{food.name_food}}">
+                <div class="description">
+                    <h3 class="name-food">
+                        {{food.name_food}}
+                    </h3>
+                    <p class="author">
+                        {{food.author}}
+                    </p>
+                </div>
             </div>
-        </div>
-        
-    {% endfor %}
+
+        {% endfor %}
+
     </div>
 
 {% endblock %}

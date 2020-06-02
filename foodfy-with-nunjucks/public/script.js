@@ -10,7 +10,7 @@ for (let food of foods) {
 
         modalOverlay.classList.add('active')
 
-        modalOverlay.querySelector('div.image').style.background = `url("${imageSource}") no-repeat`
+        modalOverlay.querySelector('div.image').style.background = `url("${imageSource}") no-repeat center center / cover`
         modalOverlay.querySelector('h3').textContent = foodName
         modalOverlay.querySelector('p').textContent = foodAuthor
     })

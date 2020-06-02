@@ -13,17 +13,24 @@
 body {
     color: var(--text-color-default);
     font-family: 'Roboto', sans-serif;
-    margin: 0 auto;
+}
+
+/* +=+=+= Container =+=+=+ */
+
+div.container {
+    margin: 36px 36px 50px 36px;
+    box-sizing: border-box;
 }
 
 /* +=+=+= Header =+=+=+ */
 
 header {
-    padding: 36px 0;
+    min-width: 300px;
+    padding-bottom: 36px;
     max-width: 940px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 213px 1fr;
     align-items: center;
 }
 
@@ -45,25 +52,42 @@ header img {
     margin-right: 0;
 }
 
+@media screen and (max-width: 500px) {
+    header {
+        grid-template-columns: initial;
+        text-align: center;
+    }
+
+    #menu {
+        margin-top: 18px;
+    }
+}
+
 /* +=+=+= Banner =+=+=+ */
 
 section#banner {
     max-width: 940px;
+    min-width: 300px;
     margin: 0 auto;
-
     background: #FBDFDB;
     border-radius: 30px;
     width: 100%;
-    height: 366px;
-    position: relative;
+    height: 372px;
     margin-bottom: 50px;
 }
 
+div.banner-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 36px;
+    box-sizing: border-box;
+}
+
 div#content {
-    position: absolute;
-    left: 60px;
     max-width: 320px;
-    padding: 117px 0;
 }
 
 div#content h1 {
@@ -82,19 +106,37 @@ div#content h3 {
 }
 
 img#chef {
-    position: absolute;
-    bottom: 0;
-    right: 100px;
+    align-self: end;
+}
+
+@media screen and (max-width: 800px) {
+    section#banner {
+        height: initial;
+    }
+
+    div.banner-container {
+        grid-template-columns: initial;
+        padding-top: 36px;
+    }
+
+    div#content {
+        text-align: center;
+        padding-bottom: 36px;
+        max-width: 420px;
+    }
+
 }
 
 /* +=+=+= Foods =+=+=+ */
 
 main {
     max-width: 940px;
-    margin: 0 auto 50px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 main h2 {
+    min-width: 300px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 24px;
@@ -134,9 +176,28 @@ div.description p.author {
     color: #777777;
 }
 
+@media screen and (max-width: 1000px) {
+    main div#foods {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+    
+}
+
+@media screen and (max-width: 680px) {
+    main div#foods {
+        grid-template-columns: 1fr;
+    }
+    main h2 {
+        text-align: center;
+    }
+}
+
 /* +=+=+= Footer =+=+=+ */
 
 footer {
+    min-width: 300px;
     background-color: #EEEEEE;
     color: #999999;
     padding: 25px;
@@ -173,30 +234,36 @@ div.modal-overlay {
     top: 0;
     opacity: 0;
     visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
 }
 
 div.modal {
     background-color: #FFFFFF;
     border-radius: 16px;
     text-align: center;
-    margin: 20vh auto;
+    margin: 36px;
     width: 660px;
     height: 420px;
+    transition: width 0.5s ease-in-out;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 div.modal div.food-modal {
-    width: 600px;
-    margin: 0 auto;
-    padding-top: 25px;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 div.modal div.image {
-    width: 600px;
+    width: 100%;
     height: 200px;
-    background: url("./assets/asinhas.png") no-repeat;
-    background-position: 50% 50%;
-    background-size: 600px 280px;
-    background-color: white;
+    background: url("./assets/asinhas.png") no-repeat center center / cover;
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -214,11 +281,35 @@ div.modal div.food-modal p {
 div.modal button {
     background-color: #FFFFFF;
     color: #999999;
-    margin-top: 60px;
+    align-self: start;
     cursor: pointer;
 }
 
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+@media screen and (max-width: 732px) {
+    div.modal {
+        width: 560px;
+    }
+}
+
+@media screen and (max-width: 632px) {
+    div.modal {
+        width: 460px;
+    }
+}
+
+@media screen and (max-width: 532px) {
+    div.modal {
+        width: 360px;
+    }
+}
+
+@media screen and (max-width: 432px) {
+    div.modal {
+        width: 300px;
+    }
 }
