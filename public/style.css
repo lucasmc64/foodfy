@@ -154,8 +154,9 @@ div.food {
     width: 300px;
 }
 
-div.food img {
+div.food div.image {
     width: 100%;
+    height: 140px;
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -166,6 +167,7 @@ div.description h3.name-food {
     font-size: 18px;
     line-height: 21px;
     margin-bottom: 5px;
+    color: var(--text-color-default);
 }
 
 div.description p.author {
@@ -182,13 +184,14 @@ div.description p.author {
         justify-items: center;
     }
 
-    
+
 }
 
 @media screen and (max-width: 680px) {
     main div#foods {
         grid-template-columns: 1fr;
     }
+
     main h2 {
         text-align: center;
     }
@@ -224,92 +227,83 @@ div.about-foodfy p {
     line-height: 28px;
 }
 
-/* +=+=+= Modal =+=+=+ */
+/* +=+=+= Recipies Page =+=+=+ */
 
-div.modal-overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s ease-in-out;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-items: center;
+.recipie {
+    text-decoration: none;
 }
 
-div.modal {
-    background-color: #FFFFFF;
-    border-radius: 16px;
-    text-align: center;
-    margin: 36px;
-    width: 660px;
-    height: 420px;
-    transition: width 0.5s ease-in-out;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
+/* +=+=+= Recipie Page =+=+=+ */
 
-div.modal div.food-modal {
+div.recipie div.image {
+    margin-top: 14px;
+    margin-bottom: 14px;
     width: 100%;
-    padding: 30px;
-    box-sizing: border-box;
-}
-
-div.modal div.image {
-    width: 100%;
-    height: 200px;
-    background: url("./assets/asinhas.png") no-repeat center center / cover;
+    height: 280px;
     border-radius: 15px;
+}
+
+div.recipie section.recipie-title {
+    margin-top: 36px;
+    text-align: center;
+}
+
+div.recipie section.title h1 {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+div.recipie section.title h2 {
+    margin-top: 4px;
+    font-size: 20px;
+    line-height: 24px;
+    color: #777777;
+}
+
+div.recipie section.container {
+    margin-top: 50px;
+}
+
+div.recipie section.container div.information-title {
     margin-bottom: 20px;
 }
 
-div.modal div.food-modal h3 {
+div.recipie section.container div.information-title h3 {
     font-size: 24px;
+    font-weight: bold;
     line-height: 28px;
+    display: inline-block;
 }
 
-div.modal div.food-modal p {
-    font-size: 18px;
-    line-height: 21px;
-}
-
-div.modal button {
-    background-color: #FFFFFF;
-    color: #999999;
-    align-self: start;
+div.recipie section.container div.information-title span {
+    margin-left: 8px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #777777;
     cursor: pointer;
 }
 
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
+div.recipie section.container div.hide-and-show ul,
+div.recipie section.container div.hide-and-show ol,
+div.recipie section.container div.hide-and-show p {
+    margin-left: 18px;
+    font-size: 18px;
+    line-height: 28px;
 }
 
-@media screen and (max-width: 732px) {
-    div.modal {
-        width: 560px;
-    }
+div.recipie section.container div.hide-and-show p {
+    margin-left: initial;
 }
 
-@media screen and (max-width: 632px) {
-    div.modal {
-        width: 460px;
-    }
+div.recipie section.container div.hide-and-show p+p {
+    margin-top: 16px;
 }
 
-@media screen and (max-width: 532px) {
-    div.modal {
-        width: 360px;
-    }
-}
-
-@media screen and (max-width: 432px) {
-    div.modal {
-        width: 300px;
-    }
+.hide {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    height: 0;
 }

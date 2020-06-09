@@ -6,13 +6,13 @@
         <div class="banner-container">
             <div id="content">
                 <h1>
-                    {{banner.title}}
+                    As melhores receitas
                 </h1>
                 <h3>
-                    {{banner.subtitle}}
+                    Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.
                 </h3>
             </div>
-            <img id="{{banner.image_name}}" src="./assets/{{banner.image_name}}.png" alt="{{banner.image_name}}">
+            <img id="chef" src="./assets/chef.png" alt="Chef">
         </div>
     </section>
 
@@ -21,7 +21,7 @@
 {% block main_content %}
 
     <h2>
-        {{main_title}}
+        Mais acessadas
     </h2>
 
     <div id="foods">
@@ -29,10 +29,10 @@
         {% for food in data %}
 
             <div class="food">
-                <img src="./assets/{{food.image_name}}.png" alt="{{food.name_food}}">
+                <div class="image" style="background: url({{ food.image }}) no-repeat center center / cover"></div>
                 <div class="description">
                     <h3 class="name-food">
-                        {{food.name_food}}
+                        {{food.title}}
                     </h3>
                     <p class="author">
                         {{food.author}}

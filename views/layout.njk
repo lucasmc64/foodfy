@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
         <title>Foodfy</title>
     </head>
 
@@ -12,7 +12,7 @@
         <div class="container">
             <header>
                 <a href="/">
-                    <img src="./assets/logo.png" alt="Logo da Foodfy">
+                    <img src="/assets/logo.png" alt="Logo da Foodfy">
                 </a>
                 <nav id="menu">
                     <a class=" {{ 'page-active' if about_page}}" href="/about">Sobre</a>
@@ -34,8 +34,8 @@
                 Todos direitos reservados, receitas Foodfy.
             </p>
         </footer>
-
-        {% block modal %}{% endblock %}
+        
+        <script src="/script.js"></script>
     </body>
 
 </html>

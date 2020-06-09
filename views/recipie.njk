@@ -1,0 +1,53 @@
+{% extends "layout.njk" %}
+
+{% block main_content %}
+
+    <div class="recipie">
+        <div class="image" style="background: url({{ data.image }}) no-repeat center center / cover"></div>
+        <section class="recipie-title">
+            <h1>{{ data.title }}</h1>
+            <h2>{{ data.author }}</h2>
+        </section>
+
+        <section class="container">
+            <div class="information-title">
+                <h3 class="title">Ingredientes</h3>
+                <span class="change-display">Esconder</span>
+            </div>
+            <div class="hide-and-show ingredients">
+                <ul>
+                    {% for item in data.ingredients %}
+                        <li>{{item}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="information-title">
+                <h3 class="title">Modo de Preparo</h3>
+                <span class="change-display">Esconder</span>
+            </div>
+            <div class="hide-and-show preparation">
+                <ol>
+                    {% for item in data.preparation %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="information-title">
+                <h3 class="title">Informações Adicionais</h3>
+                <span class="change-display">Esconder</span>
+            </div>
+            <div class="hide-and-show information">
+                {% for item in data.information %}
+                    <p>{{ item }}</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

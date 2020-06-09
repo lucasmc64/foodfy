@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+{% block main_content %}
+
+    <div id="foods">
+
+        {% for food in data %}
+            <a href="/recipies/{{food.id}}" class="recipie">
+                <div class="food">
+                    <div class="image" style="background: url('{{food.image}}') no-repeat center center / cover"></div>
+                    <div class="description">
+                        <h3 class="name-food">
+                            {{food.title}}
+                        </h3>
+                        <p class="author">
+                            {{food.author}}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
