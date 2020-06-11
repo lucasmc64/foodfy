@@ -1,0 +1,57 @@
+{% extends 'admin/layout.njk' %}
+
+{% block title %}
+    <h1>Editando receita</h1>
+    <div>
+        <button class="button" type="submit" form="create-recipe">Salvar receita</button>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <form id="create-recipe" method="POST" action="/admin/recipes">
+        <fieldset>
+
+            <legend>Nome da receita</legend>
+            <input name="title" type="text" required>
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Autor receita</legend>
+            <input name="author" type="text" required>
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Imagem da receita</legend>
+            <input name="image" type="text" placeholder="http://">
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Ingredientes</legend>
+            <div class="new-item ingredient-div">
+                <input name="ingredients[]" type="text" required>
+            </div>
+
+            <button id="ingredient" class="add-field action" type="button">Adicionar novo ingrediente</button>
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Modo de preparo</legend>
+            <div class="new-item steps-div">
+                <input name="preparation[]" type="text" required>
+            </div>
+
+            <button id="steps" class="add-field action" type="button">Adicionar novo passo</button>
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Informações adicionais</legend>
+            <textarea name="information" id="" cols="30" rows="10"></textarea>
+
+        </fieldset>
+    </form>
+{% endblock %}

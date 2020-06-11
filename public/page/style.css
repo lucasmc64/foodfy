@@ -229,13 +229,13 @@ div.about-foodfy p {
 
 /* +=+=+= Recipies Page =+=+=+ */
 
-.recipie {
+.recipe {
     text-decoration: none;
 }
 
 /* +=+=+= Recipie Page =+=+=+ */
 
-div.recipie div.image {
+div.recipe div.image {
     margin-top: 14px;
     margin-bottom: 14px;
     width: 100%;
@@ -243,40 +243,40 @@ div.recipie div.image {
     border-radius: 15px;
 }
 
-div.recipie section.recipie-title {
+div.recipe section.recipe-title {
     margin-top: 36px;
     text-align: center;
 }
 
-div.recipie section.title h1 {
+div.recipe section.recipe-title h1 {
     font-weight: bold;
     font-size: 36px;
     line-height: 42px;
 }
 
-div.recipie section.title h2 {
+div.recipe section.recipe-title h2 {
     margin-top: 4px;
     font-size: 20px;
     line-height: 24px;
     color: #777777;
 }
 
-div.recipie section.container {
+div.recipe section.container {
     margin-top: 50px;
 }
 
-div.recipie section.container div.information-title {
+div.recipe section.container div.information-title {
     margin-bottom: 20px;
 }
 
-div.recipie section.container div.information-title h3 {
+div.recipe section.container div.information-title h3 {
     font-size: 24px;
     font-weight: bold;
     line-height: 28px;
     display: inline-block;
 }
 
-div.recipie section.container div.information-title span {
+div.recipe section.container div.information-title span {
     margin-left: 8px;
     font-weight: bold;
     font-size: 12px;
@@ -285,19 +285,19 @@ div.recipie section.container div.information-title span {
     cursor: pointer;
 }
 
-div.recipie section.container div.hide-and-show ul,
-div.recipie section.container div.hide-and-show ol,
-div.recipie section.container div.hide-and-show p {
+div.recipe section.container div.hide-and-show ul,
+div.recipe section.container div.hide-and-show ol,
+div.recipe section.container div.hide-and-show p {
     margin-left: 18px;
     font-size: 18px;
     line-height: 28px;
 }
 
-div.recipie section.container div.hide-and-show p {
+div.recipe section.container div.hide-and-show p {
     margin-left: initial;
 }
 
-div.recipie section.container div.hide-and-show p+p {
+div.recipe section.container div.hide-and-show p+p {
     margin-top: 16px;
 }
 

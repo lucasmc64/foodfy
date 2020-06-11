@@ -1,11 +1,11 @@
-{% extends "layout.njk" %}
+{% extends "page/layout.njk" %}
 
 {% block main_content %}
 
     <div id="foods">
 
         {% for food in data %}
-            <a href="/recipies/{{food.id}}" class="recipie">
+            <a href="/recipes/{{food.id}}" class="recipie">
                 <div class="food">
                     <div class="image" style="background: url('{{food.image}}') no-repeat center center / cover"></div>
                     <div class="description">
