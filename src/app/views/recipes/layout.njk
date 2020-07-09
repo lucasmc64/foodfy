@@ -9,32 +9,30 @@
     </head>
 
     <body>
-        <div class="container">
-            <header>
-                <a href="/">
-                    <img src="/assets/logo.png" alt="Logo da Foodfy">
-                </a>
-                <nav id="menu">
-                    <a class=" {{ 'page-active' if about_page}}" href="/about">Sobre</a>
-                    <a class=" {{ 'page-active' if recipes_page}}" href="/recipes">Receitas</a>
-                </nav>
-            </header>
+        <header>
+            <a href="/">
+                <img src="/assets/logo.png" alt="Logo da Foodfy">
+            </a>
+            <nav id="menu">
+                <a class=" {{ 'page-active' if about_page}}" href="/about">Sobre</a>
+                <a class=" {{ 'page-active' if recipes_page}}" href="/recipes">Receitas</a>
+            </nav>
+        </header>
 
-            {% block banner %}{% endblock %}
+        {% block banner %}{% endblock %}
 
-            <main>
+        <main>
 
-                {% block main_content%}{% endblock %}
+            {% block main_content%}{% endblock %}
 
-            </main>
-        </div>
-        
+        </main>
+
         <footer>
             <p>
                 Todos direitos reservados, receitas Foodfy.
             </p>
         </footer>
-        
+
         <script src="/recipes/script.js"></script>
     </body>
 

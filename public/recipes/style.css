@@ -15,20 +15,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* +=+=+= Container =+=+=+ */
-
-div.container {
-    margin: 36px 36px 50px 36px;
-    box-sizing: border-box;
-}
-
 /* +=+=+= Header =+=+=+ */
 
 header {
     min-width: 300px;
-    padding-bottom: 36px;
     max-width: 940px;
-    margin: 0 auto;
+    margin: 36px auto 36px auto;
     display: grid;
     grid-template-columns: 213px 1fr;
     align-items: center;
@@ -50,6 +42,13 @@ header img {
 
 #menu a:last-child {
     margin-right: 0;
+}
+
+@media screen and (max-width: 1012px) {
+    header {
+        margin: 36px;
+        box-sizing: border-box;
+    }
 }
 
 @media screen and (max-width: 500px) {
