@@ -1,7 +1,7 @@
 const express = require('express')
 
-const pageController = require('./controllers/PageControllers')
-const adminController = require('./controllers/AdminControllers')
+const pageController = require('./app/controllers/PageControllers')
+const adminController = require('./app/controllers/AdminControllers')
 
 const routes = express.Router()
 
