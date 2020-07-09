@@ -1,5 +1,5 @@
 const fs = require('fs')
-const data = require('../data.json')
+const data = require('../../data.json')
 
 exports.index = function (request, response) {
     console.log(data.recipes)
