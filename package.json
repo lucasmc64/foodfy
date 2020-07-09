@@ -5,8 +5,8 @@
   "main": "script.js",
   "scripts": {
     "start": "npm-run-all -p nodemon browsersync",
-    "nodemon": "nodemon server.js",
-    "browsersync": "browser-sync start --proxy http://localhost:6363 --files 'pulic, views'"
+    "nodemon": "nodemon src/server.js",
+    "browsersync": "browser-sync start --proxy http://localhost:6363 --files 'pulic, src/app/views'"
   },
   "keywords": [],
   "author": "",
