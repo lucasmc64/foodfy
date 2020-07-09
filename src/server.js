@@ -12,7 +12,7 @@ server.use(routes);
 
 server.set('view engine', 'njk') // Seta que tipo de arquivo vai ser mostrado e que será uma View Engine que irá gerar as páginas
 
-nunjucks.configure('views', { // Configuração do Nunjucks: o primeiro parâmetro é o nome da pasta onde estarão os arquivos, o segundo parâmetro é um objeto de configurações adicionais
+nunjucks.configure('src/app/views', { // Configuração do Nunjucks: o primeiro parâmetro é o nome da pasta onde estarão os arquivos, o segundo parâmetro é um objeto de configurações adicionais
     express: server, // Define o servidor no qual o Nunjucks vai funcionar
     autoescape: false, // Permite que, ao passar dados de variáveis para tags HTML, caso tenha alguma tag no conteúdo da variável, essa opção faz com que ela seja interpretada como tag e não como texto.
     noCache: true // Para que não seja guardado Cache e sempre que o servidor reiniciar o conteúdo mais atual seja mostrado
