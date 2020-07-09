@@ -1,4 +1,4 @@
-const data = require('../data.json')
+const data = require('../../data.json')
 
 exports.index = function (request, response) { //Rota
     let sixRecipes = []
@@ -7,7 +7,7 @@ exports.index = function (request, response) { //Rota
         sixRecipes.push(data.recipes[i])
     }
 
-    return response.render('page/index', {
+    return response.render('recipes/index', {
         data: sixRecipes
     }) //Renderiza a página
 }
@@ -27,14 +27,14 @@ exports.about = function (request, response) { //Rota
         }
     ]
 
-    return response.render('page/about', {
+    return response.render('recipes/about', {
         data: data_about,
         about_page: true
     }) //Renderiza a página
 }
 
 exports.recipes = function (request, response) { //Rota
-    return response.render('page/recipes', {
+    return response.render('recipes/recipes', {
         data: data.recipes,
         recipes_page: true
     }) //Renderiza a página
@@ -49,7 +49,7 @@ exports.recipe = function (request, response) { //Rota
         return response.send("Food not found.")
     }
 
-    return response.render('page/recipe', {
+    return response.render('recipes/recipe', {
         data: foundFood,
         recipes_page: true
     }) //Renderiza a página
