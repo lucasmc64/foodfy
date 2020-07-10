@@ -27,7 +27,7 @@ header {
     max-width: 940px;
     margin: 36px auto 0 auto;
     display: grid;
-    grid-template-columns: 213px 1fr;
+    grid-template-columns: 214px 1fr;
     align-items: center;
 }
 
