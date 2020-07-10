@@ -1,7 +1,7 @@
 const fs = require('fs')
 const data = require('../../data.json')
 
-exports.index = function (request, response) {
+exports.recipes = function (request, response) {
     console.log(data.recipes)
     return response.render('admin/index', {
         data: data.recipes
@@ -137,4 +137,9 @@ exports.delete = function (request, response) {
 
         return response.redirect('/admin/recipes')
     })
+}
+
+
+exports.chefs = function (request, response) {
+    return
 }
