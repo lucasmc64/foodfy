@@ -281,7 +281,7 @@ div.recipe section.container div.hide-and-show p+p {
 
     /* +=+=+= Foods =+=+=+ */
 
-    main div#foods {
+    main div.foods {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -322,7 +322,7 @@ div.recipe section.container div.hide-and-show p+p {
         text-align: center;
     }
 
-    main div#foods {
+    main div.foods {
         grid-template-columns: 1fr;
     }
 }
