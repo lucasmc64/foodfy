@@ -17,11 +17,66 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+/* +=+=+= Generic Classes =+=+=+ */
+
+.button {
+    font-size: 16px;
+    line-height: 18px;
+    border-radius: 4px;
+    padding: 4px 12px;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: var(--color-primary);
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 150ms ease-in-out;
+}
+
+.button:hover {
+    color: var(--color-primary);
+    background-color: #FFFFFF;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-delete {
+    background-color: #DC4747;
+}
+
+.btn-delete:hover {
+    color: #DC4747;
+    border: 2px solid #DC4747;
+}
+
+.action {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+    position: relative;
+}
+
+.action::after {
+    content: "";
+    background-color: var(--color-primary);
+    width: 0;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    border-radius: 1px;
+    transition: width 200ms ease-in-out;
+}
+
+.action:hover::after {
+    width: 100%;
+}
+
 /* +=+=+= Header =+=+=+ */
 
 div.header-background {
     background-color: var(--color-default);
-    margin-bottom: 50px;
 }
 
 header {
@@ -35,27 +90,14 @@ header {
 
 /* +=+=+= Index =+=+=+ */
 
-.button {
-    font-size: 16px;
-    line-height: 19px;
-    border-radius: 4px;
-    padding: 4px 12px;
-    color: #FFFFFF;
-    text-decoration: none;
-    background-color: var(--color-primary);
-}
-
-.btn-delete {
-    background-color: #DC4747;
-}
-
 div button+button {
     margin-left: 10px;
 }
 
 main {
     max-width: 940px;
-    margin: 0 auto;
+    margin: 36px auto 36px auto;
+    box-sizing: border-box;
 }
 
 main section.title-and-options {
@@ -110,14 +152,6 @@ main section.recipes div.food div.description p {
     font-weight: normal;
     color: var(--color-secondary);
     margin-bottom: 5px;
-}
-
-.action {
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: bold;
-    color: var(--color-primary);
-    text-decoration: none;
 }
 
 /* +=+=+= Recipie =+=+=+ */
@@ -246,11 +280,7 @@ form fieldset textarea {
     }
 
     main {
-        margin: 0 36px;
-    }
-
-    form {
-        margin: 0 36px;
+        margin: 36px;
     }
 }
 
