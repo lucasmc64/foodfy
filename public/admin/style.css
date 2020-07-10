@@ -105,8 +105,8 @@ header {
     margin-right: 0;
 }
 
-.page-active {
-    filter: brightness(1);
+#menu .page-active {
+    filter: brightness(1.0);
 }
 
 /* +=+=+= Index =+=+=+ */
@@ -309,4 +309,16 @@ form fieldset textarea {
     main section.recipes {
         grid-template-columns: 1fr;
     }
+}
+
+
+
+/* +=+=+=+=+=+= Chefs =+=+=+=+=+=+ */
+
+/* +=+=+= Index =+=+=+ */
+
+div.chef div.chef-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
 }
