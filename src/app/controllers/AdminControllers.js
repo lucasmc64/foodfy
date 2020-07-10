@@ -2,14 +2,14 @@ const fs = require('fs')
 const data = require('../../data.json')
 
 exports.recipes = function (request, response) {
-    console.log(data.recipes)
-    return response.render('admin/index', {
-        data: data.recipes
+    return response.render('admin/recipes/index', {
+        data: data.recipes,
+        recipes_page: true
     })
 }
 
 exports.create = function (request, response) {
-    return response.render('admin/create')
+    return response.render('admin/recipes/create')
 }
 
 exports.post = function (request, response) {
@@ -44,7 +44,7 @@ exports.post = function (request, response) {
             return response.send('Write file error!')
         }
 
-        return response.redirect('/admin/recipes')
+        return response.redirect('/admin/recipes/recipes')
     })
 
     return response.json(data)
@@ -59,7 +59,7 @@ exports.show = function (request, response) {
         return response.send('Food not found.')
     }
 
-    return response.render('admin/show', {
+    return response.render('admin/recipes/show', {
         data: foundFood
     })
 }
@@ -73,7 +73,7 @@ exports.edit = function (request, response) {
         return response.send('Food not found.')
     }
 
-    return response.render('admin/edit', {
+    return response.render('admin/recipes/edit', {
         data: foundFood
     })
 }
@@ -119,7 +119,7 @@ exports.put = function (request, response) {
             return response.send('Write file error.')
         }
 
-        return response.redirect('/admin/recipes')
+        return response.redirect('/admin/recipes/recipes')
     })
 }
 
@@ -135,11 +135,13 @@ exports.delete = function (request, response) {
             return response.send('Write file error.')
         }
 
-        return response.redirect('/admin/recipes')
+        return response.redirect('/admin/recipes/recipes')
     })
 }
 
 
 exports.chefs = function (request, response) {
-    return
+    return response.render('admin/chefs/index', {
+        chefs_page: true
+    })
 }
