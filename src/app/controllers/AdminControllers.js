@@ -9,7 +9,9 @@ exports.recipes = function (request, response) {
 }
 
 exports.create = function (request, response) {
-    return response.render('admin/recipes/create')
+    return response.render('admin/recipes/create', {
+        recipes_page: true
+    })
 }
 
 exports.post = function (request, response) {
@@ -60,7 +62,8 @@ exports.show = function (request, response) {
     }
 
     return response.render('admin/recipes/show', {
-        data: foundFood
+        data: foundFood,
+        recipes_page: true
     })
 }
 
@@ -74,7 +77,8 @@ exports.edit = function (request, response) {
     }
 
     return response.render('admin/recipes/edit', {
-        data: foundFood
+        data: foundFood,
+        recipes_page: true
     })
 }
 
@@ -119,7 +123,7 @@ exports.put = function (request, response) {
             return response.send('Write file error.')
         }
 
-        return response.redirect('/admin/recipes/recipes')
+        return response.redirect('/admin/recipes')
     })
 }
 
