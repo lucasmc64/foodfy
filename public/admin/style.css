@@ -80,12 +80,33 @@ div.header-background {
 }
 
 header {
+    min-width: 300px;
     max-width: 940px;
     margin: 0 auto;
     padding: 36px 0 36px 0;
     display: grid;
+    grid-template-columns: 214px 1fr;
     align-items: center;
     justify-self: left;
+}
+
+#menu {
+    display: inline;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #FFFFFF;
+    filter: brightness(0.5);
+    margin-right: 30px;
+}
+
+#menu a:last-child {
+    margin-right: 0;
+}
+
+.page-active {
+    filter: brightness(1);
 }
 
 /* +=+=+= Index =+=+=+ */
