@@ -140,68 +140,6 @@ div.description p.author {
     color: #777777;
 }
 
-@media screen and (max-width: 1012px) {
-
-    /* +=+=+= Header, Banner, Foods =+=+=+ */
-
-    header,
-    section#banner,
-    main {
-        margin: 36px 36px 0 36px;
-        box-sizing: border-box;
-        /*
-            On screens with a resolution less than 1012px (940px + 2 * 36px, maximum width + side margins) fixed side margins of 36px are applied.
-        */
-    }
-
-    /* +=+=+= Foods =+=+=+ */
-
-    main div#foods {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (max-width: 692px) {
-
-    /* +=+=+= Header =+=+=+ */
-
-    header {
-        grid-template-columns: initial;
-        text-align: center;
-    }
-
-    #menu {
-        margin-top: 18px;
-    }
-
-    /* +=+=+= Banner =+=+=+ */
-
-    section#banner {
-        height: initial;
-    }
-
-    div.banner-container {
-        grid-template-columns: initial;
-        padding-top: 36px;
-    }
-
-    div#content {
-        text-align: center;
-        padding-bottom: 36px;
-        max-width: 420px;
-    }
-
-    /* +=+=+= Foods =+=+=+ */
-
-    main h2 {
-        text-align: center;
-    }
-
-    main div#foods {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* +=+=+= Footer =+=+=+ */
 
 footer {
@@ -312,4 +250,68 @@ div.recipe section.container div.hide-and-show p+p {
     visibility: hidden;
     display: none;
     height: 0;
+}
+
+/* +=+=+= Responsiveness =+=+=+ */
+
+@media screen and (max-width: 1012px) {
+
+    /* +=+=+= Header, Banner, Foods =+=+=+ */
+
+    header,
+    section#banner,
+    main {
+        margin: 36px 36px 0 36px;
+        box-sizing: border-box;
+        /*
+            On screens with a resolution less than 1012px (940px + 2 * 36px, maximum width + side margins) fixed side margins of 36px are applied.
+        */
+    }
+
+    /* +=+=+= Foods =+=+=+ */
+
+    main div#foods {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 692px) {
+
+    /* +=+=+= Header =+=+=+ */
+
+    header {
+        grid-template-columns: initial;
+        text-align: center;
+    }
+
+    #menu {
+        margin-top: 18px;
+    }
+
+    /* +=+=+= Banner =+=+=+ */
+
+    section#banner {
+        height: initial;
+    }
+
+    div.banner-container {
+        grid-template-columns: initial;
+        padding-top: 36px;
+    }
+
+    div#content {
+        text-align: center;
+        padding-bottom: 36px;
+        max-width: 420px;
+    }
+
+    /* +=+=+= Foods =+=+=+ */
+
+    main h2 {
+        text-align: center;
+    }
+
+    main div#foods {
+        grid-template-columns: 1fr;
+    }
 }
