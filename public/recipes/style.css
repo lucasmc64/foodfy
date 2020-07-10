@@ -20,7 +20,7 @@ body {
 header {
     min-width: 300px;
     max-width: 940px;
-    margin: 36px auto 36px auto;
+    margin: 36px auto 0 auto;
     display: grid;
     grid-template-columns: 213px 1fr;
     align-items: center;
@@ -44,35 +44,15 @@ header img {
     margin-right: 0;
 }
 
-@media screen and (max-width: 1012px) {
-    header {
-        margin: 36px;
-        box-sizing: border-box;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    header {
-        grid-template-columns: initial;
-        text-align: center;
-    }
-
-    #menu {
-        margin-top: 18px;
-    }
-}
-
 /* +=+=+= Banner =+=+=+ */
 
 section#banner {
     max-width: 940px;
     min-width: 300px;
-    margin: 0 auto;
+    margin: 36px auto 0 auto;
     background: #FBDFDB;
     border-radius: 30px;
-    width: 100%;
     height: 372px;
-    margin-bottom: 50px;
 }
 
 div.banner-container {
@@ -108,29 +88,11 @@ img#chef {
     align-self: end;
 }
 
-@media screen and (max-width: 800px) {
-    section#banner {
-        height: initial;
-    }
-
-    div.banner-container {
-        grid-template-columns: initial;
-        padding-top: 36px;
-    }
-
-    div#content {
-        text-align: center;
-        padding-bottom: 36px;
-        max-width: 420px;
-    }
-
-}
-
 /* +=+=+= Foods =+=+=+ */
 
 main {
     max-width: 940px;
-    margin: 0 auto;
+    margin: 36px auto 0 auto;
     box-sizing: border-box;
 }
 
@@ -147,6 +109,7 @@ main div#foods {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 20px;
+    justify-items: center;
 }
 
 div.food {
@@ -177,22 +140,65 @@ div.description p.author {
     color: #777777;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1012px) {
+
+    /* +=+=+= Header, Banner, Foods =+=+=+ */
+
+    header,
+    section#banner,
+    main {
+        margin: 36px 36px 0 36px;
+        box-sizing: border-box;
+        /*
+            On screens with a resolution less than 1012px (940px + 2 * 36px, maximum width + side margins) fixed side margins of 36px are applied.
+        */
+    }
+
+    /* +=+=+= Foods =+=+=+ */
+
     main div#foods {
         grid-template-columns: 1fr 1fr;
-        justify-items: center;
     }
-
-
 }
 
-@media screen and (max-width: 680px) {
-    main div#foods {
-        grid-template-columns: 1fr;
+@media screen and (max-width: 692px) {
+
+    /* +=+=+= Header =+=+=+ */
+
+    header {
+        grid-template-columns: initial;
+        text-align: center;
     }
+
+    #menu {
+        margin-top: 18px;
+    }
+
+    /* +=+=+= Banner =+=+=+ */
+
+    section#banner {
+        height: initial;
+    }
+
+    div.banner-container {
+        grid-template-columns: initial;
+        padding-top: 36px;
+    }
+
+    div#content {
+        text-align: center;
+        padding-bottom: 36px;
+        max-width: 420px;
+    }
+
+    /* +=+=+= Foods =+=+=+ */
 
     main h2 {
         text-align: center;
+    }
+
+    main div#foods {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -200,6 +206,7 @@ div.description p.author {
 
 footer {
     min-width: 300px;
+    margin-top: 36px;
     background-color: #EEEEEE;
     color: #999999;
     padding: 25px;
