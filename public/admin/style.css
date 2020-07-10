@@ -120,26 +120,6 @@ main section.recipes div.food div.description p {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1012px) {
-    header {
-        margin: 0 36px;
-    }
-
-    main {
-        margin: 0 36px;
-    }
-
-    form {
-        margin: 0 36px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    main section.recipes {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* +=+=+= Recipie =+=+=+ */
 
 div.recipie div.image {
@@ -256,4 +236,26 @@ form fieldset button {
 form fieldset textarea {
     height: 250px;
     resize: vertical;
+}
+
+/* +=+=+= Responsiveness =+=+=+ */
+
+@media screen and (max-width: 1012px) {
+    header {
+        margin: 0 36px;
+    }
+
+    main {
+        margin: 0 36px;
+    }
+
+    form {
+        margin: 0 36px;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    main section.recipes {
+        grid-template-columns: 1fr;
+    }
 }
