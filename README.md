@@ -86,3 +86,13 @@ CREATE TABLE MEMBERS(
    CREATED_AT TEXT NULL,
 );
 ```
+
+### Configurando conexão com o servidor &#129520;
+
+Dentro da pasta do projeto entre em */src/config* e abra o arquivo *db.js* em uma IDE ou editor de código.
+
+No arquivo, altere as informações de **user** e **password** (entre outras) de acordo com a configuração feita no PostgreSQL.
+
+### Definitivamente rodando o projeto! &#10024;
+
+Se tudo deu certo, agora basta acessar a pasta do projeto pelo terminal e digitar o comando `npm start`. Uma aba será aberta no seu navegador padrão com o projeto rodando!
