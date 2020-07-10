@@ -10,6 +10,11 @@
     border: 0;
 }
 
+html {
+    min-height: 100%;
+    position: relative;
+}
+
 body {
     color: var(--text-color-default);
     font-family: 'Roboto', sans-serif;
@@ -105,7 +110,7 @@ main h2 {
     margin-bottom: 20px;
 }
 
-main div#foods {
+main div.foods {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px 20px;
