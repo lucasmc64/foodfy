@@ -1,7 +1,8 @@
 const express = require('express')
 
-const recipesController = require('./app/controllers/RecipesControllers')
-const adminController = require('./app/controllers/AdminControllers')
+const recipesController = require('./app/controllers/RecipesController')
+const adminController = require('./app/controllers/AdminController')
+const adminChefsController = require('./app/controllers/AdminChefsController')
 
 const routes = express.Router()
 
@@ -18,6 +19,7 @@ routes.post('/admin/recipes', adminController.post); // Cadastrar nova receita
 routes.put('/admin/recipes', adminController.put); // Editar uma receita
 routes.delete('/admin/recipes', adminController.delete); // Deletar uma receita
 
-routes.get('/admin/chefs', adminController.chefs)
+routes.get('/admin/chefs', adminChefsController.index); //Listagem de chefs
+routes.get('/admin/chefs/create', adminChefsController.create)
 
 module.exports = routes;

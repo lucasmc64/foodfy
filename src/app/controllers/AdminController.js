@@ -142,10 +142,3 @@ exports.delete = function (request, response) {
         return response.redirect('/admin/recipes/recipes')
     })
 }
-
-
-exports.chefs = function (request, response) {
-    return response.render('admin/chefs/index', {
-        chefs_page: true
-    })
-}
