@@ -1,5 +1,6 @@
 const fs = require('fs')
 const data = require('../../data.json')
+const { response } = require('express')
 
 exports.index = function (request, response) {
     return response.render('admin/chefs/index', {
@@ -8,5 +9,9 @@ exports.index = function (request, response) {
 }
 
 exports.create = function (request, response) {
-    return
+    return response.render('admin/chefs/create')
+}
+
+exports.post = function (request, require) {
+    return response.send('Done.')
 }
