@@ -125,6 +125,7 @@ main section.title-and-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 main section.title-and-options h1 {
@@ -137,7 +138,6 @@ main section.title-and-options div {
 }
 
 main section.recipes {
-    margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -320,7 +320,6 @@ div.chef div.chef-image {
 /* +=+=+= Chef =+=+=+ */
 
 section.chef-info {
-    margin-top: 50px;
     display: grid;
     align-items: center;
     justify-items: center;
@@ -342,6 +341,10 @@ section.chef-info p {
     margin-top: 4px;
     color: #777777;
     font-size: 20px;
+}
+
+section.recipes {
+    margin-top: 30px;
 }
 
 /* +=+=+= Responsiveness =+=+=+ */
