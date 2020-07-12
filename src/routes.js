@@ -21,6 +21,7 @@ routes.delete('/admin/recipes', adminController.delete) // Deletar uma receita
 
 routes.get('/admin/chefs', adminChefsController.index) // Listagem de chefs
 routes.get('/admin/chefs/create', adminChefsController.create) // Mostrar formulário de novo chef
-routes.post('/admin/chefs', adminChefsController.post)
+routes.post('/admin/chefs', adminChefsController.post) 
+routes.get('/admin/chefs/:id', adminChefsController.show)
 
 module.exports = routes;
