@@ -125,7 +125,6 @@ main section.title-and-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    margin-bottom: 30px;
 }
 
 main section.title-and-options h1 {
@@ -138,7 +137,7 @@ main section.title-and-options div {
 }
 
 main section.recipes {
-    margin-bottom: 50px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -208,18 +207,18 @@ div.recipie section.container {
     margin-top: 50px;
 }
 
-div.recipie section.container div.information-title {
+div.information-title {
     margin-bottom: 20px;
 }
 
-div.recipie section.container div.information-title h3 {
+div.information-title h3 {
     font-size: 24px;
     font-weight: bold;
     line-height: 28px;
     display: inline-block;
 }
 
-div.recipie section.container div.information-title span {
+div.information-title span {
     margin-left: 8px;
     font-weight: bold;
     font-size: 12px;
@@ -228,9 +227,9 @@ div.recipie section.container div.information-title span {
     cursor: pointer;
 }
 
-div.recipie section.container div.hide-and-show ul,
-div.recipie section.container div.hide-and-show ol,
-div.recipie section.container div.hide-and-show p {
+div.hide-and-show ul,
+div.hide-and-show ol,
+div.hide-and-show p {
     margin-left: 18px;
     font-size: 18px;
     line-height: 28px;
@@ -318,6 +317,32 @@ div.chef div.chef-image {
     border-radius: 50%;
 }
 
+/* +=+=+= Chef =+=+=+ */
+
+section.chef-info {
+    margin-top: 50px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+section.chef-info img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+section.chef-info h1 {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+section.chef-info p {
+    margin-top: 4px;
+    color: #777777;
+    font-size: 20px;
+}
 
 /* +=+=+= Responsiveness =+=+=+ */
 
@@ -331,7 +356,8 @@ div.chef div.chef-image {
     }
 
     main section.recipes {
-        grid-template-columns: 1fr;
+        grid-template-columns: initial;
+        
     }
 
     section.chefs {
