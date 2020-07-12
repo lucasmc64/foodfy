@@ -1,0 +1,26 @@
+{% extends 'admin/layout.njk' %}
+
+{% block title %}
+    <h1>Editando chef</h1>
+    <div>
+        <button class="button btn-delete" type="submit" form="edit-chef">Deletar</button>
+        <button class="button" type="submit" form="edit-chef">Salvar chef</button>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <form id="edit-chef" method="POST" action="/admin/chefs">
+        <fieldset>
+
+            <legend>Nome</legend>
+            <input name="title" type="text" required>
+
+        </fieldset>
+        <fieldset>
+
+            <legend>Avatar</legend>
+            <input name="author" type="text" required>
+
+        </fieldset>
+    </form>
+{% endblock %}

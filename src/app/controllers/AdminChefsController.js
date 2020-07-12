@@ -23,3 +23,9 @@ exports.show = function (request, response) {
         chefs_page: true
     })
 }
+
+exports.edit = function (request, response) {
+    return response.render('admin/chefs/edit', {
+        chefs_page: true
+    })
+}
