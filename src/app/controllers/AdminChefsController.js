@@ -2,30 +2,32 @@ const fs = require('fs')
 const data = require('../../data.json')
 const { response } = require('express')
 
-exports.index = function (request, response) {
-    return response.render('admin/chefs/index', {
-        chefs_page: true
-    })
-}
+module.exports = {
+    index (request, response) {
+        return response.render('admin/chefs/index', {
+            chefs_page: true
+        })
+    },
 
-exports.create = function (request, response) {
-    return response.render('admin/chefs/create', {
-        chefs_page: true
-    })
-}
+    create (request, response) {
+        return response.render('admin/chefs/create', {
+            chefs_page: true
+        })
+    },
 
-exports.post = function (request, response) {
-    return response.send('Done.')
-}
+    post (request, response) {
+        return response.send('Done.')
+    },
 
-exports.show = function (request, response) {
-    return response.render('admin/chefs/show', {
-        chefs_page: true
-    })
-}
-
-exports.edit = function (request, response) {
-    return response.render('admin/chefs/edit', {
-        chefs_page: true
-    })
+    show (request, response) {
+        return response.render('admin/chefs/show', {
+            chefs_page: true
+        })
+    },
+    
+    edit (request, response) {
+        return response.render('admin/chefs/edit', {
+            chefs_page: true
+        })
+    }
 }
