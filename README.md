@@ -61,7 +61,7 @@ Ou crie a tabela por meio de queries:
 
 ```sql
 CREATE TABLE RECIPES(
-   ID INT PRIMARY KEY,
+   ID SERIAL PRIMARY KEY,
    CHEF_ID INT NULL,
    IMAGE TEXT NULL,
    TITLE TEXT NULL,
@@ -80,7 +80,7 @@ Ou crie a tabela por meio de queries:
 
 ```sql
 CREATE TABLE CHEFS(
-   ID INT PRIMARY KEY,
+   ID SERIAL PRIMARY KEY,
    NAME TEXT NULL,
    AVATAR_URL TEXT NULL,
    CREATED_AT TEXT NULL,
