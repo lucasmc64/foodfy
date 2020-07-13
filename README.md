@@ -60,7 +60,7 @@ Agora, nesse banco de dados crie duas tabelas:
 Ou crie a tabela por meio de queries:
 
 ```sql
-CREATE TABLE INSTRUCTORS(
+CREATE TABLE RECIPES(
    ID INT PRIMARY KEY,
    CHEF_ID INT NULL,
    IMAGE TEXT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE INSTRUCTORS(
 Ou crie a tabela por meio de queries:
 
 ```sql
-CREATE TABLE MEMBERS(
+CREATE TABLE CHEFS(
    ID INT PRIMARY KEY,
    NAME TEXT NULL,
    AVATAR_URL TEXT NULL,
