@@ -24,6 +24,7 @@ routes.get('/admin/chefs/create', adminChefsController.create) // Mostrar formul
 routes.post('/admin/chefs', adminChefsController.post) 
 routes.get('/admin/chefs/:id', adminChefsController.show) // Exibir detalhes de um chef
 routes.get('/admin/chefs/:id/edit', adminChefsController.edit) // Mostrar formulário de edição de chef
-routes.put('/admin/chefs', adminChefsController.put)
+routes.put('/admin/chefs', adminChefsController.put) // Editar um chef
+routes.delete('/admin/chefs', adminChefsController.delete) // Deletar um chef
 
 module.exports = routes;

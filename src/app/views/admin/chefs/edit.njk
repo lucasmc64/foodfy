@@ -3,25 +3,41 @@
 {% block title %}
     <h1>Editando chef</h1>
     <div>
-        <button class="button btn-delete" type="submit" form="edit-chef">Deletar</button>
+        <button class="button btn-delete" type="submit" form="delete-chef">Deletar</button>
         <button class="button" type="submit" form="edit-chef">Salvar chef</button>
     </div>
 {% endblock %}
 
 {% block main %}
+    <form id="delete-chef" method="POST" action="/admin/chefs?_method=DELETE">
+        <input name="id" type="hidden" value="{{ chef.id }}">
+    </form>
+
     <form id="edit-chef" method="POST" action="/admin/chefs?_method=PUT">
         <fieldset>
 
             <legend>Nome</legend>
-            <input name="title" type="text" value={{chef.name}} required>
+            <input name="name" type="text" value="{{ chef.name }}"" required>
 
         </fieldset>
         <fieldset>
 
             <legend>Avatar</legend>
-            <input name="avatar_url" type="text" value={{chef.avatar_url}} required>
+            <input name="avatar_url" type="text" value="{{chef.avatar_url}}" required>
             <input name="id" type="hidden" value="{{ chef.id }}">
 
         </fieldset>
     </form>
+
+    <script>
+        const formDelete = window.document.querySelector("#delete-chef")
+
+        formDelete.addEventListener("submit", function (event) {
+            const response = confirm("Deseja realmente deletar esse chef?")
+
+            if (!response) {
+                event.preventDefault()
+            }
+        })
+    </script>
 {% endblock %}

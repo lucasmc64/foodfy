@@ -48,7 +48,7 @@ module.exports = {
         AdminChefs.find(request.params.id, function (chef) {
             if (!chef) return response.send('Chef not found!')
 
-            return response.render(`admin/chefs/${request.params.id}/edit`, {
+            return response.render(`admin/chefs/edit`, {
                 chef,
                 chefs_page: true
             })
@@ -65,7 +65,13 @@ module.exports = {
         }
 
         AdminChefs.update(request.body, function () {
-            return response.redirect(`/instructors/${request.body.id}`)
+            return response.redirect(`/admin/chefs/${request.body.id}`)
+        })
+    },
+
+    delete (request, response) {
+        AdminChefs.delete(request.body.id, function () {
+            return response.redirect('/admin/chefs')
         })
     }
 }
