@@ -6,14 +6,17 @@
 </fieldset>
 <fieldset>
 
-    <legend>Autor receita</legend>
-    <input name="author" type="text" value="{{ recipe.author }}" required="required">
-
+    <legend>Chef</legend>
+    <select name="chef_id" required>
+        {% for chef in chefs %}
+            <option value="{{ chef.id }}" {% if recipe.chef_id == chef.id %} selected {% endif %}>{{ chef.name }}</option>
+        {% endfor %}
+    </select>
 </fieldset>
 <fieldset>
 
     <legend>Imagem da receita</legend>
-    <input name="image" type="text" value="{{ recipe.image }}" placeholder="http://">
+    <input name="image" type="text" value="{{ recipe.image }}" placeholder="http://" required>
 
 </fieldset>
 <fieldset>

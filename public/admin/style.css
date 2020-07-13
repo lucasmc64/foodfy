@@ -274,7 +274,8 @@ form fieldset div.new-item input {
 }
 
 form fieldset input,
-textarea {
+textarea,
+select {
     width: 100%;
     height: 50px;
     border: 1px solid #DDDDDD;
