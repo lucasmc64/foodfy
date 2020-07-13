@@ -2,7 +2,7 @@ const fs = require('fs')
 const data = require('../../data.json')
 
 module.exports = {
-    recipes (request, response) {
+    index (request, response) {
         return response.render('admin/recipes/index', {
             data: data.recipes,
             recipes_page: true
