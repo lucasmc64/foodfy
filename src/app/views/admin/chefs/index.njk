@@ -9,44 +9,16 @@
 
 {% block main %}
     <section class="chefs">
-        <div class="chef">
-            <div class="chef-image" style="background: url('https://images.unsplash.com/photo-1526621553736-d0cfb8b59b76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>Julia Barrabáz</h3>
-                <a class="action" href="/admin/chefs/1">Visualizar</a>
-            </div>
-        </div>
 
-        <div class="chef">
-            <div class="chef-image" style="background: url('https://images.unsplash.com/photo-1526621553736-d0cfb8b59b76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>Julia Santos</h3>
-                <a class="action" href="#">Visualizar</a>
+        {% for chef in chefs %}
+            <div class="chef">
+                <div class="chef-image" style="background: url({{chef.avatar_url}}) no-repeat center center / cover"></div>
+                <div class="description">
+                    <h3>{{chef.name}}</h3>
+                    <a class="action" href="/admin/chefs/{{chef.id}}">Visualizar</a>
+                </div>
             </div>
-        </div>
+        {% endfor %}
 
-        <div class="chef">
-            <div class="chef-image" style="background: url('https://images.unsplash.com/photo-1526621553736-d0cfb8b59b76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>Julia Craus</h3>
-                <a class="action" href="#">Visualizar</a>
-            </div>
-        </div>
-
-        <div class="chef">
-            <div class="chef-image" style="background: url('https://images.unsplash.com/photo-1526621553736-d0cfb8b59b76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>Julia Maria</h3>
-                <a class="action" href="#">Visualizar</a>
-            </div>
-        </div>
-
-        <div class="chef">
-            <div class="chef-image" style="background: url('https://images.unsplash.com/photo-1526621553736-d0cfb8b59b76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>Julia Santz</h3>
-                <a class="action" href="#">Visualizar</a>
-            </div>
-        </div>
     </section>
 {% endblock %}
