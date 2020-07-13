@@ -10,59 +10,13 @@
 
 {% block main %}
     <form id="edit-recipe" method="POST" action="/admin/recipes?_method=PUT">
-        <fieldset>
+        <input name="id" type="hidden" value="{{ recipe.id }}">
 
-            <legend>Nome da receita</legend>
-            <input name="title" type="text" value="{{ data.title }}" required="required">
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Autor receita</legend>
-            <input name="author" type="text" value="{{ data.author }}" required="required">
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Imagem da receita</legend>
-            <input name="image" type="text" value="{{ data.image }}" placeholder="http://">
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Ingredientes</legend>
-            <div class="new-item ingredient-div">
-                {% for item in data.ingredients %}
-                    <input name="ingredients[]" type="text" value="{{ item }}" required="required">
-                {% endfor %}
-            </div>
-
-            <button id="ingredient" class="add-field action" type="button">Adicionar novo ingrediente</button>
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Modo de preparo</legend>
-            <div class="new-item steps-div">
-                {% for item in data.preparation %}
-                    <input name="preparation[]" type="text" value="{{ item }}" required="required">
-                {% endfor %}
-            </div>
-
-            <button id="steps" class="add-field action" type="button">Adicionar novo passo</button>
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Informações adicionais</legend>
-            <textarea name="information" id="" cols="30" rows="10" value="{{ data.information }}"></textarea>
-            <input name="id" type="hidden" value="{{ data.id }}">
-
-        </fieldset>
+        {% include "admin/recipes/fields.njk" %}
     </form>
 
     <form id="delete-recipe" action="/admin/recipes?_method=DELETE" method="POST">
-        <input name="id" type="hidden" value="{{ data.id }}">
+        <input name="id" type="hidden" value="{{ recipe.id }}">
     </form>
 
     <script>

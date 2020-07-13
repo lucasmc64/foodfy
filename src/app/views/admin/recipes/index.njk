@@ -13,18 +13,18 @@
 
     <section class="recipes">
 
-        {% for food in data %}
+        {% for recipe in recipes %}
 
             <div class="food">
-                <div class="food-image" style="background: url('{{ food.image }}') no-repeat center center / cover"></div>
+                <div class="food-image" style="background: url('{{ recipe.image }}') no-repeat center center / cover"></div>
                 <div class="description">
                     <h3>
-                        {{ food.title }}
+                        {{ recipe.title }}
                     </h3>
                     <p>
-                        {{ food.author }}
+                        {{ recipe.author }}
                     </p>
-                    <a class="action" href="/admin/recipes/{{ food.id }}">Visualizar</a>
+                    <a class="action" href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
                 </div>
             </div>
 

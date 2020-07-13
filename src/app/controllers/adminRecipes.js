@@ -4,7 +4,7 @@ const data = require('../../data.json')
 module.exports = {
     index (request, response) {
         return response.render('admin/recipes/index', {
-            data: data.recipes,
+            recipes: data.recipes,
             recipes_page: true
         })
     },
@@ -56,14 +56,14 @@ module.exports = {
     show (request, response) {
         const id = request.params.id
     
-        const foundFood = data.recipes.find((item) => item.id == id)
+        const foundRecipe = data.recipes.find((item) => item.id == id)
     
-        if (!foundFood) {
-            return response.send('Food not found.')
+        if (!foundRecipe) {
+            return response.send('Recipe not found.')
         }
     
         return response.render('admin/recipes/show', {
-            data: foundFood,
+            recipe: foundRecipe,
             recipes_page: true
         })
     },
@@ -71,14 +71,14 @@ module.exports = {
     edit (request, response) {
         const { id } = request.params
     
-        const foundFood = data.recipes.find((item) => item.id == id)
+        const foundRecipe = data.recipes.find((item) => item.id == id)
     
-        if (!foundFood) {
-            return response.send('Food not found.')
+        if (!foundRecipe) {
+            return response.send('Recipe not found.')
         }
     
         return response.render('admin/recipes/edit', {
-            data: foundFood,
+            recipe: foundRecipe,
             recipes_page: true
         })
     },

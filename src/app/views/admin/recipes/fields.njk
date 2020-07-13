@@ -1,0 +1,56 @@
+<fieldset>
+
+    <legend>Nome da receita</legend>
+    <input name="title" type="text" value="{{ recipe.title }}" required="required">
+
+</fieldset>
+<fieldset>
+
+    <legend>Autor receita</legend>
+    <input name="author" type="text" value="{{ recipe.author }}" required="required">
+
+</fieldset>
+<fieldset>
+
+    <legend>Imagem da receita</legend>
+    <input name="image" type="text" value="{{ recipe.image }}" placeholder="http://">
+
+</fieldset>
+<fieldset>
+
+    <legend>Ingredientes</legend>
+    <div class="new-item ingredient-div">
+        {% if not recipe %}
+            <input name="ingredients[]" type="text" required="required">
+        {% endif %}
+
+        {% for item in recipe.ingredients %}
+            <input name="ingredients[]" type="text" value="{{ item }}" required="required">
+        {% endfor %}
+    </div>
+
+    <button id="ingredient" class="add-field action" type="button">Adicionar novo ingrediente</button>
+
+</fieldset>
+<fieldset>
+
+    <legend>Modo de preparo</legend>
+    <div class="new-item steps-div">
+        {% if not recipe %}
+            <input name="preparation[]" type="text" required="required">
+        {% endif %}
+
+        {% for item in recipe.preparation %}
+            <input name="preparation[]" type="text" value="{{ item }}" required="required">
+        {% endfor %}
+    </div>
+
+    <button id="steps" class="add-field action" type="button">Adicionar novo passo</button>
+
+</fieldset>
+<fieldset>
+
+    <legend>Informações adicionais</legend>
+    <textarea name="information" id="" cols="30" rows="10" value="{{ recipe.information }}"></textarea>
+
+</fieldset>
