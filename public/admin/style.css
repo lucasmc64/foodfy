@@ -99,13 +99,15 @@ header {
     color: #FFFFFF;
     filter: brightness(0.5);
     margin-right: 30px;
+    transition: filter 200ms ease-in-out;
 }
 
 #menu a:last-child {
     margin-right: 0;
 }
 
-#menu .page-active {
+#menu .page-active,
+#menu a:hover {
     filter: brightness(1.0);
 }
 
