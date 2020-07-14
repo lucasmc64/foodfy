@@ -27,7 +27,7 @@ body {
     color: #FFFFFF;
     text-decoration: none;
     background-color: var(--color-primary);
-    border: 2px solid #FFFFFF;
+    border: 2px solid var(--color-primary);
     cursor: pointer;
     box-sizing: border-box;
     transition: all 150ms ease-in-out;
@@ -36,7 +36,6 @@ body {
 .button:hover {
     color: var(--color-primary);
     background-color: #FFFFFF;
-    border: 2px solid var(--color-primary);
 }
 
 .btn-delete {
