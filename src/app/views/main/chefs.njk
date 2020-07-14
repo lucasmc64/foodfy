@@ -1,13 +1,6 @@
-{% extends 'admin/layout.njk' %}
+{% extends 'main/layout.njk' %}
 
-{% block title %}
-    <h1>Gerenciar chefs</h1>
-    <div>
-        <a class="button" href="/admin/chefs/create">Adicionar chef</a>
-    </div>
-{% endblock %}
-
-{% block main %}
+{% block main_content %}
     <section class="chefs">
 
         {% for chef in chefs %}
@@ -15,7 +8,7 @@
                 <div class="chef-image" style="background: url({{ chef.avatar_url }}) no-repeat center center / cover"></div>
                 <div class="description">
                     <h3>{{ chef.name }}</h3>
-                    <a class="action" href="/admin/chefs/{{ chef.id }}">Visualizar</a>
+                    <p>{{ chef.total_of_recipes }} receita{{ 's' if chef.total_of_recipes > 1 }}</p>
                 </div>
             </div>
         {% endfor %}

@@ -1,15 +1,16 @@
 const express = require('express')
 
-const recipesController = require('./app/controllers/recipes')
+const mainFoodfyController = require('./app/controllers/mainFoodfy')
 const adminRecipesController = require('./app/controllers/adminRecipes')
 const adminChefsController = require('./app/controllers/adminChefs')
 
 const routes = express.Router()
 
-routes.get('/', recipesController.index) // Página principal do site
-routes.get('/about', recipesController.about) // Sobre o Foodfy
-routes.get('/recipes', recipesController.recipes) // Todas as comidas que tem receita
-routes.get('/recipes/:id', recipesController.recipe) // Receita de comida específica
+routes.get('/', mainFoodfyController.index) // Página principal do site
+routes.get('/about', mainFoodfyController.about) // Sobre o Foodfy
+routes.get('/recipes', mainFoodfyController.recipes) // Todas as comidas que tem receita
+routes.get('/recipes/:id', mainFoodfyController.recipe) // Receita de comida específica
+routes.get('/chefs', mainFoodfyController.chefs) // Lista todos os chefs
 
 routes.get('/admin/recipes', adminRecipesController.index) // Mostrar a lista de receitas
 routes.get('/admin/recipes/create', adminRecipesController.create) // Mostrar formulário de nova receita

@@ -1,12 +1,12 @@
-{% extends "recipes/layout.njk" %}
+{% extends "main/layout.njk" %}
 
 {% block main_content %}
 
     <div class="recipe">
-        <div class="image" style="background: url({{ data.image }}) no-repeat center center / cover"></div>
+        <div class="image" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
         <section class="recipe-title">
-            <h1>{{ data.title }}</h1>
-            <h2>{{ data.author }}</h2>
+            <h1>{{ recipe.title }}</h1>
+            <h2>por {{ recipe.chef }}</h2>
         </section>
 
         <section class="container">
@@ -16,7 +16,7 @@
             </div>
             <div class="hide-and-show ingredients">
                 <ul>
-                    {% for item in data.ingredients %}
+                    {% for item in recipe.ingredients %}
                         <li>{{item}}</li>
                     {% endfor %}
                 </ul>
@@ -30,7 +30,7 @@
             </div>
             <div class="hide-and-show preparation">
                 <ol>
-                    {% for item in data.preparation %}
+                    {% for item in recipe.preparation %}
                         <li>{{ item }}</li>
                     {% endfor %}
                 </ol>
@@ -43,7 +43,7 @@
                 <span class="change-display">Esconder</span>
             </div>
             <div class="hide-and-show information">
-                <p>{{ data.information }}</p>
+                <p>{{ recipe.information }}</p>
             </div>
         </section>
     </div>

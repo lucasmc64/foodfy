@@ -245,6 +245,7 @@ div.recipe section.recipe-title h1 {
 }
 
 div.recipe section.recipe-title h2 {
+    font-weight: normal;
     margin-top: 4px;
     font-size: 20px;
     line-height: 24px;
@@ -296,6 +297,39 @@ div.recipe section.container div.hide-and-show p+p {
     visibility: hidden;
     display: none;
     height: 0;
+}
+
+/* +=+=+= Chefs Page =+=+=+ */
+
+section.chefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+section.chefs h3 {
+    font-weight: normal;
+}
+
+section.chefs p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #666666;
+    margin-top: 5px;
+
+}
+
+div.chef {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+div.chef div.chef-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
 }
 
 /* +=+=+= Responsiveness =+=+=+ */

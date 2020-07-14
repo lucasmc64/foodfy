@@ -283,6 +283,7 @@ select {
     border-radius: 4px;
     padding: 16px;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 select {
@@ -346,7 +347,7 @@ section.chef-info {
     justify-items: center;
 }
 
-section.chef-info img {
+section.chef-info div.chef-image {
     width: 200px;
     height: 200px;
     border-radius: 50%;

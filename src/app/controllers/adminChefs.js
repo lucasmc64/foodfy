@@ -1,8 +1,5 @@
-const fs = require('fs')
-const data = require('../../data.json')
-
-const AdminChefs = require('../models/AdminChefs')
-const AdminRecipes = require('../models/AdminRecipes')
+const AdminChefs = require('../models/Chefs')
+const AdminRecipes = require('../models/Recipes')
 
 module.exports = {
     index (request, response) {

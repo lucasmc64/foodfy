@@ -11,7 +11,7 @@
 {% block main %}
 
     <section class="chef-info">
-        <img src={{chef.avatar_url}} alt="Imagem do Chef {{chef.name}}">
+        <div class="chef-image" style="background: url({{ chef.avatar_url }}) no-repeat center center / cover"></div>
         <h1>{{chef.name}}</h1>
         <p>{{chef.total_of_recipes}}
             receitas</p>

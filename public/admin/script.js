@@ -5,7 +5,7 @@ for (let i = 0; i < buttons.length; i++) {
         // Procura pela div a adicionar elementos
         let div = window.document.querySelector(`.${event.target.id}-div`);
         
-        const fields = div.querySelectorAll('input');
+        let fields = div.querySelectorAll('input');
         
         // Realiza um clone do último item adicionado
         const newField = fields[fields.length - 1].cloneNode(true);

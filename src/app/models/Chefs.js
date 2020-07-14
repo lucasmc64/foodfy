@@ -2,7 +2,7 @@ const db = require('../../config/db')
 
 module.exports = {
     all(callback) {
-        let query = `SELECT * FROM chefs`
+        let query = `SELECT chefs.*, count(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = recipes.chef_id GROUP BY chefs.id`
 
         db.query(query, function (error, results) {
             if (error) throw `Database error: ${error}`

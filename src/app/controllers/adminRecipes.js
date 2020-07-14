@@ -1,22 +1,19 @@
-const fs = require('fs')
-const data = require('../../data.json')
-
-const AdminRecipes = require('../models/AdminRecipes')
-const AdminChefs = require('../models/AdminChefs')
+const Recipes = require('../models/Recipes')
+const Chefs = require('../models/Chefs')
 
 module.exports = {
-    index(request, response) {
-        let chef
-        AdminRecipes.all(function (recipes) {
+    index (request, response) {
+        Recipes.all(function (recipes) {
             return response.render('admin/recipes/index', {
                 recipes,
-                recipes_page: true
+                recipes_page: true,
+                page_active: true
             })
         })
     },
 
-    create(request, response) {
-        AdminChefs.all(function (chefs) {
+    create (request, response) {
+        Chefs.all(function (chefs) {
             return response.render('admin/recipes/create', {
                 chefs,
                 recipes_page: true
@@ -24,7 +21,7 @@ module.exports = {
         })
     },
 
-    post(request, response) {
+    post (request, response) {
         const keys = Object.keys(request.body)
 
         for (key of keys) {
@@ -33,13 +30,13 @@ module.exports = {
             }
         }
 
-        AdminRecipes.create(request.body, function (id) {
+        Recipes.create(request.body, function (id) {
             return response.redirect(`/admin/recipes/${id}`)
         })
     },
 
-    show(request, response) {
-        AdminRecipes.find(request.params.id, function (recipe) {
+    show (request, response) {
+        Recipes.find(request.params.id, function (recipe) {
             return response.render('admin/recipes/show', {
                 recipe,
                 recipes_page: true
@@ -48,9 +45,9 @@ module.exports = {
 
     },
 
-    edit(request, response) {
-        AdminRecipes.find(request.params.id, function (recipe) {
-            AdminChefs.all(function (chefs) {
+    edit (request, response) {
+        Recipes.find(request.params.id, function (recipe) {
+            Chefs.all(function (chefs) {
                 return response.render('admin/recipes/edit', {
                     chefs,
                     recipe,
@@ -60,7 +57,7 @@ module.exports = {
         })
     },
 
-    put(request, response) {
+    put (request, response) {
         const keys = Object.keys(request.body)
 
         for (key of keys) {
@@ -69,13 +66,13 @@ module.exports = {
             }
         }
 
-        AdminRecipes.update(request.body, function (recipe) {
+        Recipes.update(request.body, function (recipe) {
             return response.redirect(`/admin/recipes/${request.body.id}`)
         })
     },
 
-    delete(request, response) {
-        AdminRecipes.delete(request.body.id, function () {
+    delete (request, response) {
+        Recipes.delete(request.body.id, function () {
             return response.redirect('/admin/recipes')
         })
     }

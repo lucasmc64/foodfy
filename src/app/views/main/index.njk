@@ -1,4 +1,4 @@
-{% extends "recipes/layout.njk" %}
+{% extends "main/layout.njk" %}
 
 {% block banner %}
 
@@ -26,16 +26,16 @@
 
     <div class="foods">
 
-        {% for food in data %}
+        {% for recipe in recipes %}
 
             <div class="food">
-                <div class="image" style="background: url({{ food.image }}) no-repeat center center / cover"></div>
+                <div class="image" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
                 <div class="description">
                     <h3 class="name-food">
-                        {{food.title}}
+                        {{ recipe.title }}
                     </h3>
                     <p class="author">
-                        {{food.author}}
+                        por {{ recipe.chef }}
                     </p>
                 </div>
             </div>
