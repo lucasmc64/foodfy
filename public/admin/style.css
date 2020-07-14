@@ -284,6 +284,24 @@ select {
     box-sizing: border-box;
 }
 
+select {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #111111 50%),
+        linear-gradient(135deg, #111111 50%, transparent 50%);
+    background-position:
+        calc(100% - 21px) calc(1.5em + 2px),
+        calc(100% - 16px) calc(1.5em + 2px);
+    background-size:
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+}
+
 form fieldset button {
     background-color: #FFFFFF;
     cursor: pointer;
@@ -361,7 +379,7 @@ section.recipes-container {
 
     main section.recipes {
         grid-template-columns: initial;
-        
+
     }
 
     section.chefs {
