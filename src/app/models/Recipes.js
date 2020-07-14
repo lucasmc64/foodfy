@@ -82,6 +82,18 @@ module.exports = {
         })
     },
 
+    search (filter, callback) {
+        let query = `
+            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.title ILIKE '%${filter}%' ORDER BY id ASC
+        `
+
+        db.query(query, function (error, results) {
+            if (error) throw `Database error: ${error}`
+
+            callback(results.rows)
+        })
+    },
+
     update (recipe, callback) {
         const query = `
             UPDATE recipes SET

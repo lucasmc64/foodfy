@@ -17,13 +17,24 @@ module.exports = {
     },
 
     recipes(request, response) { //Rota
-        Recipes.all(function (recipes) {
-            console.log(recipes)
-            return response.render('main/recipes', {
-                recipes,
-                recipes_page: true
-            }) //Renderiza a página
-        })
+        let filter = request.query.filter
+        
+        if (filter) {
+            Recipes.search(filter, function (recipes) {
+                return response.render('main/recipes', {
+                    recipes,
+                    filter,
+                    recipes_page: true
+                }) //Renderiza a página
+            })
+        } else {
+            Recipes.all(function (recipes) {
+                return response.render('main/recipes', {
+                    recipes,
+                    recipes_page: true
+                }) //Renderiza a página
+            })
+        }
     },
 
     recipe(request, response) { //Rota
