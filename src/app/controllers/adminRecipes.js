@@ -1,146 +1,82 @@
 const fs = require('fs')
 const data = require('../../data.json')
 
+const AdminRecipes = require('../models/AdminRecipes')
+const AdminChefs = require('../models/AdminChefs')
+
 module.exports = {
-    index (request, response) {
-        return response.render('admin/recipes/index', {
-            recipes: data.recipes,
-            recipes_page: true
+    index(request, response) {
+        let chef
+        AdminRecipes.all(function (recipes) {
+            return response.render('admin/recipes/index', {
+                recipes,
+                recipes_page: true
+            })
         })
     },
 
-    create (request, response) {
-        return response.render('admin/recipes/create', {
-            recipes_page: true
+    create(request, response) {
+        AdminChefs.all(function (chefs) {
+            return response.render('admin/recipes/create', {
+                chefs,
+                recipes_page: true
+            })
         })
     },
 
-    post (request, response) {
-        const {
-            image,
-            title,
-            author,
-            ingredients,
-            preparation,
-            information
-        } = request.body
-    
-        let id = 1
-        const lastRecipe = data.recipes[data.recipes.length - 1]
-    
-        if (lastRecipe) {
-            id = lastRecipe.id + 1
-        }
-    
-        data.recipes.push({
-            id,
-            image,
-            title,
-            author,
-            ingredients,
-            preparation,
-            information
-        })
-    
-        fs.writeFile('data.json', JSON.stringify(data, null, 4), function (error) {
-            if (error) {
-                return response.send('Write file error!')
+    post(request, response) {
+        const keys = Object.keys(request.body)
+
+        for (key of keys) {
+            if (request.body[key] == '' && key != 'information') {
+                return response.send('Please, fill all fields.')
             }
-    
-            return response.redirect('/admin/recipes/recipes')
-        })
-    
-        return response.json(data)
-    },
-
-    show (request, response) {
-        const id = request.params.id
-    
-        const foundRecipe = data.recipes.find((item) => item.id == id)
-    
-        if (!foundRecipe) {
-            return response.send('Recipe not found.')
         }
-    
-        return response.render('admin/recipes/show', {
-            recipe: foundRecipe,
-            recipes_page: true
+
+        AdminRecipes.create(request.body, function (id) {
+            return response.redirect(`/admin/recipes/${id}`)
         })
     },
 
-    edit (request, response) {
-        const { id } = request.params
-    
-        const foundRecipe = data.recipes.find((item) => item.id == id)
-    
-        if (!foundRecipe) {
-            return response.send('Recipe not found.')
-        }
-    
-        return response.render('admin/recipes/edit', {
-            recipe: foundRecipe,
-            recipes_page: true
+    show(request, response) {
+        AdminRecipes.find(request.params.id, function (recipe) {
+            return response.render('admin/recipes/show', {
+                recipe,
+                recipes_page: true
+            })
+        })
+
+    },
+
+    edit(request, response) {
+        AdminRecipes.find(request.params.id, function (recipe) {
+            AdminChefs.all(function (chefs) {
+                return response.render('admin/recipes/edit', {
+                    chefs,
+                    recipe,
+                    recipes_page: true
+                })
+            })
         })
     },
 
-    put (request, response) {
-        const { 
-            id, 
-            image,
-            title,
-            author,
-            ingredients,
-            preparation,
-            information 
-        } = request.body
-        
-        let index = 0
-    
-        let foundFood = data.recipes.find((item, foundIndex) => {
-            if (item.id == id) {
-                index = foundIndex
-                return true
+    put(request, response) {
+        const keys = Object.keys(request.body)
+
+        for (key of keys) {
+            if (request.body[key] == '' && key != 'information') {
+                return response.send('Please, fill all fields.')
             }
+        }
+
+        AdminRecipes.update(request.body, function (recipe) {
+            return response.redirect(`/admin/recipes/${request.body.id}`)
         })
-        
-        if (!foundFood) {
-            return response.send('Food not found.')
-        }
-    
-        const recipe = {
-            id,
-            image,
-            title,
-            author,
-            ingredients,
-            preparation,
-            information
-        }
-    
-        data.recipes[index] = recipe
-    
-        fs.writeFile('data.json', JSON.stringify(data, null, 4), function (error) {
-            if (error) {
-                return response.send('Write file error.')
-            }
-    
+    },
+
+    delete(request, response) {
+        AdminRecipes.delete(request.body.id, function () {
             return response.redirect('/admin/recipes')
         })
-    },
-
-    delete (request, response) {
-        const { id } = request.body
-    
-        const filteredFoods = data.recipes.filter((item) => item.id != id)
-    
-        data.recipes = filteredFoods
-    
-        fs.writeFile('data.json', JSON.stringify(data, null, 4), function (error) {
-            if (error) {
-                return response.send('Write file error.')
-            }
-    
-            return response.redirect('/admin/recipes/recipes')
-        })
-    }    
+    }
 }

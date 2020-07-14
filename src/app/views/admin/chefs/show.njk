@@ -13,65 +13,29 @@
     <section class="chef-info">
         <img src={{chef.avatar_url}} alt="Imagem do Chef {{chef.name}}">
         <h1>{{chef.name}}</h1>
-        <p>4 receitas</p>
+        <p>{{chef.total_of_recipes}}
+            receitas</p>
     </section>
 
-<section class="recipes-container">
-    <div class="information-title">
-        <h3 class="title">Receitas</h3>
-    </div>
-    <section class="recipes">
-        <div class="food">
-            <div class="food-image" style="background: url('https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>
-                    Triplo bacon burger
-                </h3>
-                <p>
-                    Jorge Relato
-                </p>
-                <a class="action" href="/admin/recipes/{{ food.id }}">Visualizar</a>
-            </div>
+    <section class="recipes-container">
+        <div class="information-title">
+            <h3 class="title">Receitas</h3>
         </div>
-
-        <div class="food">
-            <div class="food-image" style="background: url('https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>
-                    Triplo bacon burger
-                </h3>
-                <p>
-                    Jorge Relato
-                </p>
-                <a class="action" href="/admin/recipes/{{ food.id }}">Visualizar</a>
-            </div>
-        </div>
-
-        <div class="food">
-            <div class="food-image" style="background: url('https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>
-                    Triplo bacon burger
-                </h3>
-                <p>
-                    Jorge Relato
-                </p>
-                <a class="action" href="/admin/recipes/{{ food.id }}">Visualizar</a>
-            </div>
-        </div>
-
-        <div class="food">
-            <div class="food-image" style="background: url('https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png') no-repeat center center / cover"></div>
-            <div class="description">
-                <h3>
-                    Triplo bacon burger
-                </h3>
-                <p>
-                    Jorge Relato
-                </p>
-                <a class="action" href="/admin/recipes/{{ food.id }}">Visualizar</a>
-            </div>
-        </div>
+        <section class="recipes">
+            {% for recipe in recipes %}
+                <div class="food">
+                    <div class="food-image" style="background: url('{{ recipe.image }}') no-repeat center center / cover"></div>
+                    <div class="description">
+                        <h3>
+                            {{ recipe.title }}
+                        </h3>
+                        <p>
+                            por {{ recipe.chef }}
+                        </p>
+                        <a class="action" href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
     </section>
-</section>
 {% endblock %}

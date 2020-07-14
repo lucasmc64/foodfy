@@ -8,6 +8,7 @@
 
     <legend>Chef</legend>
     <select name="chef_id" required>
+        <option value="" disabled selected>Selecione um chef</option>
         {% for chef in chefs %}
             <option value="{{ chef.id }}" {% if recipe.chef_id == chef.id %} selected {% endif %}>{{ chef.name }}</option>
         {% endfor %}

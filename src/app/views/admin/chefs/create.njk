@@ -9,17 +9,6 @@
 
 {% block main %}
     <form id="create-chef" method="POST" action="/admin/chefs">
-        <fieldset>
-
-            <legend>Nome</legend>
-            <input name="name" type="text" required>
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Avatar</legend>
-            <input name="avatar_url" type="text" required>
-
-        </fieldset>
+        {% include "admin/chefs/fields.njk" %}
     </form>
 {% endblock %}

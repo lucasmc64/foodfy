@@ -42,7 +42,7 @@ module.exports = {
 
     find (id, callback) {
         let query = `
-            SELECT * FROM chefs WHERE id = $1
+            SELECT chefs.*, count(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = $1 GROUP BY chefs.id
         `
 
         let values = [id]

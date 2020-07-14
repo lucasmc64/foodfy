@@ -2,6 +2,7 @@ const fs = require('fs')
 const data = require('../../data.json')
 
 const AdminChefs = require('../models/AdminChefs')
+const AdminRecipes = require('../models/AdminRecipes')
 
 module.exports = {
     index (request, response) {
@@ -37,9 +38,12 @@ module.exports = {
         AdminChefs.find(request.params.id, function (chef) {
             if (!chef) return response.send('Chef not found!')
 
-            return response.render('admin/chefs/show', {
-                chef,
-                chefs_page: true
+            AdminRecipes.findByChefId(request.params.id, function (recipes) {
+                return response.render('admin/chefs/show', {
+                    chef,
+                    recipes,
+                    chefs_page: true
+                })
             })
         })
     },

@@ -14,19 +14,9 @@
     </form>
 
     <form id="edit-chef" method="POST" action="/admin/chefs?_method=PUT">
-        <fieldset>
-
-            <legend>Nome</legend>
-            <input name="name" type="text" value="{{ chef.name }}"" required>
-
-        </fieldset>
-        <fieldset>
-
-            <legend>Avatar</legend>
-            <input name="avatar_url" type="text" value="{{chef.avatar_url}}" required>
-            <input name="id" type="hidden" value="{{ chef.id }}">
-
-        </fieldset>
+        <input name="id" type="hidden" value="{{ chef.id }}">
+            
+        {% include "admin/chefs/fields.njk" %}
     </form>
 
     <script>
