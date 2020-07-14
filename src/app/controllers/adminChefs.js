@@ -74,8 +74,15 @@ module.exports = {
     },
 
     delete (request, response) {
-        AdminChefs.delete(request.body.id, function () {
-            return response.redirect('/admin/chefs')
+        AdminRecipes.findByChefId(request.body.id, function (recipes) {
+            if (recipes.length > 0) {
+                return response.send('This chef has recipes that cannot be deleted.')
+            } 
+
+            AdminChefs.delete(request.body.id, function () {
+                return response.redirect('/admin/chefs')
+            })
         })
+        
     }
 }
