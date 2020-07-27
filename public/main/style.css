@@ -6,12 +6,7 @@ html {
 /* +=+=+= Header =+=+=+ */
 
 header {
-    min-width: 300px;
-    max-width: 940px;
-    margin: 36px auto 0 auto;
-    display: grid;
     grid-template-columns: 214px 1fr 1fr;
-    align-items: center;
 }
 
 header img {
@@ -234,22 +229,22 @@ div.recipe section.recipe-title h2 {
     color: #777777;
 }
 
-div.recipe section.container {
+div.recipe section.information {
     margin-top: 50px;
 }
 
-div.recipe section.container div.information-title {
+div.recipe section.information div.information-title {
     margin-bottom: 20px;
 }
 
-div.recipe section.container div.information-title h3 {
+div.recipe section.information div.information-title h3 {
     font-size: 24px;
     font-weight: bold;
     line-height: 28px;
     display: inline-block;
 }
 
-div.recipe section.container div.information-title span {
+div.recipe section.information div.information-title span {
     margin-left: 8px;
     font-weight: bold;
     font-size: 12px;
@@ -258,19 +253,19 @@ div.recipe section.container div.information-title span {
     cursor: pointer;
 }
 
-div.recipe section.container div.hide-and-show ul,
-div.recipe section.container div.hide-and-show ol,
-div.recipe section.container div.hide-and-show p {
+div.recipe section.information div.hide-and-show ul,
+div.recipe section.information div.hide-and-show ol,
+div.recipe section.information div.hide-and-show p {
     margin-left: 18px;
     font-size: 18px;
     line-height: 28px;
 }
 
-div.recipe section.container div.hide-and-show p {
+div.recipe section.information div.hide-and-show p {
     margin-left: initial;
 }
 
-div.recipe section.container div.hide-and-show p+p {
+div.recipe section.information div.hide-and-show p+p {
     margin-top: 16px;
 }
 

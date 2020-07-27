@@ -19,6 +19,15 @@ body {
 
 /* +=+=+= Generic Classes =+=+=+ */
 
+/* += Responsiveness =+ */
+
+.container {
+    min-width: 300px;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 36px 0;
+}
+
 /* += Buttons =+ */
 
 .button {
@@ -76,3 +85,10 @@ body {
     width: 100%;
 }
 
+/* +=+=+= Header =+=+=+ */
+
+header {
+    display: grid;
+    align-items: center;
+    justify-self: left;
+}
