@@ -10,22 +10,24 @@
     </head>
 
     <body>
-        <header>
-            <a href="/">
-                <img src="/assets/logo.png" alt="Logo da Foodfy">
-            </a>
+        <div class="header-wrapper">
+            <header class="container">
+                <a href="/">
+                    <img src="/assets/logo.png" alt="Logo da Foodfy">
+                </a>
 
-            <nav id="menu">
-                <a class=" {{ 'page-active' if about_page }}" href="/about">Sobre</a>
-                <a class=" {{ 'page-active' if recipes_page }}" href="/recipes">Receitas</a>
-                <a class=" {{ 'page-active' if chefs_page }}" href="/chefs">Chefs</a>
-            </nav>
+                <nav id="menu">
+                    <a class=" {{ 'page-active' if about_page }}" href="/about">Sobre</a>
+                    <a class=" {{ 'page-active' if recipes_page }}" href="/recipes">Receitas</a>
+                    <a class=" {{ 'page-active' if chefs_page }}" href="/chefs">Chefs</a>
+                </nav>
 
-            <form action="/recipes" method="GET">
-                <input type="text" name="filter" placeholder="Busque uma receita" value="{{ filter }}">
-                <button class="button" type="submit">Buscar</button>
-            </form>
-        </header>
+                <form action="/recipes" method="GET">
+                    <input type="text" name="filter" placeholder="Busque uma receita" value="{{ filter }}">
+                    <button class="button" type="submit">Buscar</button>
+                </form>
+            </header>
+        <div class="header-wrapper">
 
         {% block banner %}{% endblock %}
 
