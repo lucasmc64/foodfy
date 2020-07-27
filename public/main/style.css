@@ -1,24 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-
-:root {
-    --text-color-default: #111111;
-    --color-primary: #7159c1
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
 html {
     min-height: calc(100% - 106px);
     position: relative;
-}
-
-body {
-    color: var(--text-color-default);
-    font-family: 'Roboto', sans-serif;
 }
 
 /* +=+=+= Header =+=+=+ */
@@ -42,7 +24,7 @@ header img {
 
 #menu a {
     text-decoration: none;
-    color: var(--text-color-default);
+    color: var(--color-default);
     margin-right: 30px;
 }
 
@@ -169,7 +151,7 @@ div.description h3.name-food {
     font-size: 18px;
     line-height: 21px;
     margin-bottom: 5px;
-    color: var(--text-color-default);
+    color: var(--color-default);
 }
 
 div.description p.author {

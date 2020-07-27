@@ -1,22 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
-
-:root {
-    --color-default: #111111;
-    --color-primary: #6558C3;
-    --color-secondary: #777777;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-body {
-    color: var(--color-default);
-    font-family: "Roboto", sans-serif;
-}
-
 /* +=+=+= Generic Classes =+=+=+ */
 
 .button {
