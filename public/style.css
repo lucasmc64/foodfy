@@ -19,6 +19,8 @@ body {
 
 /* +=+=+= Generic Classes =+=+=+ */
 
+/* += Buttons =+ */
+
 .button {
     font-size: 16px;
     line-height: 18px;
@@ -46,6 +48,8 @@ body {
     color: #DC4747;
     border: 2px solid #DC4747;
 }
+
+/* += Links =+*/
 
 .action {
     font-size: 14px;
