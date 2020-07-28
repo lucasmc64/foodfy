@@ -1,15 +1,4 @@
 /* +=+=+= Header =+=+=+ */
-.header-wrapper.black {
-    background-color: var(--color-default);
-}
-
-header {
-    grid-template-columns: 214px 1fr;
-}
-
-#menu {
-    display: inline;
-}
 
 #menu a {
     text-decoration: none;

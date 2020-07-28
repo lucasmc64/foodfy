@@ -87,8 +87,22 @@ body {
 
 /* +=+=+= Header =+=+=+ */
 
-header {
+.header-wrapper.black {
+    background-color: var(--color-default);
+}
+
+.header-wrapper header {
     display: grid;
+    grid-template-columns: 214px 1fr 1fr;
     align-items: center;
     justify-self: left;
+}
+
+.header-wrapper.black header {
+    /* Header Admin */
+    grid-template-columns: 214px 1fr;
+}
+
+#menu {
+    display: inline;
 }
