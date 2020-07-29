@@ -11,6 +11,7 @@
     padding: 0;
     border: 0;
     transition: all 200ms ease-in-out;
+    box-sizing: border-box;
 }
 
 body {
@@ -40,7 +41,6 @@ body {
     background-color: var(--color-primary);
     border: 2px solid var(--color-primary);
     cursor: pointer;
-    box-sizing: border-box;
 }
 
 .button:hover {
@@ -113,6 +113,15 @@ header {
     grid-template-columns: 214px 1fr;
 }
 
+h1 {
+    width: 91px;
+}
+
+h1 a {
+    display: grid;
+    align-items: center;
+}
+
 #menu {
     display: inline;
 }
@@ -151,7 +160,6 @@ header form input {
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     padding: 16px;
-    box-sizing: border-box;
 }
 
 /* +=+=+= Banner =+=+=+ */
@@ -165,24 +173,20 @@ section#banner {
     justify-items: center;
     align-items: center;
     padding: 0 36px;
-    box-sizing: border-box;
 }
 
 div#content {
     max-width: 320px;
 }
 
-div#content h1 {
-    font-family: 'Roboto', sans-serif;
+div#content h2 {
     font-weight: bold;
     font-size: 32px;
     line-height: 38px;
     margin-bottom: 10px;
 }
 
-div#content h3 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
+div#content p {
     font-size: 18px;
     line-height: 28px;
 }
