@@ -17,28 +17,12 @@
 {% endblock %}
 
 {% block main_content %}
-    <h2>
-        Mais acessadas
-    </h2>
-
-    <div class="recipes">
-
-        {% for recipe in recipes %}
-
-            <div class="recipe">
-                <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
-                
-                <div class="description">
-                    <h3 class="recipe-title">
-                        {{ recipe.title }}
-                    </h3>
-                    <p class="author">
-                        por {{ recipe.chef }}
-                    </p>
-                </div>
-            </div>
-
-        {% endfor %}
-
+    <div class="information-title">
+        <h2>
+            Mais acessadas
+        </h2>
     </div>
+    
+    {% include "main/recipes-listing.njk" %}
+
 {% endblock %}
