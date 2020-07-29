@@ -12,9 +12,12 @@
     <body>
         <div class="header-wrapper black">
             <header class="container">
-                <a href="/">
-                    <img src="/assets/logo-white.png" alt="Logo da Foodfy">
-                </a>
+                <h1>
+                    <a href="/">
+                        <img src="/assets/logo-white.png" alt="Logo da Foodfy">
+                    </a>
+                </h1>
+                
                 <nav id="menu">
                     <a class="{{ 'page-active' if recipes_page}} {{ 'menu-hover' if not recipes_page}}" href="/admin/recipes">Receitas</a>
                     <a class="{{ 'page-active' if chefs_page}} {{ 'menu-hover' if not chefs_page}}" href="/admin/chefs">Chefs</a>
