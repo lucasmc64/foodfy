@@ -17,9 +17,9 @@
                 </a>
 
                 <nav id="menu">
-                    <a class=" {{ 'page-active' if about_page }}" href="/about">Sobre</a>
-                    <a class=" {{ 'page-active' if recipes_page }}" href="/recipes">Receitas</a>
-                    <a class=" {{ 'page-active' if chefs_page }}" href="/chefs">Chefs</a>
+                    <a class="{{ 'page-active' if about_page }} {{ 'menu-hover' if not about_page }}" href="/about">Sobre</a>
+                    <a class="{{ 'page-active' if recipes_page }} {{ 'menu-hover' if not recipes_page }}" href="/recipes">Receitas</a>
+                    <a class="{{ 'page-active' if chefs_page }} {{ 'menu-hover' if not chefs_page }}" href="/chefs">Chefs</a>
                 </nav>
 
                 <form action="/recipes" method="GET">
