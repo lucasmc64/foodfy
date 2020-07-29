@@ -1,11 +1,5 @@
 /* +=+=+= Foods =+=+=+ */
 
-main {
-    max-width: 940px;
-    margin: 36px auto 0 auto;
-    box-sizing: border-box;
-}
-
 main h2 {
     min-width: 300px;
     font-family: 'Roboto', sans-serif;
