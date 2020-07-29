@@ -2,18 +2,20 @@
 
 {% block main_content %}
 
-    <div class="recipe">
-        <div class="image" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
-        <section class="recipe-title">
-            <h1>{{ recipe.title }}</h1>
-            <h2>por {{ recipe.chef }}</h2>
+    <div id="show" class="recipe">
+        <img src="{{ recipe.image }}" alt="{{ recipe.image }}">
+
+        <section class="recipe-presentation">
+            <h2>{{ recipe.title }}</h2>
+            <p>por {{ recipe.chef }}</p>
         </section>
 
         <section class="information">
-            <div class="information-title">
-                <h3 class="title">Ingredientes</h3>
+            <div class="information-header">
+                <h3>Ingredientes</h3>
                 <span class="change-display" onclick="hideAndShow(this)">Esconder</span>
             </div>
+
             <div class="hide-and-show ingredients">
                 <ul>
                     {% for item in recipe.ingredients %}
@@ -24,10 +26,11 @@
         </section>
 
         <section class="information">
-            <div class="information-title">
-                <h3 class="title">Modo de Preparo</h3>
+            <div class="information-header">
+                <h3>Modo de Preparo</h3>
                 <span class="change-display" onclick="hideAndShow(this)">Esconder</span>
             </div>
+
             <div class="hide-and-show preparation">
                 <ol>
                     {% for item in recipe.preparation %}
@@ -38,10 +41,11 @@
         </section>
 
         <section class="information">
-            <div class="information-title">
-                <h3 class="title">Informações Adicionais</h3>
+            <div class="information-header">
+                <h3>Informações Adicionais</h3>
                 <span class="change-display" onclick="hideAndShow(this)">Esconder</span>
             </div>
+
             <div class="hide-and-show information">
                 <p>{{ recipe.information }}</p>
             </div>
