@@ -17,19 +17,19 @@
 {% endblock %}
 
 {% block main_content %}
-
     <h2>
         Mais acessadas
     </h2>
 
-    <div class="foods">
+    <div class="recipes">
 
         {% for recipe in recipes %}
 
-            <div class="food">
-                <div class="image" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
+            <div class="recipe">
+                <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                
                 <div class="description">
-                    <h3 class="name-food">
+                    <h3 class="recipe-title">
                         {{ recipe.title }}
                     </h3>
                     <p class="author">
@@ -41,5 +41,4 @@
         {% endfor %}
 
     </div>
-
 {% endblock %}
