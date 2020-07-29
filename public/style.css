@@ -10,7 +10,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    transition: filter 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
 }
 
 body {
@@ -70,6 +70,10 @@ body {
     position: relative;
 }
 
+.menu-hover {
+    position: relative;
+}
+
 .menu-hover::after,
 .action::after {
     content: "";
@@ -123,11 +127,6 @@ body {
 
 #menu a:last-child {
     margin-right: 0;
-}
-
-#menu .page-active,
-#menu a:hover {
-    filter: brightness(1.0);
 }
 
 .header-wrapper.black #menu .page-active,
