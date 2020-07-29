@@ -1,14 +1,14 @@
 {% extends 'admin/layout.njk' %}
 
-{% block title %}
-    <h1>Receita:
-        {{ recipe.title }}</h1>
-    <div>
-        <a class="button" href="/admin/recipes/{{ recipe.id }}/edit">Editar receita</a>
-    </div>
-{% endblock %}
-
 {% block main %}
+    <section class="title-and-options">
+        <h1>Receita:
+            {{ recipe.title }}</h1>
+        <div>
+            <a class="button" href="/admin/recipes/{{ recipe.id }}/edit">Editar receita</a>
+        </div>
+    </section>
+
     <div class="recipie">
         <div class="food-image-big" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
         <section class="recipie-title">
@@ -18,7 +18,7 @@
 
         <section class="container">
             <div class="information-title">
-                <h3 class="title">Ingredientes</h3>
+                <h2>Ingredientes</h2>
             </div>
             <div class="hide-and-show ingredients">
                 <ul>
@@ -31,7 +31,7 @@
 
         <section class="container">
             <div class="information-title">
-                <h3 class="title">Modo de Preparo</h3>
+                <h2>Modo de Preparo</h2>
             </div>
             <div class="hide-and-show preparation">
                 <ol>
@@ -44,7 +44,7 @@
 
         <section class="container">
             <div class="information-title">
-                <h3 class="title">Informações Adicionais</h3>
+                <h2>Informações Adicionais</h2>
             </div>
             <div class="hide-and-show information">
                 <p>{{ recipe.information }}</p>

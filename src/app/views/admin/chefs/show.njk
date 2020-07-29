@@ -1,14 +1,14 @@
 {% extends 'admin/layout.njk' %}
 
-{% block title %}
-    <h1>Chef:
-        {{chef.name}}</h1>
-    <div>
-        <a class="button" href="/admin/chefs/{{ chef.id }}/edit">Editar chef</a>
-    </div>
-{% endblock %}
-
 {% block main %}
+    <section class="title-and-options">
+        <h1>Chef:
+            {{chef.name}}</h1>
+        <div>
+            <a class="button" href="/admin/chefs/{{ chef.id }}/edit">Editar chef</a>
+        </div>
+    </section>
+    
 
     <section class="chef-info">
         <div class="chef-image" style="background: url({{ chef.avatar_url }}) no-repeat center center / cover"></div>

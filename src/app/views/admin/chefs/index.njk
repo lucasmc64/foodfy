@@ -1,13 +1,13 @@
 {% extends 'admin/layout.njk' %}
 
-{% block title %}
-    <h1>Gerenciar chefs</h1>
-    <div>
-        <a class="button" href="/admin/chefs/create">Adicionar chef</a>
-    </div>
-{% endblock %}
-
 {% block main %}
+    <section class="title-and-options">
+        <h1>Gerenciar chefs</h1>
+        <div>
+            <a class="button" href="/admin/chefs/create">Adicionar chef</a>
+        </div>
+    <section>
+    
     <section class="chefs">
 
         {% for chef in chefs %}

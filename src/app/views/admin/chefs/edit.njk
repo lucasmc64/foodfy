@@ -1,14 +1,14 @@
 {% extends 'admin/layout.njk' %}
 
-{% block title %}
-    <h1>Editando chef</h1>
-    <div>
-        <button class="button btn-delete" type="submit" form="delete-chef">Deletar</button>
-        <button class="button" type="submit" form="edit-chef">Salvar chef</button>
-    </div>
-{% endblock %}
-
 {% block main %}
+    <section class="title-and-options">
+        <h1>Editando chef</h1>
+        <div>
+            <button class="button btn-delete" type="submit" form="delete-chef">Deletar</button>
+            <button class="button" type="submit" form="edit-chef">Salvar chef</button>
+        </div>
+    </section>
+
     <form id="delete-chef" method="POST" action="/admin/chefs?_method=DELETE">
         <input name="id" type="hidden" value="{{ chef.id }}">
     </form>

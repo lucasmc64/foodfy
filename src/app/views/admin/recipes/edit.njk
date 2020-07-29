@@ -1,14 +1,14 @@
 {% extends 'admin/layout.njk' %}
 
-{% block title %}
-    <h1>Editando receita</h1>
-    <div>
-        <button form="delete-recipe" class="button btn-delete">Deletar</button>
-        <button form="edit-recipe" class="button">Salvar receita</button>
-    </div>
-{% endblock %}
-
 {% block main %}
+    <section class="title-and-options">
+        <h1>Editando receita</h1>
+        <div>
+            <button form="delete-recipe" class="button btn-delete">Deletar</button>
+            <button form="edit-recipe" class="button">Salvar receita</button>
+        </div>
+    </section>
+    
     <form id="edit-recipe" method="POST" action="/admin/recipes?_method=PUT">
         <input name="id" type="hidden" value="{{ recipe.id }}">
 
