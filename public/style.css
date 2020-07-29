@@ -26,7 +26,6 @@ body {
     min-width: 300px;
     max-width: 940px;
     margin: 0 auto;
-    padding: 36px 0;
 }
 
 /* += Buttons =+ */
@@ -98,6 +97,10 @@ body {
     background-color: var(--color-default);
 }
 
+header {
+    padding: 36px 0;
+}
+
 .header-wrapper header {
     display: grid;
     grid-template-columns: 214px 1fr 1fr;
@@ -149,4 +152,41 @@ header form input {
     border-radius: 4px;
     padding: 16px;
     box-sizing: border-box;
+}
+
+/* +=+=+= Banner =+=+=+ */
+
+section#banner {
+    height: 372px;
+    border-radius: 30px;
+    background: #FBDFDB;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 36px;
+    box-sizing: border-box;
+}
+
+div#content {
+    max-width: 320px;
+}
+
+div#content h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 10px;
+}
+
+div#content h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+img#chef {
+    align-self: end;
 }
