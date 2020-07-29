@@ -1,14 +1,7 @@
-
 /* +=+=+= Index =+=+=+ */
 
 div button+button {
     margin-left: 10px;
-}
-
-main {
-    max-width: 940px;
-    margin: 36px auto 36px auto;
-    box-sizing: border-box;
 }
 
 main section.title-and-options {
