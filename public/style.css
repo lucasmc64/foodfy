@@ -67,7 +67,7 @@ body {
     border: 2px solid #DC4747;
 }
 
-/* += Links =+*/
+/* += Links =+ */
 
 .action {
     font-size: 14px;
@@ -98,6 +98,16 @@ body {
 .menu-hover:hover::after,
 .action:hover::after {
     width: 100%;
+}
+
+/* += Others =+ */
+
+.page-active {
+    font-weight: bold;
+}
+
+.recipe {
+    text-decoration: none;
 }
 
 /* +=+=+= Header =+=+=+ */

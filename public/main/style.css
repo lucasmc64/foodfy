@@ -1,9 +1,5 @@
 /* +=+=+= About Page =+=+=+ */
 
-.page-active {
-    font-weight: bold;
-}
-
 div.about-foodfy {
     margin-top: 30px;
 }
@@ -18,13 +14,7 @@ div.about-foodfy p {
     line-height: 28px;
 }
 
-/* +=+=+= Recipies Page =+=+=+ */
-
-.recipe {
-    text-decoration: none;
-}
-
-/* +=+=+= Recipie Page =+=+=+ */
+/* +=+=+= Recipe Page =+=+=+ */
 
 div.recipe div.image {
     margin-top: 14px;
