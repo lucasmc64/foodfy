@@ -10,7 +10,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    transition: all 200ms ease-in-out;
+    transition: filter 200ms ease-in-out;
 }
 
 body {
