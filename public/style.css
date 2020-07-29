@@ -210,7 +210,8 @@ div#content h2 {
     margin-bottom: 10px;
 }
 
-div#content p {
+p {
+    color: #444444;
     font-size: 18px;
     line-height: 28px;
 }
@@ -279,4 +280,10 @@ div.description p.author {
     font-size: 14px;
     line-height: 16px;
     color: #777777;
+}
+
+/* +=+=+= About Page =+=+=+ */
+
+div.about-foodfy+div.about-foodfy {
+    margin-top: 36px;
 }
