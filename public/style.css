@@ -14,6 +14,11 @@
     box-sizing: border-box;
 }
 
+html {
+    min-height: calc(100% - 106px);
+    position: relative;
+}
+
 body {
     color: var(--color-default);
     font-family: "Roboto", sans-serif;
@@ -193,4 +198,21 @@ div#content p {
 
 img#chef {
     align-self: end;
+}
+
+/* +=+=+= Footer =+=+=+ */
+
+footer {
+    min-width: 300px;
+    width: 100%;
+    height: 70px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: #EEEEEE;
+    color: #999999;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    bottom: -106px;
 }

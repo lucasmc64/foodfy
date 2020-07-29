@@ -1,8 +1,3 @@
-html {
-    min-height: calc(100% - 106px);
-    position: relative;
-}
-
 /* +=+=+= Foods =+=+=+ */
 
 main {
@@ -53,23 +48,6 @@ div.description p.author {
     font-size: 14px;
     line-height: 16px;
     color: #777777;
-}
-
-/* +=+=+= Footer =+=+=+ */
-
-footer {
-    min-width: 300px;
-    width: 100%;
-    height: 70px;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    background-color: #EEEEEE;
-    color: #999999;
-    box-sizing: border-box;
-    text-align: center;
-    position: absolute;
-    bottom: -106px;
 }
 
 /* +=+=+= About Page =+=+=+ */
