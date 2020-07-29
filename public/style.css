@@ -10,7 +10,7 @@
     margin: 0;
     padding: 0;
     border: 0;
-    transition: filter 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
 }
 
 body {
@@ -42,7 +42,6 @@ body {
     border: 2px solid var(--color-primary);
     cursor: pointer;
     box-sizing: border-box;
-    transition: all 150ms ease-in-out;
 }
 
 .button:hover {
