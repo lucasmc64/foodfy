@@ -28,10 +28,15 @@ body {
 
 /* += Responsiveness =+ */
 
-.container {
+.container,
+.container-header {
     min-width: 300px;
     max-width: 940px;
     margin: 0 auto;
+}
+
+.container {
+    margin: 36px auto;
 }
 
 /* += Buttons =+ */
@@ -96,6 +101,10 @@ body {
 }
 
 /* +=+=+= Header =+=+=+ */
+
+.header-wrapper {
+    background-color: #EEEEEE;
+}
 
 .header-wrapper.black {
     /* Header Admin */
