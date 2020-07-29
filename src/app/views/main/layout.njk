@@ -19,9 +19,9 @@
                 </h1>
 
                 <nav id="menu">
-                    <a class="{{ 'page-active' if about_page }} {{ 'menu-hover' if not about_page }}" href="/about">Sobre</a>
-                    <a class="{{ 'page-active' if recipes_page }} {{ 'menu-hover' if not recipes_page }}" href="/recipes">Receitas</a>
-                    <a class="{{ 'page-active' if chefs_page }} {{ 'menu-hover' if not chefs_page }}" href="/chefs">Chefs</a>
+                    <a class="{% if about_page %} page-active {% else %} menu-hover {% endif %}" href="/about">Sobre</a>
+                    <a class="{% if recipes_page %} page-active {% else %} menu-hover {% endif %}" href="/recipes">Receitas</a>
+                    <a class="{% if chefs_page %} page-active {% else %} menu-hover {% endif %}" href="/chefs">Chefs</a>
                 </nav>
 
                 <form action="/recipes" method="GET">
