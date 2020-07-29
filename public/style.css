@@ -224,3 +224,50 @@ footer {
     position: absolute;
     bottom: -106px;
 }
+
+/* +=+=+= Foods =+=+=+ */
+
+h2 {
+    min-width: 300px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 20px;
+}
+
+div.recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px 20px;
+    justify-items: center;
+}
+
+div.recipe {
+    width: 300px;
+}
+
+div.recipe img {
+    object-fit: cover;
+    width: 100%;
+    height: 140px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+div.description h3.recipe-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 5px;
+    color: var(--color-default);
+}
+
+div.description p.author {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
