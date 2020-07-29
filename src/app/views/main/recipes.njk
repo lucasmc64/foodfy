@@ -2,14 +2,14 @@
 
 {% block main_content %}
 
-    <div class="foods">
+    <div class="recipes">
 
         {% for recipe in recipes %}
             <a href="/recipes/{{ recipe.id }}" class="recipe">
-                <div class="food">
+                <div class="recipe">
                     <div class="image" style="background: url('{{ recipe.image }}') no-repeat center center / cover"></div>
                     <div class="description">
-                        <h3 class="name-food">
+                        <h3 class="recipe-title">
                             {{ recipe.title }}
                         </h3>
                         <p class="author">
