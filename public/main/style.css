@@ -5,16 +5,6 @@ html {
 
 /* +=+=+= Header =+=+=+ */
 
-#menu a {
-    text-decoration: none;
-    color: var(--color-default);
-    margin-right: 30px;
-}
-
-#menu a:last-child {
-    margin-right: 0;
-}
-
 input {
     width: 100%;
     height: 35px;

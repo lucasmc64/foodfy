@@ -1,22 +1,5 @@
 /* +=+=+= Header =+=+=+ */
 
-#menu a {
-    text-decoration: none;
-    color: #FFFFFF;
-    filter: brightness(0.5);
-    margin-right: 30px;
-    transition: filter 200ms ease-in-out;
-}
-
-#menu a:last-child {
-    margin-right: 0;
-}
-
-#menu .page-active,
-#menu a:hover {
-    filter: brightness(1.0);
-}
-
 div button+button {
     margin-left: 10px;
 }

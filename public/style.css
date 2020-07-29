@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    transition: filter 200ms ease-in-out;
 }
 
 body {
@@ -69,6 +70,7 @@ body {
     position: relative;
 }
 
+.menu-hover::after,
 .action::after {
     content: "";
     background-color: var(--color-primary);
@@ -81,6 +83,7 @@ body {
     transition: width 200ms ease-in-out;
 }
 
+.menu-hover:hover::after,
 .action:hover::after {
     width: 100%;
 }
@@ -105,4 +108,29 @@ body {
 
 #menu {
     display: inline;
+}
+
+#menu a {
+    text-decoration: none;
+    color: var(--color-default);
+    margin-right: 30px;
+}
+
+.header-wrapper.black #menu a {
+    color: #FFFFFF;
+    filter: brightness(0.5);
+}
+
+#menu a:last-child {
+    margin-right: 0;
+}
+
+#menu .page-active,
+#menu a:hover {
+    filter: brightness(1.0);
+}
+
+.header-wrapper.black #menu .page-active,
+.header-wrapper.black #menu a:hover {
+    filter: brightness(1.0);
 }
