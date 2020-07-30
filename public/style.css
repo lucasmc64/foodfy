@@ -228,7 +228,6 @@ img#chef {
 footer {
     min-width: 300px;
     width: 100%;
-    height: 70px;
     display: grid;
     align-items: center;
     justify-items: center;
@@ -237,6 +236,10 @@ footer {
     text-align: center;
     position: absolute;
     bottom: -106px;
+}
+
+footer p {
+    padding: 36px 0;
 }
 
 /* +=+=+= Foods =+=+=+ */
