@@ -2,8 +2,8 @@
 
 {% block main %}
     <section class="title-and-options">
-        <h1>Chef:
-            {{chef.name}}</h1>
+        <h2>Chef: {{chef.name}}</h2>
+
         <div>
             <a class="button" href="/admin/chefs/{{ chef.id }}/edit">Editar chef</a>
         </div>
@@ -11,16 +11,16 @@
     
 
     <section class="chef-info">
-        <div class="chef-image" style="background: url({{ chef.avatar_url }}) no-repeat center center / cover"></div>
-        <h1>{{chef.name}}</h1>
-        <p>{{chef.total_of_recipes}}
-            receitas</p>
+        <img class="chef-image" src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
+        <h2>{{chef.name}}</h2>
+        <p>{{chef.total_of_recipes}} receitas</p>
     </section>
 
     <section class="recipes-container">
         <div class="information-title">
-            <h3 class="title">Receitas</h3>
+            <h2>Receitas</h2>
         </div>
+
         <section class="recipes">
             {% for recipe in recipes %}
                 <div class="food">
