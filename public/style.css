@@ -511,38 +511,6 @@ form fieldset textarea {
     resize: vertical;
 }
 
-/* +=+=+=+=+=+= Chefs =+=+=+=+=+=+ */
-
-/* +=+=+= Chef =+=+=+ */
-
-section.chef-info {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-}
-
-section.chef-info div.chef-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
-
-section.chef-info h1 {
-    margin-top: 30px;
-    font-weight: bold;
-    font-size: 36px;
-}
-
-section.chef-info p {
-    margin-top: 4px;
-    color: #777777;
-    font-size: 20px;
-}
-
-section.recipes-container {
-    margin-top: 30px;
-}
-
 /* +=+=+= Responsiveness =+=+=+ */
 
 @media screen and (max-width: 1012px) {
