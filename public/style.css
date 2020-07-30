@@ -107,6 +107,7 @@ body {
 }
 
 .recipe {
+    color: var(--color-default);
     text-decoration: none;
 }
 
@@ -259,12 +260,17 @@ div.recipe {
     width: 300px;
 }
 
+div.recipe h3 {
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
 div.recipe img {
     object-fit: cover;
     width: 100%;
     height: 140px;
     border-radius: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 div.description h3.recipe-presentation {
