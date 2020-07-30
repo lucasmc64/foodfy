@@ -200,27 +200,6 @@ form fieldset textarea {
 
 /* +=+=+=+=+=+= Chefs =+=+=+=+=+=+ */
 
-/* +=+=+= Index =+=+=+ */
-
-section.chefs {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 30px;
-}
-
-div.chef {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 20px;
-    align-items: center;
-}
-
-div.chef div.chef-image {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-}
-
 /* +=+=+= Chef =+=+=+ */
 
 section.chef-info {
