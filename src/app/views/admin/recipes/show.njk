@@ -2,8 +2,7 @@
 
 {% block main %}
     <section class="title-and-options">
-        <h1>Receita:
-            {{ recipe.title }}</h1>
+        <h2>Receita: {{ recipe.title }}</h2>
         <div>
             <a class="button" href="/admin/recipes/{{ recipe.id }}/edit">Editar receita</a>
         </div>
@@ -12,8 +11,8 @@
     <div class="recipie">
         <div class="food-image-big" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
         <section class="recipie-title">
-            <h1>{{ recipe.title }}</h1>
-            <h2>por {{ recipe.chef }}</h2>
+            <h2>{{ recipe.title }}</h2>
+            <p>por {{ recipe.chef }}</p>
         </section>
 
         <section class="container">
