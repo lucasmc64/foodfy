@@ -60,11 +60,11 @@ body {
 
 .btn-delete {
     background-color: #DC4747;
+    border: 2px solid #DC4747;
 }
 
 .btn-delete:hover {
     color: #DC4747;
-    border: 2px solid #DC4747;
 }
 
 /* += Links =+ */
@@ -117,9 +117,13 @@ body {
     background-color: #EEEEEE;
 }
 
-.header-wrapper.black {
+.black {
     /* Header Admin */
     background-color: var(--color-default);
+}
+
+.black p {
+    color: #FFFFFF;
 }
 
 header {
@@ -381,10 +385,11 @@ div.chef {
     align-items: center;
 }
 
-div.chef div.chef-image {
+div.chef img {
     width: 64px;
     height: 64px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 /* +=+=+= Admin =+=+=+ */
@@ -507,6 +512,37 @@ form fieldset button {
 form fieldset textarea {
     height: 250px;
     resize: vertical;
+}
+
+/* +=+=+= Chef =+=+=+ */
+
+section.chef-info {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+img.chef-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+section.chef-info h2 {
+    margin-top: 24px;
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+section.chef-info p {
+    color: #777777;
+    font-size: 20px;
+}
+
+section.recipes-container {
+    margin-top: 30px;
 }
 
 /* +=+=+= Responsiveness =+=+=+ */
