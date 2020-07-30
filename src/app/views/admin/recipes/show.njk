@@ -8,17 +8,20 @@
         </div>
     </section>
 
-    <div class="recipie">
-        <div class="food-image-big" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
-        <section class="recipie-title">
+    <div id="show" class="recipe">
+        <img src="{{ recipe.image }}" alt="{{ recipe.image }}">
+
+        <section class="recipe-presentation">
             <h2>{{ recipe.title }}</h2>
             <p>por {{ recipe.chef }}</p>
         </section>
 
-        <section class="container">
-            <div class="information-title">
-                <h2>Ingredientes</h2>
+        <section class="information">
+            <div class="information-header">
+                <h3>Ingredientes</h3>
+                <span class="change-display" onclick="hideAndShow(this)">Esconder</span>
             </div>
+
             <div class="hide-and-show ingredients">
                 <ul>
                     {% for item in recipe.ingredients %}
@@ -28,10 +31,12 @@
             </div>
         </section>
 
-        <section class="container">
-            <div class="information-title">
-                <h2>Modo de Preparo</h2>
+        <section class="information">
+            <div class="information-header">
+                <h3>Modo de Preparo</h3>
+                <span class="change-display" onclick="hideAndShow(this)">Esconder</span>
             </div>
+
             <div class="hide-and-show preparation">
                 <ol>
                     {% for item in recipe.preparation %}
@@ -41,10 +46,12 @@
             </div>
         </section>
 
-        <section class="container">
-            <div class="information-title">
-                <h2>Informações Adicionais</h2>
+        <section class="information">
+            <div class="information-header">
+                <h3>Informações Adicionais</h3>
+                <span class="change-display" onclick="hideAndShow(this)">Esconder</span>
             </div>
+
             <div class="hide-and-show information">
                 <p>{{ recipe.information }}</p>
             </div>
