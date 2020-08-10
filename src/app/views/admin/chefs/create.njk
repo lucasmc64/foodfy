@@ -2,11 +2,11 @@
 
 {% block main %}
     <section class="title-and-options">
-        <h1>Criando chef</h1>
+        <h2>Criando chef</h2>
         <div>
             <button class="button" type="submit" form="create-chef">Salvar chef</button>
         </div>
-    <section>
+    </section>
 
     <form id="create-chef" method="POST" action="/admin/chefs">
         {% include "admin/chefs/fields.njk" %}
