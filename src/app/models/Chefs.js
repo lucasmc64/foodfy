@@ -1,17 +1,13 @@
 const db = require('../../config/db')
 
 module.exports = {
-    all(callback) {
-        let query = `SELECT chefs.*, count(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = recipes.chef_id GROUP BY chefs.id`
+    all() {
+        let query = `SELECT chefs.* FROM chefs, recipes GROUP BY chefs.id`
 
-        db.query(query, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows)
-        })
+        return db.query(query)
     },
 
-    create(chef, callback) {
+    create(chef) {
         let {
             name,
             avatar_url
@@ -33,28 +29,20 @@ module.exports = {
             `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
         ]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows[0])
-        })
+        return db.query(query, values)
     },
 
-    find (id, callback) {
+    find (id) {
         let query = `
             SELECT chefs.*, count(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = $1 GROUP BY chefs.id
         `
 
         let values = [id]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows[0])
-        })
+        return db.query(query, values)
     },
 
-    update (chef, callback) {
+    update (chef) {
         const query = `
             UPDATE chefs SET
                 name=($1),
@@ -67,24 +55,26 @@ module.exports = {
             chef.id
         ]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error. ${error}`
-
-            callback()
-        })
+        return db.query(query, values)
     },
 
-    delete (id, callback) {
+    delete (id) {
         let query = `
             DELETE FROM chefs WHERE id = $1
         `
 
         let values = [id]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
+        return db.query(query, values)
+    },
 
-            callback()
-        })
+    files(id) {
+        return db.query('SELECT * FROM files WHERE chef_id = $1', [id])
+    },
+
+    numberOfRecipesPerChef() {
+        let query = `SELECT chefs.id AS chef_id, COUNT(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = recipes.chef_id GROUP BY chefs.id`
+
+        return db.query(query)
     }
 }

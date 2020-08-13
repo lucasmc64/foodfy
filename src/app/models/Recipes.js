@@ -1,19 +1,15 @@
 const db = require('../../config/db')
 
 module.exports = {
-    all(callback) {
+    all() {
         let query = `
             SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) ORDER BY id ASC
         `
 
-        db.query(query, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows)
-        })
+        return db.query(query)
     },
 
-    create(recipe, callback) {
+    create(recipe) {
         let {
             chef_id,
             image,
@@ -47,54 +43,38 @@ module.exports = {
             `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
         ]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows[0].id)
-        })
+        return db.query(query, values)
     },
 
-    find (id, callback) {
+    find (id) {
         let query = `
         SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.id = $1
         `
 
         let values = [id]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows[0])
-        })
+        return db.query(query, values)
     },
 
-    findByChefId (id, callback) {
+    findByChefId (id) {
         let query = `
             SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.chef_id = $1 ORDER BY recipes.id ASC
         `
 
         let values = [id]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows)
-        })
+        return db.query(query, values)
     },
 
-    search (filter, callback) {
+    search (filter) {
         let query = `
             SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.title ILIKE '%${filter}%' ORDER BY id ASC
         `
 
-        db.query(query, function (error, results) {
-            if (error) throw `Database error: ${error}`
-
-            callback(results.rows)
-        })
+        return db.query(query)
     },
 
-    update (recipe, callback) {
+    update (recipe) {
         const query = `
             UPDATE recipes SET
                 chef_id=($1),
@@ -115,24 +95,20 @@ module.exports = {
             recipe.id
         ]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error. ${error}`
-
-            callback()
-        })
+        return db.query(query, values)
     },
 
-    delete (id, callback) {
+    delete (id) {
         let query = `
             DELETE FROM recipes WHERE id = $1
         `
 
         let values = [id]
 
-        db.query(query, values, function (error, results) {
-            if (error) throw `Database error: ${error}`
+        return db.query(query, values)
+    },
 
-            callback()
-        })
+    files(id) {
+        return db.query('SELECT * FROM files WHERE recipe_id = $1', [id])
     }
 }
