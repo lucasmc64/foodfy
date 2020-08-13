@@ -12,8 +12,12 @@
 
         {% for chef in chefs %}
             <div class="chef">
-                <img src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
-                
+                {% if not files %}
+                    <img class="food-image" src="http://placehold.it/500x500?text=CHEF SEM FOTO" alt="Sem foto">
+                {% else %}
+                    <img class="food-image" src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                {% endif %}
+
                 <div class="description">
                     <h3>{{ chef.name }}</h3>
                     <a class="action" href="/admin/chefs/{{ chef.id }}">Visualizar</a>

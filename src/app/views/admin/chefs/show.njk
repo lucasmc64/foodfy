@@ -11,7 +11,12 @@
     
 
     <section class="chef-info">
-        <img class="chef-image" src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
+        {% if not files %}
+            <img src="http://placehold.it/500x500?text=CHHEF SEM FOTO" alt="">
+        {% else %}
+            <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+        {% endif %}
+        
         <h2>{{chef.name}}</h2>
         <p>{{chef.total_of_recipes}} receitas</p>
     </section>

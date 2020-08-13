@@ -14,7 +14,7 @@
         <input name="id" type="hidden" value="{{ chef.id }}">
     </form>
 
-    <form id="edit-chef" method="POST" action="/admin/chefs?_method=PUT">
+    <form id="edit-chef" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
         <input name="id" type="hidden" value="{{ chef.id }}">
             
         {% include "admin/chefs/fields.njk" %}

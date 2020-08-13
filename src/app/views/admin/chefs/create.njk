@@ -8,7 +8,7 @@
         </div>
     </section>
 
-    <form id="create-chef" method="POST" action="/admin/chefs">
+    <form id="create-chef" method="POST" action="/admin/chefs" enctype="multipart/form-data">
         {% include "admin/chefs/fields.njk" %}
     </form>
 {% endblock %}

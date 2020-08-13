@@ -9,7 +9,21 @@
     </section>
 
     <div id="show" class="recipe">
-        <img src="{{ recipe.image }}" alt="{{ recipe.image }}">
+        <div class="gallery">
+            <div class="highlight">
+                {% if not files %}
+                    <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" alt="">
+                {% else %}
+                    <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                {% endif %}
+            </div>
+
+            <div class="gallery-preview">
+                {% for image in files %}
+                    <img src="{{ image.src }}" alt="{{ image.name }}" {% if loop.index0 == 0 %} class="active" {% endif %} onclick="ImageGallery.setImage(event)">
+                {% endfor %}
+            </div>
+        </div>
 
         <section class="recipe-presentation">
             <h2>{{ recipe.title }}</h2>

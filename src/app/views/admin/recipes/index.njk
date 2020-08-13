@@ -14,7 +14,12 @@
         {% for recipe in recipes %}
 
             <div class="food">
-                <div class="food-image" style="background: url('{{ recipe.image }}') no-repeat center center / cover"></div>
+                {% if not files %}
+                    <img class="food-image" src="http://placehold.it/500x500?text=RECEITA SEM FOTO" alt="">
+                {% else %}
+                    <img class="food-image" src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                {% endif %}
+
                 <div class="description">
                     <h3>
                         {{ recipe.title }}

@@ -4,6 +4,35 @@
     <input name="title" type="text" value="{{ recipe.title }}" required="required">
 
 </fieldset>
+
+<fieldset>
+
+    <legend>Imagem da receita</legend>
+    <div>
+        <div id="photos-upload">
+            <label class="upload-label" for="photos-input">
+                <i class="material-icons">add</i>
+            </label>
+            <input id="photos-input" type="file" name="photos" accept="image/*" onchange="PhotosUpload.handleFileInput(event)" multiple>
+        </div>
+
+        <div id="photos-preview">
+            {% if files %}
+                {% for image in files %}
+                    <div class="photo" id="{{ image.id }}">
+                        <img src="{{ image.src }}" alt="{{ image.name }}">
+                        <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+                    </div>
+                {% endfor %}
+
+                <input type="hidden" name="removed_files">
+            {% endif %}
+        </div>
+    </div>
+    <!--<input name="image" type="text" value="{{ recipe.image }}" placeholder="http://" required>-->
+
+</fieldset>
+
 <fieldset>
 
     <legend>Chef</legend>
@@ -13,12 +42,6 @@
             <option value="{{ chef.id }}" {% if recipe.chef_id == chef.id %} selected {% endif %}>{{ chef.name }}</option>
         {% endfor %}
     </select>
-</fieldset>
-<fieldset>
-
-    <legend>Imagem da receita</legend>
-    <input name="image" type="text" value="{{ recipe.image }}" placeholder="http://" required>
-
 </fieldset>
 <fieldset>
 

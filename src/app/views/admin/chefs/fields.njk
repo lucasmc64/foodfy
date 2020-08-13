@@ -1,12 +1,27 @@
 <fieldset>
 
     <legend>Nome</legend>
-    <input name="name" type="text" value="{{ chef.name }}" " required>
+    <input name="name" type="text" value="{{ chef.name }}" required>
 
 </fieldset>
 <fieldset>
 
     <legend>Avatar</legend>
-    <input name="avatar_url" type=" text" value="{{ chef.avatar_url }}" required>
+    <div class="form-upload-chef-image">
+        <label class="button upload-label" for="photos-input">Enviar avatar</label>
+        <input id="photos-input" class="upload-input" type="file" name="photos" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+    </div>
+    <div id="photos-preview" class="chef-avatar">
+        {% if files %}
+            {% for image in files %}
+                <div class="photo" id="{{ image.id }}">
+                    <img src="{{ image.src }}" alt="{{ image.name }}">
+                    <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+                </div>
+            {% endfor %}
+
+            <input type="hidden" name="removed_files">
+        {% endif %}
+    </div>
 
 </fieldset>
