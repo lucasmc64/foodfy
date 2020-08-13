@@ -312,7 +312,7 @@ div#show.recipe {
     width: 100%;
 }
 
-div#show.recipe img {
+div#show.recipe .highlight > img {
     width: 100%;
     height: 280px;
     border-radius: 15px;
@@ -422,10 +422,11 @@ div.food {
     gap: 20px;
 }
 
-div.food-image {
+img.food-image {
     width: 100%;
     height: 80px;
     border-radius: 8.5px;
+    object-fit: cover;
 }
 
 div.description {
@@ -545,6 +546,139 @@ section.recipes-container {
     margin-top: 30px;
 }
 
+/* Desafio 05 */
+
+#photos-upload {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    border-radius: 3.5px;
+    margin: 0;
+    display: inline-block;
+}
+
+#photos-upload .upload-label {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+#photos-upload .upload-label i {
+    color: #999999;
+    font-size: 40px;
+}
+
+.form-upload-chef-image {
+    position: relative;
+    display: grid;
+}
+
+.upload-label {
+    z-index: 100;
+    width: 120px;
+}
+
+#photos-upload #photos-input,
+.upload-input {
+    width: initial;
+    height: 0px;
+    border: 0;
+    border-radius: 0px;
+    padding: 0px;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+
+}
+
+#photos-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin: 8px 0;
+}
+
+#photos-preview img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+#photos-preview .photo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+#photos-preview .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 400%;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+}
+
+#photos-preview .photo:hover i {
+    opacity: 1;
+}
+
+#photos-preview .photo img {
+    transition: all 200ms ease-in-out;
+}
+
+#photos-preview .photo:hover img {
+    filter: blur(2px);
+}
+
+.gallery .gallery-preview {
+    width: 640px;
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+}
+
+.gallery .gallery-preview img {
+    height: 50px;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.gallery .gallery-preview img:hover,
+.gallery .gallery-preview img.active {
+    opacity: 1;
+}
+
+#photos-preview.chef-avatar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+#photos-preview.chef-avatar img {
+    height: 200px;
+    border-radius: 50%;
+}
+
 /* +=+=+= Responsiveness =+=+=+ */
 
 @media screen and (max-width: 1012px) {
@@ -635,7 +769,6 @@ section.recipes-container {
         grid-template-columns: 1fr;
     }
 }
-
 
 @media screen and (max-width: 517px) {
     section.chefs {
