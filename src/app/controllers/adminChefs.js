@@ -7,10 +7,29 @@ module.exports = {
     async index (request, response) {
         const results = await Chefs.all()
         const chefs =  results.rows
-        console.log(chefs)
+        
+        if(!chefs) return response.send('Chefs not found.')
+
+        async function getChefImages(chefId) {
+            let results = await Chefs.files(chefId)
+
+            const files = results.rows.map((file) => ({
+                ...file,
+                src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+            }))
+
+            return files
+        }
+
+        const chefsPromise = chefs.map(async (chef) => {
+            chef.files = await getChefImages(chef.id)
+            return chef
+        })
+
+        const chefsWithFiles = await Promise.all(chefsPromise)
 
         return response.render('admin/chefs/index', {
-            chefs,
+            chefs: chefsWithFiles,
             chefs_page: true
         })
     },
@@ -29,8 +48,6 @@ module.exports = {
                 return response.send('Please, fill all fields.')
             }
         }
-        console.log(request.body)
-        console.log(request.files)
 
         if(request.files.length == 0) return response.send('Please, send at least one image')
 
@@ -49,45 +66,69 @@ module.exports = {
 
         if (!chef) return response.send('Chef not found!')
 
+        async function getChefImages(chefId) {
+            let results = await Chefs.files(chefId)
+
+            const files = results.rows.map((file) => ({
+                ...file,
+                src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+            }))
+
+            return files
+        }
+
+        chef.files = await getChefImages(chef.id)
+        chef.total_of_recipes = (await Chefs.totalOfRecipes(chef.id)).rows[0].total_of_recipes
+
         let recipes = await Recipes.findByChefId(request.params.id)
         recipes = recipes.rows
 
-        let numberOfRecipes = await Chefs.numberOfRecipesPerChef()
-        numberOfRecipes = numberOfRecipes.rows
-        numberOfRecipes = numberOfRecipes.find((item) => item.chef_id == chef.id)
-        chef.total_of_recipes = numberOfRecipes.total_of_recipes
-        console.log(recipes)
+        if(!recipes) return response.send('Recipes not found.')
 
-        const filesPromise = recipes.map((recipe) => Recipes.files(recipe.id))
-        let results = await Promise.all(filesPromise)
-        console.log(results.rows)
+        async function getRecipeImages(recipeId) {
+            let results = await Recipes.files(recipeId)
 
-        for(recipe in recipes) {
-            let file = results.rows[0]
-            file = {
+            const files = results.rows.map((file) => ({
                 ...file,
                 src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
-            }
+            }))
 
-            recipe = {
-                ...recipe,
-                file
-            }
+            return files
         }
+
+        const recipesPromise = recipes.map(async (recipe) => {
+            recipe.files = await getRecipeImages(recipe.id)
+            return recipe
+        })
+
+        const recipesWithFiles = await Promise.all(recipesPromise)
 
         return response.render('admin/chefs/show', {
             chef,
-            recipes,
-            files,
+            recipes: recipesWithFiles,
             chefs_page: true
         })
     },
     
     async edit (request, response) {
-        const chef = await Chefs.find(request.params.id)
+        let results = await Chefs.find(request.params.id)
+        const chef = results.rows[0]
 
         if (!chef) return response.send('Chef not found!')
 
+        async function getChefImages(chefId) {
+            let results = await Chefs.files(chefId)
+
+            const files = results.rows.map((file) => ({
+                ...file,
+                src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+            }))
+
+            return files
+        }
+
+        chef.files = await getChefImages(chef.id)
+        
         return response.render(`admin/chefs/edit`, {
             chef,
             chefs_page: true
@@ -103,9 +144,26 @@ module.exports = {
             }
         }
 
-        Chefs.update(request.body, function () {
-            return response.redirect(`/admin/chefs/${request.body.id}`)
-        })
+        if(request.files.length != 0) {
+            const newFilesPromise = request.files.map((file) => File.create({ ...file, product_id: request.body.id }))
+            await Promise.all(newFilesPromise)
+        } else {
+            return response.send('Please, send at least one image')
+        }
+
+        if(request.body.removed_files) {
+            const removedFiles = request.body.removed_files.split(',')
+            const lastIndex = removedFiles.length - 1
+            removedFiles.splice(lastIndex, 1)
+
+            const removedFilesPromise = removedFiles.map((id) => File.delete(id))
+
+            await Promise.all(removedFilesPromise)
+        }
+
+        await Chefs.update(request.body)
+        
+        return response.redirect(`/admin/chefs/${request.body.id}`)
     },
 
     delete (request, response) {

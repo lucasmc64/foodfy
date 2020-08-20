@@ -4,11 +4,31 @@ const File = require('../models/File')
 
 module.exports = {
     async index (request, response) {
-        const results = await Recipes.all()
+        let results = await Recipes.all()
         const recipes = results.rows
 
+        if(!recipes) return response.send('Recipes not found.')
+
+        async function getRecipeImages(recipeId) {
+            let results = await Recipes.files(recipeId)
+
+            const files = results.rows.map((file) => ({
+                ...file,
+                src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+            }))
+
+            return files
+        }
+
+        const recipesPromise = recipes.map(async (recipe) => {
+            recipe.files = await getRecipeImages(recipe.id)
+            return recipe
+        })
+
+        const recipesWithFiles = await Promise.all(recipesPromise)
+        
         return response.render('admin/recipes/index', {
-            recipes,
+            recipes: recipesWithFiles,
             recipes_page: true,
             page_active: true
         })
@@ -59,9 +79,10 @@ module.exports = {
             src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
         }))
 
+        recipe.files = files
+
         return response.render('admin/recipes/show', {
             recipe,
-            files,
             recipes_page: true
         })
     },
@@ -81,18 +102,18 @@ module.exports = {
             ...file,
             src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
         }))
+        recipe.files = files
 
         return response.render('admin/recipes/edit', {
             chefs,
             recipe,
-            files,
             recipes_page: true
         })
     },
 
     async put (request, response) {
         const keys = Object.keys(request.body)
-        console.log(request.body)
+        
         for (key of keys) {
             if (request.body[key] == '' && key != 'information' && key != 'removed_files') {
                 return response.send('Please, fill all fields.')
@@ -102,6 +123,8 @@ module.exports = {
         if(request.files.length != 0) {
             const newFilesPromise = request.files.map((file) => File.create({ ...file, recipe_id: request.body.id }))
             await Promise.all(newFilesPromise)
+        } else {
+            return response.send('Please, send at least one image')
         }
 
         if(request.body.removed_files) {
