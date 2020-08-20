@@ -14,10 +14,10 @@
         {% for recipe in recipes %}
 
             <div class="food">
-                {% if not files %}
-                    <img class="food-image" src="http://placehold.it/500x500?text=RECEITA SEM FOTO" alt="">
+                {% if recipe.files.length > 0 %}
+                    <img class="food-image" src="{{ recipe.files[0].src }}" alt="{{ recipe.files[0].name }}">
                 {% else %}
-                    <img class="food-image" src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                    <img class="food-image" src="http://placehold.it/500x200?text=RECEITA SEM FOTO" alt="Receita sem foto">
                 {% endif %}
 
                 <div class="description">

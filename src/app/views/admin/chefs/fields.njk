@@ -12,13 +12,11 @@
         <input id="photos-input" class="upload-input" type="file" name="photos" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
     </div>
     <div id="photos-preview" class="chef-avatar">
-        {% if files %}
-            {% for image in files %}
-                <div class="photo" id="{{ image.id }}">
-                    <img src="{{ image.src }}" alt="{{ image.name }}">
-                    <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
-                </div>
-            {% endfor %}
+        {% if chef.files.length > 0 %}
+            <div class="photo" id="{{ chef.files[0].id }}">
+                <img src="{{ chef.files[0].src }}" alt="{{ chef.name }}">
+                <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+            </div>
 
             <input type="hidden" name="removed_files">
         {% endif %}

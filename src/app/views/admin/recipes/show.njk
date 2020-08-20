@@ -11,15 +11,15 @@
     <div id="show" class="recipe">
         <div class="gallery">
             <div class="highlight">
-                {% if not files %}
-                    <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" alt="">
+                {% if recipe.files.length > 0 %}
+                    <img src="{{ recipe.files[0].src }}" alt="{{ recipe.files[0].name }}">
                 {% else %}
-                    <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                    <img src="http://placehold.it/500x500?text=RECEITA SEM FOTO" alt="Receita sem foto">
                 {% endif %}
             </div>
 
             <div class="gallery-preview">
-                {% for image in files %}
+                {% for image in recipe.files %}
                     <img src="{{ image.src }}" alt="{{ image.name }}" {% if loop.index0 == 0 %} class="active" {% endif %} onclick="ImageGallery.setImage(event)">
                 {% endfor %}
             </div>

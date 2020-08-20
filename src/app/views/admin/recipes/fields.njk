@@ -8,7 +8,7 @@
 <fieldset>
 
     <legend>Imagem da receita</legend>
-    <div>
+    <div class="upload-container">
         <div id="photos-upload">
             <label class="upload-label" for="photos-input">
                 <i class="material-icons">add</i>
@@ -17,8 +17,8 @@
         </div>
 
         <div id="photos-preview">
-            {% if files %}
-                {% for image in files %}
+            {% if recipe.files.length > 0 %}
+                {% for image in recipe.files %}
                     <div class="photo" id="{{ image.id }}">
                         <img src="{{ image.src }}" alt="{{ image.name }}">
                         <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
@@ -29,7 +29,6 @@
             {% endif %}
         </div>
     </div>
-    <!--<input name="image" type="text" value="{{ recipe.image }}" placeholder="http://" required>-->
 
 </fieldset>
 

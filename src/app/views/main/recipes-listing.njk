@@ -3,8 +3,12 @@
     {% for recipe in recipes %}
         <a href="/recipes/{{ recipe.id }}" class="recipe">
             <div class="recipe">
-                <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
-
+                {% if recipe.files.length > 0 %}
+                    <img src="{{ recipe.files[0].src }}" alt="{{ recipe.title }}">
+                {% else %}
+                    <img src="http://placehold.it/500x200?text=RECEITA SEM FOTO" alt="Receita sem foto">
+                {% endif %}
+                
                 <div class="description">
                     <h3 class="recipe-title">
                         {{ recipe.title }}

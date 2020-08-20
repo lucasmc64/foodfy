@@ -11,10 +11,10 @@
     
 
     <section class="chef-info">
-        {% if not files %}
-            <img src="http://placehold.it/500x500?text=CHHEF SEM FOTO" alt="">
+        {% if chef.files.length > 0 %}
+            <img class="chef-image" src="{{ chef.files[0].src }}" alt="{{ chef.name }}">
         {% else %}
-            <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+            <img class="chef-image" src="http://placehold.it/500x500?text=CHHEF SEM FOTO" alt="">
         {% endif %}
         
         <h2>{{chef.name}}</h2>
@@ -29,7 +29,12 @@
         <section class="recipes">
             {% for recipe in recipes %}
                 <div class="food">
-                    <div class="food-image" style="background: url('{{ recipe.image }}') no-repeat center center / cover"></div>
+                    {% if recipe.files.length > 0 %}
+                        <img class="food-image" src="{{ recipe.files[0].src }}" alt="{{ recipe.files[0].name }}">
+                    {% else %}
+                        <img class="food-image" src="http://placehold.it/500x200?text=RECEITA SEM FOTO" alt="Receita sem foto">
+                    {% endif %}
+
                     <div class="description">
                         <h3>
                             {{ recipe.title }}
