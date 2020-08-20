@@ -2,12 +2,33 @@ const Recipes = require('../models/Recipes')
 const Chefs = require('../models/Chefs')
 
 module.exports = {
-    index(request, response) { //Rota
-        Recipes.all(function (recipes) {
-            return response.render('main/index', {
-                recipes
-            }) //Renderiza a página
+    async index(request, response) { //Rota
+        let results = await Recipes.all()
+        const recipes = results.rows
+
+        if(!recipes) return response.send('Recipes not found.')
+
+        async function getRecipeImages(recipeId) {
+            let results = await Recipes.files(recipeId)
+
+            const files = results.rows.map((file) => ({
+                ...file,
+                src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+            }))
+
+            return files
+        }
+
+        const recipesPromise = recipes.map(async (recipe) => {
+            recipe.files = await getRecipeImages(recipe.id)
+            return recipe
         })
+
+        const recipesWithFiles = await Promise.all(recipesPromise)
+
+        return response.render('main/index', {
+            recipes: recipesWithFiles
+        }) //Renderiza a página
     },
 
     about(request, response) { //Rota
@@ -37,14 +58,25 @@ module.exports = {
         }
     },
 
-    recipe(request, response) { //Rota
-        
-        Recipes.find(request.params.id, function (recipe) {
-            return response.render('main/recipe', {
-                recipe,
-                recipes_page: true
-            }) //Renderiza a página
-        })
+    async recipe(request, response) { //Rota
+        let results = await Recipes.find(request.params.id)
+        const recipe = results.rows[0]
+
+        if(!recipe) return response.send('Recipe not foud.')
+
+        results = await Recipes.files(recipe.id)
+
+        const files = results.rows.map((file) => ({
+            ...file,
+            src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+        }))
+
+        recipe.files = files
+
+        return response.render('main/recipe', {
+            recipe,
+            recipes_page: true
+        }) //Renderiza a página
     },
 
     chefs(request, response) {
