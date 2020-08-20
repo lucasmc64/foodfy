@@ -151,6 +151,11 @@ const PhotosUpload = {
     }
 }
 
+function uploadCentral(uploadLimit, event) {
+    PhotosUpload.uploadLimit = uploadLimit
+    PhotosUpload.handleFileInput(event)
+}
+
 const ImageGallery = {
     highlight: window.document.querySelector('.gallery .highlight > img'),
     previews: window.document.querySelectorAll('.gallery-preview img'),
