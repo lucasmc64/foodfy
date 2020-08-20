@@ -27,7 +27,7 @@ module.exports = {
         const recipesWithFiles = await Promise.all(recipesPromise)
 
         return response.render('main/index', {
-            recipes: recipesWithFiles
+            recipes: recipesWithFiles.splice(0, 6)
         }) //Renderiza a página
     },
 
@@ -37,24 +37,66 @@ module.exports = {
         }) //Renderiza a página
     },
 
-    recipes(request, response) { //Rota
+    async recipes(request, response) { //Rota
         let filter = request.query.filter
         
         if (filter) {
-            Recipes.search(filter, function (recipes) {
-                return response.render('main/recipes', {
-                    recipes,
-                    filter,
-                    recipes_page: true
-                }) //Renderiza a página
+            let results = await Recipes.search(filter)
+            const recipes = results.rows
+
+            if(!recipes) return response.send('Recipes not found.')
+
+            async function getRecipeImages(recipeId) {
+                let results = await Recipes.files(recipeId)
+
+                const files = results.rows.map((file) => ({
+                    ...file,
+                    src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+                }))
+
+                return files
+            }
+
+            const recipesPromise = recipes.map(async (recipe) => {
+                recipe.files = await getRecipeImages(recipe.id)
+                return recipe
             })
+
+            const recipesWithFiles = await Promise.all(recipesPromise)
+
+            return response.render('main/recipes', {
+                recipes: recipesWithFiles,
+                filter,
+                recipes_page: true
+            }) //Renderiza a página
         } else {
-            Recipes.all(function (recipes) {
-                return response.render('main/recipes', {
-                    recipes,
-                    recipes_page: true
-                }) //Renderiza a página
+            let results = await Recipes.all()
+            const recipes = results.rows
+
+            if(!recipes) return response.send('Recipes not found.')
+
+            async function getRecipeImages(recipeId) {
+                let results = await Recipes.files(recipeId)
+
+                const files = results.rows.map((file) => ({
+                    ...file,
+                    src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+                }))
+
+                return files
+            }
+
+            const recipesPromise = recipes.map(async (recipe) => {
+                recipe.files = await getRecipeImages(recipe.id)
+                return recipe
             })
+
+            const recipesWithFiles = await Promise.all(recipesPromise)
+
+            return response.render('main/recipes', {
+                recipes: recipesWithFiles,
+                recipes_page: true
+            }) //Renderiza a página
         }
     },
 
@@ -79,13 +121,34 @@ module.exports = {
         }) //Renderiza a página
     },
 
-    chefs(request, response) {
-        Chefs.all(function (chefs) {
-            console.log(chefs)
-            return response.render('main/chefs', {
-                chefs,
-                chefs_page: true
-            })
+    async chefs(request, response) {
+        const results = await Chefs.all()
+        const chefs =  results.rows
+        
+        if(!chefs) return response.send('Chefs not found.')
+
+        async function getChefImages(chefId) {
+            let results = await Chefs.files(chefId)
+
+            const files = results.rows.map((file) => ({
+                ...file,
+                src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+            }))
+
+            return files
+        }
+
+        const chefsPromise = chefs.map(async (chef) => {
+            chef.files = await getChefImages(chef.id)
+            chef.total_of_recipes = (await Chefs.totalOfRecipes(chef.id)).rows[0].total_of_recipes
+            return chef
+        })
+
+        const chefsWithFiles = await Promise.all(chefsPromise)
+
+        return response.render('main/chefs', {
+            chefs: chefsWithFiles,
+            chefs_page: true
         })
     }
 }
