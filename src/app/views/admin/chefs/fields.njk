@@ -9,7 +9,7 @@
     <legend>Avatar</legend>
     <div class="form-upload-chef-image">
         <label class="button upload-label" for="photos-input">Enviar avatar</label>
-        <input id="photos-input" class="upload-input" type="file" name="photos" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+        <input id="photos-input" class="upload-input" type="file" name="photos" accept="image/*" onchange="uploadCentral(1, event)">
     </div>
     <div id="photos-preview" class="chef-avatar">
         {% if chef.files.length > 0 %}
