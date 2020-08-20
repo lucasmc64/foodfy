@@ -5,7 +5,11 @@
 
         {% for chef in chefs %}
             <div class="chef">
-                <img src="{{ chef.avatar_url }}" alt="{{ chef.name }}">
+                {% if chef.files.length > 0 %}
+                    <img src="{{ chef.files[0].src }}" alt="{{ chef.files[0].name }}">
+                {% else %}
+                    <img src="http://placehold.it/500x500?text=CHEF SEM FOTO" alt="Chef sem foto">
+                {% endif %}
 
                 <div class="description">
                     <h3>{{ chef.name }}</h3>
