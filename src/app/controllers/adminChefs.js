@@ -137,18 +137,17 @@ module.exports = {
 
     async put (request, response) {
         const keys = Object.keys(request.body)
+        console.log(request.files)
 
         for (key of keys) {
-            if (request.body[key] == '') {
+            if (request.body[key] == ''  && key != 'removed_files') {
                 return response.send('Please, fill all fields.')
             }
         }
 
         if(request.files.length != 0) {
-            const newFilesPromise = request.files.map((file) => File.create({ ...file, product_id: request.body.id }))
+            const newFilesPromise = request.files.map((file) => File.create({ ...file, chef_id: request.body.id }))
             await Promise.all(newFilesPromise)
-        } else {
-            return response.send('Please, send at least one image')
         }
 
         if(request.body.removed_files) {
@@ -166,16 +165,16 @@ module.exports = {
         return response.redirect(`/admin/chefs/${request.body.id}`)
     },
 
-    delete (request, response) {
-        Recipes.findByChefId(request.body.id, function (recipes) {
-            if (recipes.length > 0) {
-                return response.send('This chef has recipes that cannot be deleted.')
-            } 
+    async delete (request, response) {
+        let total_of_recipes = (await Chefs.totalOfRecipes(request.body.id)).rows[0].total_of_recipes
 
-            Chefs.delete(request.body.id, function () {
-                return response.redirect('/admin/chefs')
-            })
-        })
+        if (total_of_recipes > 0) {
+            return response.send('This chef has recipes that cannot be deleted.')
+        } 
+
+        await Chefs.delete(request.body.id)
+
+        return response.redirect('/admin/chefs')
         
     }
 }
