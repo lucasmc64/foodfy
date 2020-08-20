@@ -16,16 +16,14 @@ module.exports = {
         let query = `
             INSERT INTO chefs (
                 name,
-                avatar_url,
                 created_at
-            ) VALUES ($1, $2, $3)
+            ) VALUES ($1, $2)
             RETURNING id
         `
         const today = new Date()
 
         let values = [
             name,
-            avatar_url,
             `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
         ]
 
@@ -46,12 +44,10 @@ module.exports = {
         const query = `
             UPDATE chefs SET
                 name=($1),
-                avatar_url=($2)
-            WHERE id = $3
+            WHERE id = $2
             `
         const values = [
             chef.name,
-            chef.avatar_url,
             chef.id
         ]
 
@@ -72,9 +68,9 @@ module.exports = {
         return db.query('SELECT * FROM files WHERE chef_id = $1', [id])
     },
 
-    numberOfRecipesPerChef() {
-        let query = `SELECT chefs.id AS chef_id, COUNT(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = recipes.chef_id GROUP BY chefs.id`
+    totalOfRecipes(id) {
+        let query = `SELECT COUNT(recipes.title) AS total_of_recipes FROM recipes WHERE recipes.chef_id = $1`
 
-        return db.query(query)
+        return db.query(query, [id])
     }
 }
