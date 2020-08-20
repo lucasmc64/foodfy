@@ -51,11 +51,13 @@ Inicie o servidor e utilizando a ferramenta Postbird (ou de outra maneira, caso 
 CREATE DATABASE foodfy
 ```
 
-Agora, nesse banco de dados crie duas tabelas:
+Agora, nesse banco de dados crie três tabelas:
 
 * Pelo Postbird crie uma tabela chamada **recipes** com os seguintes campos:
 
 ![Tabela de recipes no Postbird](./readme-images/02-postbird-recipes.png)
+
+> Crie também uma constraint que referencia a coluna "chef_id" da tabela "recipes" com a coluna "id" da tabela "chefs".
 
 Ou crie a tabela por meio de queries:
 
@@ -69,11 +71,13 @@ CREATE TABLE RECIPES(
    INFORMATION TEXT NULL,
    CREATED_AT TIMESTAMP NULL
 );
+
+ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
 ```
 
-* Pelo Postbird crie uma tabela chamada **members** com os seguintes campos:
+* Pelo Postbird crie uma tabela chamada **chefs** com os seguintes campos:
 
-![Tabela de membros no Postbird](./readme-images/03-postbird-chefs.png)
+![Tabela de chefs no Postbird](./readme-images/03-postbird-chefs.png)
 
 Ou crie a tabela por meio de queries:
 
@@ -82,6 +86,22 @@ CREATE TABLE CHEFS(
    ID SERIAL PRIMARY KEY,
    NAME TEXT NULL,
    CREATED_AT TEXT NULL,
+);
+```
+
+* Pelo Postbird crie uma tabela chamada **files** com os seguintes campos:
+
+![Tabela de arquivos no Postbird](./readme-images/04-postbird-files.png)
+
+Ou crie a tabela por meio de queries:
+
+```sql
+CREATE TABLE FILES (
+  ID SERIAL PRIMARY KEY,
+  NAME text,
+  PATH text NOT NULL,
+  CHEF_ID int,
+  RECIPE_ID int
 );
 ```
 
