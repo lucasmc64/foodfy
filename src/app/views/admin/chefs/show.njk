@@ -14,11 +14,11 @@
         {% if chef.files.length > 0 %}
             <img class="chef-image" src="{{ chef.files[0].src }}" alt="{{ chef.name }}">
         {% else %}
-            <img class="chef-image" src="http://placehold.it/500x500?text=CHHEF SEM FOTO" alt="">
+            <img class="chef-image" src="http://placehold.it/500x500?text=CHEF SEM FOTO" alt="">
         {% endif %}
         
         <h2>{{chef.name}}</h2>
-        <p>{{chef.total_of_recipes}} receitas</p>
+        <p>{{chef.total_of_recipes}} receita{{ 's' if chef.total_of_recipes > 1 }}</p>
     </section>
 
     <section class="recipes-container">
