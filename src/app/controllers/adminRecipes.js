@@ -123,8 +123,6 @@ module.exports = {
         if(request.files.length != 0) {
             const newFilesPromise = request.files.map((file) => File.create({ ...file, recipe_id: request.body.id }))
             await Promise.all(newFilesPromise)
-        } else {
-            return response.send('Please, send at least one image')
         }
 
         if(request.body.removed_files) {
