@@ -548,10 +548,24 @@ section.recipes-container {
 
 /* Desafio 05 */
 
+.upload-container {
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+#photos-upload,
+#photos-preview {
+    width: 100%;
+    height: 100px;
+}
+
 #photos-upload {
     position: relative;
-    width: 200px;
-    height: 200px;
     border: 1px solid #DDDDDD;
     background-color: #FFFFFF;
     border-radius: 3.5px;
@@ -599,23 +613,21 @@ section.recipes-container {
 
 #photos-preview {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 8px;
-    width: 100%;
-    margin: 8px 0;
 }
 
 #photos-preview img {
     width: 100%;
-    height: 200px;
+    height: 100px;
     object-fit: cover;
     border-radius: 4px;
 }
 
 #photos-preview .photo {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100px;
 }
 
 #photos-preview .photo i {
@@ -669,13 +681,22 @@ section.recipes-container {
 }
 
 #photos-preview.chef-avatar {
+    margin-top: 16px;
     grid-template-columns: 1fr;
     justify-items: center;
     align-items: center;
+    height: 200px;
 }
 
-#photos-preview.chef-avatar img {
+#photos-preview.chef-avatar div.photo {
     height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#photos-preview.chef-avatar div.photo img {
+    height: 200px;
+    width: 100%;
     border-radius: 50%;
 }
 
