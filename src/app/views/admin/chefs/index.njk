@@ -13,9 +13,9 @@
         {% for chef in chefs %}
             <div class="chef">
                 {% if chef.files.length > 0 %}
-                    <img class="food-image" src="{{ chef.files[0].src }}" alt="{{ chef.files[0].name }}">
+                    <img src="{{ chef.files[0].src }}" alt="{{ chef.files[0].name }}">
                 {% else %}
-                    <img class="food-image" src="http://placehold.it/500x500?text=CHEF SEM FOTO" alt="Receita sem foto">
+                    <img src="http://placehold.it/500x500?text=CHEF SEM FOTO" alt="Chef sem foto">
                 {% endif %}
 
                 <div class="description">
