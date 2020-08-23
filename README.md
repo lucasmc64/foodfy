@@ -113,4 +113,4 @@ No arquivo, altere as informações de **user** e **password** (entre outras) de
 
 ### Definitivamente rodando o projeto! &#10024;
 
-Se tudo deu certo, agora basta acessar a pasta do projeto pelo terminal e digitar o comando `npm start`. Uma aba será aberta no seu navegador padrão com o projeto rodando!
+Se tudo deu certo, agora basta acessar a pasta do projeto pelo terminal e digitar o comando `npm start` ou `yarn start`. Uma aba será aberta no seu navegador padrão com o projeto rodando!
