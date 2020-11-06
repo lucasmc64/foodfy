@@ -85,7 +85,7 @@ Ou crie a tabela por meio de queries:
 CREATE TABLE CHEFS(
    ID SERIAL PRIMARY KEY,
    NAME TEXT NULL,
-   CREATED_AT TEXT NULL,
+   CREATED_AT TEXT NULL
 );
 ```
 
