@@ -19,7 +19,7 @@ Segue uma tabela com os desafios do Foodfy caso você queira replicá-lo por si 
 | &#9989;  | [03 - Administração do Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-04/blob/master/desafios/04-admin-foodfy.md) |
 | &#9989;  | [04 - Persistindo Dados no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-05/blob/master/desafios/05-persistindo-dados-foodfy.md) |
 | &#9989;  | [05 - Envio de Imagens no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-07/blob/master/desafios/07-foodfy-envio-imagens.md) |
-| &#10062; | [06 - Apresentação e Organização de Receitas no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-08/blob/master/desafios/08-apresentacao-organizacao-receitas-foodfy.md) |
+| &#9989;  | [06 - Apresentação e Organização de Receitas no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-08/blob/master/desafios/08-apresentacao-organizacao-receitas-foodfy.md) |
 | &#10062; | [07 - Sistema de Login do Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-10/blob/master/desafios/10-sistema-login-foodfy.md) |
 
 ## Alguns detalhes &#128220;
@@ -62,17 +62,16 @@ Agora, nesse banco de dados crie três tabelas:
 Ou crie a tabela por meio de queries:
 
 ```sql
-CREATE TABLE RECIPES(
-   ID SERIAL PRIMARY KEY,
-   CHEF_ID INT NULL,
-   TITLE TEXT NULL,
-   INGREDIENTS TEXT[] NULL,
-   PREPARATION TEXT[] NULL,
-   INFORMATION TEXT NULL,
-   CREATED_AT TIMESTAMP NULL
+CREATE TABLE recipes (
+   id SERIAL PRIMARY KEY,
+   chef_id INT NULL,
+   title TEXT NULL,
+   ingredients TEXT[] NULL,
+   preparation TEXT[] NULL,
+   information TEXT NULL,
+   created_at TIMESTAMP NULL,
+   updated_at TIMESTAMP NULL
 );
-
-ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
 ```
 
 * Pelo Postbird crie uma tabela chamada **chefs** com os seguintes campos:
@@ -82,11 +81,13 @@ ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
 Ou crie a tabela por meio de queries:
 
 ```sql
-CREATE TABLE CHEFS(
-   ID SERIAL PRIMARY KEY,
-   NAME TEXT NULL,
-   CREATED_AT TEXT NULL
+CREATE TABLE chefs (
+   id SERIAL PRIMARY KEY,
+   name TEXT NULL,
+   created_at TIMESTAMP NULL
 );
+
+ALTER TABLE 'recipes' ADD FOREIGN KEY ('chef_id') REFERENCES 'chefs' ('id');
 ```
 
 * Pelo Postbird crie uma tabela chamada **files** com os seguintes campos:
@@ -96,13 +97,30 @@ CREATE TABLE CHEFS(
 Ou crie a tabela por meio de queries:
 
 ```sql
-CREATE TABLE FILES (
-  ID SERIAL PRIMARY KEY,
-  NAME text,
-  PATH text NOT NULL,
-  CHEF_ID int,
-  RECIPE_ID int
+CREATE TABLE files (
+  id SERIAL PRIMARY KEY,
+  name TEXT NULL,
+  path TEXT NOT NULL,
+  chef_id INT NULL,
+  recipe_id INT NULL
 );
+```
+
+* É necessário uma procedure e trigger para atualizar a hora de atualização de uma receita:
+
+```sql
+CREATE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+	NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON recipes
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
 ```
 
 ### Configurando conexão com o servidor &#129520;

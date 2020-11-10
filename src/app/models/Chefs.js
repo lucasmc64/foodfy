@@ -2,15 +2,14 @@ const db = require('../../config/db')
 
 module.exports = {
     all() {
-        let query = `SELECT chefs.* FROM chefs, recipes GROUP BY chefs.id`
+        let query = `SELECT chefs.* FROM chefs ORDER BY chefs.name ASC`
 
         return db.query(query)
     },
 
     create(chef) {
         let {
-            name,
-            avatar_url
+            name
         } = chef
 
         let query = `
@@ -32,7 +31,7 @@ module.exports = {
 
     find (id) {
         let query = `
-            SELECT chefs.*, count(recipes.title) AS total_of_recipes FROM chefs, recipes WHERE chefs.id = $1 GROUP BY chefs.id
+            SELECT chefs.*, (SELECT count(recipes.title) AS total_of_recipes FROM recipes) FROM chefs WHERE chefs.id = $1
         `
 
         let values = [id]

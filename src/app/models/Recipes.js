@@ -3,7 +3,7 @@ const db = require('../../config/db')
 module.exports = {
     all() {
         let query = `
-            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) ORDER BY id ASC
+            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) ORDER BY created_at DESC
         `
 
         return db.query(query)
@@ -25,8 +25,9 @@ module.exports = {
                 ingredients,
                 preparation,
                 information,
-                created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6)
+                created_at,
+                updated_at
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
             RETURNING id
         `
         const today = new Date()
@@ -37,6 +38,7 @@ module.exports = {
             ingredients,
             preparation,
             information,
+            `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`,
             `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
         ]
 
@@ -65,7 +67,7 @@ module.exports = {
 
     search (filter) {
         let query = `
-            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.title ILIKE '%${filter}%' ORDER BY id ASC
+            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.title ILIKE '%${filter}%' ORDER BY updated_at DESC
         `
 
         return db.query(query)
