@@ -89,15 +89,16 @@ body {
     width: 0;
     height: 2px;
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: -2px;
     border-radius: 1px;
-    transition: width 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
 }
 
 .menu-hover:hover::after,
 .action:hover::after {
     width: 100%;
+    left: 0%;
 }
 
 /* += Others =+ */
