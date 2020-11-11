@@ -6,6 +6,8 @@ CREATE DATABASE foodfy;
 
 -- Criação de tabelas
 
+-- -- Receitas
+
 CREATE TABLE recipes (
    id SERIAL PRIMARY KEY,
    chef_id INT NULL,
@@ -17,11 +19,29 @@ CREATE TABLE recipes (
    updated_at TIMESTAMP NULL
 );
 
+-- -- Chefs
+
 CREATE TABLE chefs (
    id SERIAL PRIMARY KEY,
    name TEXT NULL,
    created_at TIMESTAMP NULL
 );
+
+-- -- Usuários
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  reset_token TEXT,
+  reset_token_expires TEXT,
+  is_admin BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT(now()),
+  updated_at TIMESTAMP DEFAULT(now())
+);
+
+-- -- Arquivos
 
 CREATE TABLE files (
   id SERIAL PRIMARY KEY,
@@ -30,6 +50,7 @@ CREATE TABLE files (
   chef_id INT NULL,
   recipe_id INT NULL
 );
+
 
 -- Chaves estrangeiras
 
