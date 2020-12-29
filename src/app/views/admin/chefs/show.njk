@@ -18,7 +18,7 @@
         {% endif %}
         
         <h2>{{chef.name}}</h2>
-        <p>{{chef.total_of_recipes}} receita{{ 's' if chef.total_of_recipes > 1 }}</p>
+        <p>{{chef.total_of_recipes}} receita{{ 's' if chef.total_of_recipes != 1 }}</p>
     </section>
 
     <section class="recipes-container">
