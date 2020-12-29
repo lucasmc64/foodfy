@@ -54,7 +54,7 @@ CREATE TABLE files (
 
 -- Chaves estrangeiras
 
-ALTER TABLE 'recipes' ADD FOREIGN KEY ('chef_id') REFERENCES 'chefs' ('id');
+ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
 
 -- Procedure e trigger para atualizar a hora de atualização de uma receita
 
