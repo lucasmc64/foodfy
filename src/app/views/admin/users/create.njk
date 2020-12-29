@@ -1,0 +1,15 @@
+{% extends 'admin/layout.njk' %}
+
+{% block main %}
+    <section class="title-and-options">
+        <h2>Criar usuário</h2>
+        <div>
+            <button class="button" type="submit" form="create-user">Salvar</button>
+            <a href="/admin/users" class="button btn-cancel">Cancelar</a>
+        </div>
+    </section>
+
+    <form id="create-user" method="POST" action="/admin/users">
+        {% include 'admin/users/fields.njk' %}
+    </form>
+{% endblock %}
