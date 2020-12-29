@@ -1,0 +1,24 @@
+{% extends 'admin/layout.njk' %}
+
+{% block main %}
+    <section class="title-and-options">
+        <h2>Gerenciar usuários</h2>
+        <div>
+            <a class="button" href="/admin/users/create">Adicionar usuário</a>
+        </div>
+    </section>
+
+    <section class="users">
+        <div class="user">
+            <div class="description">
+                <h3>Lucas Marçal Coutinho</h3>
+                <p>coutinho0604@gmail.com</p>
+            </div>
+
+            <div class="links">
+                <a class="action" href="#">Editar</a>
+                <a class="action act-dangerous" href="#">Remover</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
