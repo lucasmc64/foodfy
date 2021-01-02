@@ -22,8 +22,7 @@ module.exports = {
         const today = new Date()
 
         let values = [
-            name,
-            `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
+            name
         ]
 
         return db.query(query, values)
