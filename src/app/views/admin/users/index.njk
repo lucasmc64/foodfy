@@ -9,16 +9,15 @@
     </section>
 
     <section class="users">
-        <div class="user">
-            <div class="description">
-                <h3>Lucas Marçal Coutinho</h3>
-                <p>coutinho0604@gmail.com</p>
-            </div>
+        {% for user in users %}
+            <div class="user">
+                <div class="description">
+                    <h3>{{ user.name }}</h3>
+                    <p>{{ user.email }}</p>
+                </div>
 
-            <div class="links">
-                <a class="action" href="#">Editar</a>
-                <a class="action act-dangerous" href="#">Remover</a>
+                <a class="action" href="/admin/users/{{ user.id }}/edit">Editar</a>
             </div>
-        </div>
+        {% endfor %}
     </section>
 {% endblock %}
