@@ -15,8 +15,8 @@ CREATE TABLE recipes (
    ingredients TEXT[] NULL,
    preparation TEXT[] NULL,
    information TEXT NULL,
-   created_at TIMESTAMP NULL,
-   updated_at TIMESTAMP NULL
+   created_at TIMESTAMP DEFAULT(now()),
+   updated_at TIMESTAMP DEFAULT(now())
 );
 
 -- -- Chefs
@@ -24,7 +24,7 @@ CREATE TABLE recipes (
 CREATE TABLE chefs (
    id SERIAL PRIMARY KEY,
    name TEXT NULL,
-   created_at TIMESTAMP NULL
+   created_at TIMESTAMP DEFAULT(now())
 );
 
 -- -- Usuários
@@ -70,3 +70,21 @@ CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON recipes
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+-- Tabela e configs para o controle de sessão (connect-pg-simple)
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
