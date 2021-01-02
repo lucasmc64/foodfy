@@ -37,9 +37,7 @@ module.exports = {
             title,
             ingredients,
             preparation,
-            information,
-            `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`,
-            `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
+            information
         ]
 
         return db.query(query, values)
