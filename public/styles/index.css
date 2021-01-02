@@ -87,10 +87,6 @@ body {
     position: relative;
 }
 
-.action.act-dangerous {
-    color: #DC4747;
-}
-
 .menu-hover {
     position: relative;
 }
@@ -106,10 +102,6 @@ body {
     bottom: -2px;
     border-radius: 1px;
     transition: all 200ms ease-in-out;
-}
-
-.action.act-dangerous::after {
-    background-color: #DC4747;
 }
 
 .menu-hover:hover::after,
@@ -458,7 +450,8 @@ div.description h3 {
     margin-bottom: 5px;
 }
 
-div.description p {
+div.description p,
+div.admin-checkbox label {
     font-size: 14px;
     line-height: 16px;
     font-weight: normal;
@@ -493,8 +486,8 @@ form fieldset div.new-item input {
 }
 
 form fieldset input,
-textarea,
-select {
+form fieldset textarea,
+form fieldset select {
     width: 100%;
     height: 50px;
     border: 1px solid #DDDDDD;
@@ -720,11 +713,40 @@ section.recipes-container {
 
 /* +=+=+= Users Page =+=+=+ */
 
-div.links {
+section.users {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+div.user-info .action {
     margin-top: 8px;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+}
+
+div.user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px 40px;
+}
+
+div.user-info fieldset:last-child {
+    margin-bottom: 30px;
+}
+
+form fieldset input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+div.admin-checkbox {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 8px;
+    align-items: center;
+}
+
+div.admin-checkbox label {
+    margin-bottom: 0;
 }
 
 /* +=+=+= Responsiveness =+=+=+ */
@@ -770,7 +792,11 @@ div.links {
 
 @media screen and (max-width: 749.5px) {
     section.chefs {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section.users {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -820,6 +846,10 @@ div.links {
 
 @media screen and (max-width: 517px) {
     section.chefs {
+        grid-template-columns: 1fr;
+    }
+
+    section.users {
         grid-template-columns: 1fr;
     }
 }
