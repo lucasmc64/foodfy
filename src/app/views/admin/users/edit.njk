@@ -4,12 +4,13 @@
     <section class="title-and-options">
         <h2>Editar usuário</h2>
         <div>
-            <button class="button" type="submit" form="create-user">Salvar</button>
+            <button class="button" type="submit" form="edit-user">Salvar</button>
             <a href="/admin/users" class="button btn-cancel">Cancelar</a>
         </div>
     </section>
 
-    <form id="create-user" method="POST" action="/admin/users">
+    <form id="edit-user" method="POST" action="/admin/users?_method=PUT">
+        <input name="id" type="hidden" value="{{ user.id }}">
         {% include 'admin/users/fields.njk' %}
     </form>
 {% endblock %}
