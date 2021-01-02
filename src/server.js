@@ -1,14 +1,17 @@
 const express = require('express') // Importa o express
 const nunjucks = require('nunjucks') // Importa o Nunjucks
 const methodOverride = require('method-override')
+
 const routes = require('./routes')
+const session = require('./config/session')
 
 const server = express() // Usa o express para montar o servidor
 
+server.use(session)
 server.use(express.urlencoded({ extended: true }))
 server.use(express.static('public')) // Força o express a usar "arquivos etáticos", ou seja, CSS e JS utilizados pelas páginas
 server.use(methodOverride('_method'))
-server.use(routes);
+server.use(routes)
 
 server.set('view engine', 'njk') // Seta que tipo de arquivo vai ser mostrado e que será uma View Engine que irá gerar as páginas
 
