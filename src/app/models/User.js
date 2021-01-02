@@ -39,11 +39,51 @@ module.exports = {
         }
     },
 
+    async update(user) {
+        try {
+            let { id, name, email, password, is_admin } = user
+    
+            let query = `
+                UPDATE users SET
+                    name=($1),
+                    email=($2),
+                    password=($3)${ is_admin ? ', is_admin=($4)' : '' }
+                WHERE id = $${ is_admin ? '5' : '4' }
+            `
+    
+            let password_hash = await hash(password, 8)
+    
+            let values = [
+                name,
+                email,
+                password_hash
+            ]
+    
+            if(is_admin) {
+                values.push(true)
+            }
+    
+            values.push(id)
+
+            return db.query(query, values)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
     findByEmail(email) {
         let query = `
             SELECT * FROM users WHERE users.email = $1
         `
 
         return db.query(query, [email])
+    },
+
+    findById(id) {
+        let query = `
+            SELECT * FROM users WHERE users.id = $1
+        `
+
+        return db.query(query, [id])
     }
 }
