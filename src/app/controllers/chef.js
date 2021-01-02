@@ -45,11 +45,11 @@ module.exports = {
 
         for (key of keys) {
             if (request.body[key] == '') {
-                return response.send('Please, fill all fields.')
+                return response.send('Please, fill all fields!')
             }
         }
 
-        if(request.files.length == 0) return response.send('Please, send at least one image')
+        if(request.files.length == 0) return response.send('Please, send at least one image!')
 
         let results = await Chefs.create(request.body)
         const chef_id = results.rows[0].id
