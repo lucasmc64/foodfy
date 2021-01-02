@@ -8,11 +8,15 @@
     opacity: 1;
     animation: hide_message 0.4s 5s ease-out forwards;
     z-index: 1;
+    color: #FFFFFF;
 }
 
 .messages.error {
-    color: #FFFFFF;
     background-color: #E74C3C;
+}
+
+.messages.success {
+    background-color: #5fc586;
 }
 
 @keyframes hide_message {
