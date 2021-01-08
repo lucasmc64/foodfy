@@ -2,14 +2,13 @@ const { update } = require('../controllers/user')
 const User = require('../models/User')
 
 async function post(request, response, next) {
-    let { email, password, password_repeat } = request.body
+    let { email } = request.body
 
     const keys = Object.keys(request.body)
 
     for(key of keys) {
         if(request.body[key] == '') {
             return response.render('admin/users/create', {
-                users_page: true,
                 user: request.body,
                 error: 'Por favor, preencha todos os campos.'
             })
@@ -20,17 +19,8 @@ async function post(request, response, next) {
 
     if(results.rows.length != 0) {
         return response.render('admin/users/create', {
-            users_page: true,
             user: request.body,
             error: 'Já existe um usuário cadastrado com este email.'
-        })
-    }
-
-    if(password !== password_repeat) {
-        return response.render('admin/users/create', {
-            users_page: true,
-            user: request.body,
-            error: 'A senha e a repetição de senha estão diferentes.'
         })
     }
 
@@ -38,9 +28,6 @@ async function post(request, response, next) {
 }
 
 async function put(request, response, next) {
-    let { password, password_repeat } = request.body
-
-    console.log(request.body)
     const keys = Object.keys(request.body)
 
     for(key of keys) {
@@ -51,14 +38,6 @@ async function put(request, response, next) {
                 error: 'Por favor, preencha todos os campos.'
             })
         }
-    }
-
-    if(password !== password_repeat) {
-        return response.render('admin/users/create', {
-            users_page: true,
-            user: request.body,
-            error: 'A senha e a repetição de senha estão diferentes.'
-        })
     }
     
     next()
