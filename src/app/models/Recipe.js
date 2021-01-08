@@ -9,6 +9,14 @@ module.exports = {
         return db.query(query)
     },
 
+    mostAccessed() {
+        let query = `
+            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) ORDER BY views DESC
+        `
+
+        return db.query(query)
+    },
+
     create(recipe) {
         let {
             chef_id,
@@ -24,10 +32,8 @@ module.exports = {
                 title,
                 ingredients,
                 preparation,
-                information,
-                created_at,
-                updated_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+                information
+            ) VALUES ($1, $2, $3, $4, $5)
             RETURNING id
         `
         const today = new Date()
@@ -43,12 +49,16 @@ module.exports = {
         return db.query(query, values)
     },
 
-    find (id) {
+    async find (id) {
         let query = `
-        SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.id = $1
+            SELECT recipes.*, chefs.name AS chef FROM recipes LEFT JOIN chefs ON (chefs.id = recipes.chef_id) WHERE recipes.id = $1
         `
 
         let values = [id]
+
+        let views = (await db.query(`SELECT views FROM recipes WHERE id = $1`, [id])).rows[0].views
+        views = views + 1
+        await db.query(`UPDATE recipes SET views=($1) WHERE id = $2`, [views, id])
 
         return db.query(query, values)
     },
