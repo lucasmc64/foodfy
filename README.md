@@ -20,7 +20,7 @@ Segue uma tabela com os desafios do Foodfy caso você queira replicá-lo por si 
 | &#9989;  | [04 - Persistindo Dados no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-05/blob/master/desafios/05-persistindo-dados-foodfy.md) |
 | &#9989;  | [05 - Envio de Imagens no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-07/blob/master/desafios/07-foodfy-envio-imagens.md) |
 | &#9989;  | [06 - Apresentação e Organização de Receitas no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-08/blob/master/desafios/08-apresentacao-organizacao-receitas-foodfy.md) |
-| &#10062; | [07 - Sistema de Login do Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-10/blob/master/desafios/10-sistema-login-foodfy.md) |
+| &#9989;  | [07 - Sistema de Login do Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-10/blob/master/desafios/10-sistema-login-foodfy.md) |
 
 ## Alguns detalhes &#128220;
 
@@ -48,20 +48,16 @@ Com o Node.JS instalado, acesse cada um dos diretórios (**server**, **web** e *
 Inicie o servidor e utilizando a ferramenta Postbird (ou de outra maneira, caso queira), crie através de queries um banco de dados chamado *foodfy*.
 
 ```sql
-CREATE DATABASE foodfy
-```
+-- Criação do banco de dados
 
-Agora, nesse banco de dados crie três tabelas:
+DROP DATABASE IF EXISTS foodfy;
 
-* Pelo Postbird crie uma tabela chamada **recipes** com os seguintes campos:
+CREATE DATABASE foodfy;
 
-![Tabela de recipes no Postbird](./readme-images/02-postbird-recipes.png)
+-- Criação de tabelas
 
-> Crie também uma constraint que referencia a coluna "chef_id" da tabela "recipes" com a coluna "id" da tabela "chefs".
+-- -- Receitas
 
-Ou crie a tabela por meio de queries:
-
-```sql
 CREATE TABLE recipes (
    id SERIAL PRIMARY KEY,
    chef_id INT NULL,
@@ -69,34 +65,35 @@ CREATE TABLE recipes (
    ingredients TEXT[] NULL,
    preparation TEXT[] NULL,
    information TEXT NULL,
-   created_at TIMESTAMP NULL,
-   updated_at TIMESTAMP NULL
+   views INT DEFAULT(0),
+   created_at TIMESTAMP DEFAULT(now()),
+   updated_at TIMESTAMP DEFAULT(now())
 );
-```
 
-* Pelo Postbird crie uma tabela chamada **chefs** com os seguintes campos:
+-- -- Chefs
 
-![Tabela de chefs no Postbird](./readme-images/03-postbird-chefs.png)
-
-Ou crie a tabela por meio de queries:
-
-```sql
 CREATE TABLE chefs (
    id SERIAL PRIMARY KEY,
    name TEXT NULL,
-   created_at TIMESTAMP NULL
+   created_at TIMESTAMP DEFAULT(now())
 );
 
-ALTER TABLE 'recipes' ADD FOREIGN KEY ('chef_id') REFERENCES 'chefs' ('id');
-```
+-- -- Usuários
 
-* Pelo Postbird crie uma tabela chamada **files** com os seguintes campos:
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  reset_token TEXT,
+  reset_token_expires TEXT,
+  is_admin BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT(now()),
+  updated_at TIMESTAMP DEFAULT(now())
+);
 
-![Tabela de arquivos no Postbird](./readme-images/04-postbird-files.png)
+-- -- Arquivos
 
-Ou crie a tabela por meio de queries:
-
-```sql
 CREATE TABLE files (
   id SERIAL PRIMARY KEY,
   name TEXT NULL,
@@ -104,11 +101,14 @@ CREATE TABLE files (
   chef_id INT NULL,
   recipe_id INT NULL
 );
-```
 
-* É necessário uma procedure e trigger para atualizar a hora de atualização de uma receita:
 
-```sql
+-- Chaves estrangeiras
+
+ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
+
+-- Procedure e trigger para atualizar a hora de atualização de receitas e usuários
+
 CREATE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -121,7 +121,29 @@ CREATE TRIGGER set_timestamp
 BEFORE UPDATE ON recipes
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_set_timestamp();
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+-- Tabela e configs para o controle de sessão (connect-pg-simple)
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
 ```
+
+### Configurando o Nodemailer &#128231;
+
+Acesse o arquivo */src/lib/mailer.js* e o abra no editor que preferir. Altere os parâmetros **user** e **pass** conforme seu servidor SMTP.
 
 ### Configurando conexão com o servidor &#129520;
 
