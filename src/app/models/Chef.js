@@ -11,12 +11,11 @@ module.exports = {
         let {
             name
         } = chef
-
+        
         let query = `
             INSERT INTO chefs (
-                name,
-                created_at
-            ) VALUES ($1, $2)
+                name
+            ) VALUES ($1)
             RETURNING id
         `
         const today = new Date()

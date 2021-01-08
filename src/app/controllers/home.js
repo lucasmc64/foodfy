@@ -3,7 +3,7 @@ const Chefs = require('../models/Chef')
 
 module.exports = {
     async index(request, response) { //Rota
-        let results = await Recipes.all()
+        let results = await Recipes.mostAccessed()
         const recipes = results.rows
 
         if(!recipes) return response.send('Recipes not found.')

@@ -1,4 +1,4 @@
-{% extends 'admin/layout.njk' %}
+{% extends "admin/layout.njk" %}
 
 {% block main %}
     <section class="title-and-options">
@@ -10,6 +10,6 @@
     </section>
 
     <form id="create-user" method="POST" action="/admin/users">
-        {% include 'admin/users/fields.njk' %}
+        {% include "admin/users/fields.njk" %}
     </form>
 {% endblock %}
