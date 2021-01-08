@@ -1,4 +1,8 @@
-const { use } = require('../../routes/users')
+const crypto = require('crypto')
+const { hash } = require('bcryptjs')
+
+const mailer = require('../../lib/mailer')
+
 const User = require('../models/User')
 
 module.exports = {
@@ -12,44 +16,82 @@ module.exports = {
     },
 
     create(request, response) {
-        return response.render('admin/users/create', {
-            users_page: true
-        })
+        return response.render('admin/users/create')
     },
 
     async post(request, response) {
-        const user = await User.create(request.body)
+        let { name, email, is_admin } = request.body
 
-        request.session.user = user 
+        const password = crypto.randomBytes(8).toString("hex")
+
+        const password_hash = await hash(password, 8)
+
+        const results = await User.create({
+            name,
+            email,
+            password: password_hash,
+            is_admin
+        })
+
+        await mailer.sendMail({
+            to: email,
+            from: 'no-reply@foodfy.com',
+            subject: 'Bem vindo ao Foodfy!',
+            html: `
+                <h1 style="text-align: center;">
+                    Com os cumprimentos de nosso DevChef!
+                </h1>
+                <p style="text-align: center;">
+                    Olá, seu cadastro no Foodfy foi concluído com sucesso!
+                    <br>
+                    Sua senha foi gerada automaticamente por nosso sistema e aqui está ela: ${password}
+                    <br>
+                    <a href="http://localhost:3000/admin?email=${email}">Clique aqui</a> para acessar o site e já fazer seu primeiro login.
+                </p>
+            `
+        })
+
+        request.session.user_id = results.rows[0].id
 
         return response.redirect('/admin/users')
     },
 
     async edit(request, response) {
-        const user_id = request.params.id
-        let current_user = request.session.user
+        const user_id_to_edit = request.params.id
+        const user_id_logged = request.session.user_id
 
-        current_user = (await User.findById(current_user.rows[0].id)).rows[0]
-        let user = (await User.findById(user_id)).rows[0]
-
-        if(user_id !== current_user.id && !current_user.is_admin) {
+        let user_logged = (await User.findById(user_id_logged)).rows[0]
+        
+        if(user_id_to_edit !== user_id_logged && !user_logged.is_admin) {
             return response.redirect('admin/users', {
                 error: 'Você não tem permissão para editar esse usuário.'
             })
         }
+        
+        let user_to_edit = (await User.findById(user_id_to_edit)).rows[0]
+
+        const current_user = {
+            id: user_logged.id,
+            is_admin: user_logged.is_admin
+        }
 
         return response.render('admin/users/edit', {
-            user: user,
-            users_page: true
+            user: user_to_edit,
+            current_user: current_user
         })
     },
-    async put(request, response) {
-        const user = await User.update(request.body)
-        console.log(user.rows[0])
 
-        return response.render('admin/users/edit', {
-            user: user.rows[0],
-            users_page: true
-        })
+    async put(request, response) {
+        const results = await User.update(request.body)
+
+        return response.redirect(`users/${request.body.id}/edit`)
+    },
+
+    async delete(request, response) {
+        const user_id = request.body.id
+        
+        await User.delete(user_id)
+
+        return response.redirect('/admin/users')
     }
 }
