@@ -6,7 +6,7 @@
     position: absolute;
     top: 0;
     opacity: 1;
-    animation: hide_message 0.4s 5s ease-out forwards;
+    animation: hide_message 0.4s 2s ease-out forwards;
     z-index: 1;
     color: #FFFFFF;
 }

@@ -2,7 +2,7 @@
 
 :root {
     --color-default: #111111;
-    --color-primary: #6558C3;
+    --color-primary: #F7AFA7;
     --color-secondary: #777777;
 }
 
@@ -43,14 +43,30 @@ body {
 
 .button {
     font-size: 16px;
+    font-weight: bold;
     line-height: 18px;
     border-radius: 4px;
-    padding: 4px 12px;
+    padding: 6px 16px;
     color: #FFFFFF;
     text-decoration: none;
     background-color: var(--color-primary);
-    border: 2px solid var(--color-primary);
+    border: 1px solid var(--color-primary);
     cursor: pointer;
+}
+
+header a.account,
+form button.logout {
+    line-height: 0;
+    padding: 3px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header a.account span,
+form button.logout span {
+    transition: none;
+
 }
 
 .button:hover {
@@ -60,7 +76,7 @@ body {
 
 .btn-delete {
     background-color: #DC4747;
-    border: 2px solid #DC4747;
+    border: 1px solid #DC4747;
 }
 
 .btn-delete:hover {
@@ -69,7 +85,7 @@ body {
 
 .btn-cancel {
     background-color: #8A8A8A;
-    border: 2px solid #8A8A8A;
+    border: 1px solid #8A8A8A;
 }
 
 .btn-cancel:hover {
@@ -79,6 +95,7 @@ body {
 /* += Links =+ */
 
 .action {
+    display: inline-block;
     font-size: 14px;
     line-height: 16px;
     font-weight: bold;
@@ -141,23 +158,13 @@ header {
 }
 
 .header-wrapper header {
-    display: grid;
-    grid-template-columns: 214px 1fr 1fr;
+    display: flex;
     align-items: center;
-    justify-self: left;
-}
-
-.header-wrapper.black header {
-    /* Header Admin */
-    grid-template-columns: 214px 1fr;
-}
-
-h1 {
-    width: 91px;
+    justify-content: space-between;
 }
 
 h1 a {
-    display: grid;
+    display: flex;
     align-items: center;
 }
 
@@ -188,17 +195,18 @@ h1 a {
 }
 
 header form {
-    display: grid;
-    grid-template-columns: 1fr 120px;
+    display: flex;
+    align-items: center;
     gap: 8px;
+    margin: 0;
 }
 
 header form input {
     width: 100%;
-    height: 36px;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    padding: 16px;
+    padding: 6px 16px;
+    line-height: 18px;
 }
 
 /* +=+=+= Banner =+=+=+ */
@@ -416,10 +424,6 @@ section.title-and-options div {
     justify-self: right;
 }
 
-div button+button {
-    margin-left: 10px;
-}
-
 section.recipes {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -605,7 +609,8 @@ section.recipes-container {
 
 .upload-label {
     z-index: 100;
-    width: 120px;
+    text-align: center;
+    width: 132px;
 }
 
 #photos-upload #photos-input,
@@ -653,16 +658,12 @@ section.recipes-container {
     justify-content: center;
     font-size: 400%;
     cursor: pointer;
-    transition: all 200ms ease-in-out;
     opacity: 0;
+    transition: all 200ms ease-in-out;
 }
 
 #photos-preview .photo:hover i {
     opacity: 1;
-}
-
-#photos-preview .photo img {
-    transition: all 200ms ease-in-out;
 }
 
 #photos-preview .photo:hover img {
@@ -689,6 +690,10 @@ section.recipes-container {
 .gallery .gallery-preview img:hover,
 .gallery .gallery-preview img.active {
     opacity: 1;
+}
+
+#photos-preview .photo img {
+    transition: all 200ms ease-in-out;
 }
 
 #photos-preview.chef-avatar {
@@ -719,8 +724,8 @@ section.users {
     gap: 24px;
 }
 
-div.user-info .action {
-    margin-top: 8px;
+div.user .action {
+    margin-top: 4px;
 }
 
 div.user-info {
@@ -749,6 +754,33 @@ div.admin-checkbox label {
     margin-bottom: 0;
 }
 
+/* +=+=+= Session Page =+=+=+ */
+
+header.login {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form#login,
+form#forgot-password,
+form#reset-password {
+    max-width: 500px;
+}
+
+section.end-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.title-and-options.session {
+    grid-template-columns: auto;
+    justify-content: center;
+    text-align: center;
+}
+
 /* +=+=+= Responsiveness =+=+=+ */
 
 @media screen and (max-width: 1012px) {
@@ -775,18 +807,16 @@ div.admin-checkbox label {
 
 @media screen and (max-width: 900px) {
     .header-wrapper header {
-        grid-template-columns: 214px 1fr;
-        grid-template-areas: 
-            "image menu"
-            "search search"
-        ;
+        flex-direction: column;
+        gap: 16px;
     }
 
-    .header-wrapper header form {
-        max-width: 425px;
-        width: 100%;
-        margin: 16px 0 0 0;
-        grid-area: search;
+    header a.account::before {
+        content: 'Acesse sua conta';
+    }
+
+    header button.logout::before {
+        content: 'Sair da sua conta';
     }
 }
 
@@ -801,30 +831,10 @@ div.admin-checkbox label {
 }
 
 @media screen and (max-width: 692px) {
-    h1 {
+    h1,
+    h2.most-accessed {
         margin: 0 auto;
-    }
-
-    .header-wrapper header {
-        grid-template-areas: initial;
-        grid-template-columns: 1fr;
         text-align: center;
-    }
-
-    .header-wrapper header form {
-        max-width: 425px;
-        width: 100%;
-        margin: 16px auto 0;
-        grid-area: initial;
-    }
-
-    .header-wrapper.black header {
-        grid-template-columns: initial;
-        text-align: center;
-    }
-
-    #menu {
-        margin-top: 16px;
     }
 
     section#banner {
