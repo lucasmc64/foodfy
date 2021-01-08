@@ -4,6 +4,9 @@
     <section class="title-and-options">
         <h2>Editar usuário</h2>
         <div>
+            {% if current_user.is_admin and not (current_user.id == user.id) %}
+                <button class="button btn-delete" type="submit" form="delete-user">Deletar</button>
+            {% endif %}
             <button class="button" type="submit" form="edit-user">Salvar</button>
             <a href="/admin/users" class="button btn-cancel">Cancelar</a>
         </div>
@@ -13,4 +16,20 @@
         <input name="id" type="hidden" value="{{ user.id }}">
         {% include 'admin/users/fields.njk' %}
     </form>
+
+    <form id="delete-user" method="POST" action="/admin/users?_method=DELETE">
+        <input name="id" type="hidden" value="{{ user.id }}">
+    </form>
+
+    <script>
+        form_delete = window.document.querySelector("#delete-user")
+
+        form_delete.addEventListener("submit", function(event) {
+            let response = confirm("Deseja mesmo deletar esse usuário?")
+
+            if(!response) {
+                event.preventDefault()
+            }
+        })
+    </script>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "admin/session/layout.njk" %}
+
+{% block main %}
+    <section class="title-and-options session">
+        <h2>Iniciar Sessão</h2>
+    </section>
+
+    <form id="login" action="/admin/login" method="POST">
+        <fieldset>
+            <legend>Email</legend>
+            <input name="email" type="email" value="{{ user.email }}" required>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Senha</legend>
+            <input name="password" type="password" required>
+        </fieldset>
+
+        <section class="end-form">
+            <a class="action" href="/admin/forgot-password">Perdeu a senha?</a>
+            <button class="button" type="submit">Acessar</button>
+        </section>
+    </form>
+{% endblock %}

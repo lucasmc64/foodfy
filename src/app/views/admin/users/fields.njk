@@ -8,23 +8,15 @@
         <legend>Email</legend>
         <input name="email" type="email" value="{{ user.email }}" required>
     </fieldset>
-
-    <fieldset>
-        <legend>Senha</legend>
-        <input name="password" type="password" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>Repita a senha</legend>
-        <input name="password_repeat" type="password" required>
-    </fieldset>
 </div>
 
-<fieldset>
-    <legend>Administrador</legend>
+{% if current_user.is_admin %}
+    <fieldset>
+        <legend>Administrador</legend>
 
-    <div class="admin-checkbox">
-        <input id="admin" name="is_admin" type="checkbox" value="true" {% if user.is_admin %} checked {% endif %}>
-        <label for="admin">Com essa opção marcada esse usuário é administrador do Foodfy.</label>
-    </div>
-</fieldset>
+        <div class="admin-checkbox">
+            <input id="admin" name="is_admin" type="checkbox" value="true" {% if user.is_admin %} checked {% endif %} {% if current_user.id == user.id %} disabled {% endif %}>
+            <label for="admin">Com essa opção marcada esse usuário é administrador do Foodfy.</label>
+        </div>
+    </fieldset>
+{% endif %}

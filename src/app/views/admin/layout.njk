@@ -5,8 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="/styles/index.css">
-        <link rel="stylesheet" href="/styles/messages.css">
+        {% include "admin/parts/styles.njk" %}
         <title>Foodfy</title>
     </head>
 
@@ -26,6 +25,14 @@
                     <a class="{% if chefs_page %} page-active {% else %} menu-hover {% endif %}" href="/admin/chefs">Chefs</a>
                     <a class="{% if users_page %} page-active {% else %} menu-hover {% endif %}" href="/admin/users">Usuários</a>
                 </nav>
+
+                <form action="/admin/logout" method="POST">
+                    <button class="button logout" type="submit">
+                        <span class="material-icons">
+                            login
+                        </span>
+                    </button>
+                </form>
             </header>
         </div>
 
