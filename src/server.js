@@ -8,6 +8,11 @@ const session = require('./config/session')
 const server = express() // Usa o express para montar o servidor
 
 server.use(session)
+server.use(function(request, response, next) {
+    response.locals.session = request.session
+    next()
+})
+
 server.use(express.urlencoded({ extended: true }))
 server.use(express.static('public')) // Força o express a usar "arquivos etáticos", ou seja, CSS e JS utilizados pelas páginas
 server.use(methodOverride('_method'))
