@@ -15,6 +15,7 @@ CREATE TABLE recipes (
    ingredients TEXT[] NULL,
    preparation TEXT[] NULL,
    information TEXT NULL,
+   views INT DEFAULT(0),
    created_at TIMESTAMP DEFAULT(now()),
    updated_at TIMESTAMP DEFAULT(now())
 );
@@ -56,7 +57,7 @@ CREATE TABLE files (
 
 ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
 
--- Procedure e trigger para atualizar a hora de atualização de uma receita
+-- Procedure e trigger para atualizar a hora de atualização de receitas e usuários
 
 CREATE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
