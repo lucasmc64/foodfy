@@ -1,51 +1,50 @@
-![Foodfy](./readme-images/01-foodfy.png)
+![Foodfy](./readme-images/cover.png)
 
-# Foodfy &#127829;
+# :pizza: Foodfy
 
-*Esse foi um projeto desenvolvido com a intenção de aprender novas tecnologias e exercitar conceitos.*
+> Esse foi um projeto desenvolvido com a intenção de aprender novas tecnologias e exercitar conceitos.
 
-## Objetivo &#127919;
+## :dart: Goal
 
-Foodfy é um site de receitas que visa ensinar ao internauta fazer comidas deliciosas e possibilitar as pessoas a compartilharem sus segredos culinários.
+Foodfy is a recipe site that aims to teach internet users how to make delicious foods and enable people to share their cooking secrets.
 
-## Desafios
+## :pushpin: Challenges
 
-Segue uma tabela com os desafios do Foodfy caso você queira replicá-lo por si mesmo.
+Below is a table with Foodfy's challenges in case you want to replicate it yourself.
 
-| Feito?   | Desafio                                                      |
-| -------- | ------------------------------------------------------------ |
-| &#9989;  | [01 - Construindo o Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-02/blob/master/desafios/02-foodfy.md) |
-| &#9989;  | [02 - Refatorando o Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-03/blob/master/desafios/03-refatorando-foodfy.md) |
-| &#9989;  | [03 - Administração do Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-04/blob/master/desafios/04-admin-foodfy.md) |
-| &#9989;  | [04 - Persistindo Dados no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-05/blob/master/desafios/05-persistindo-dados-foodfy.md) |
-| &#9989;  | [05 - Envio de Imagens no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-07/blob/master/desafios/07-foodfy-envio-imagens.md) |
-| &#9989;  | [06 - Apresentação e Organização de Receitas no Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-08/blob/master/desafios/08-apresentacao-organizacao-receitas-foodfy.md) |
-| &#9989;  | [07 - Sistema de Login do Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-10/blob/master/desafios/10-sistema-login-foodfy.md) |
+| Done?              | Challenge                                                    |
+| ------------------ | ------------------------------------------------------------ |
+| :white_check_mark: | [01 - Building Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-02/blob/master/desafios/02-foodfy.md) |
+| :white_check_mark: | [02 - Refactoring Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-03/blob/master/desafios/03-refatorando-foodfy.md) |
+| :white_check_mark: | [03 - Foodfy Administration](https://github.com/Rocketseat/bootcamp-launchbase-desafios-04/blob/master/desafios/04-admin-foodfy.md) |
+| :white_check_mark: | [04 - Persisting Data on Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-05/blob/master/desafios/05-persistindo-dados-foodfy.md) |
+| :white_check_mark: | [05 - Uploading Images on Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-07/blob/master/desafios/07-foodfy-envio-imagens.md) |
+| :white_check_mark: | [06 - Presentation and Organization of Recipes on Foodfy](https://github.com/Rocketseat/bootcamp-launchbase-desafios-08/blob/master/desafios/08-apresentacao-organizacao-receitas-foodfy.md) |
+| :white_check_mark: | [07 - Foodfy Login System](https://github.com/Rocketseat/bootcamp-launchbase-desafios-10/blob/master/desafios/10-sistema-login-foodfy.md) |
 
-## Alguns detalhes &#128220;
+## :scroll: Some details 
 
-* O banco de dados usado é o PostgreSQL.
-* O backend é construído com Node.JS.
-* O fontend é construído com o framework ReactJS.
+- The back-end is built with Node.JS and PostgreSQL.
+- The font-end is built with ReactJS.
 
-## Como rodar o projeto em minha máquina? &#129300;
+## :thinking: How do I run the project on my machine?
 
-O primeiro passo é clonar o projeto, seja via terminal ou GitHub Desktop, ou mesmo baixando o arquivo compactado (.zip). Após isso, siga adiante.
+The first step is to clone the project, either via terminal or GitHub Desktop, or even by downloading the compressed file (.zip). After that, go ahead.
 
-## Requisitos &#128736;
+### :hammer_and_wrench: Requirements
 
-* Ter o Node.JS instalado.
-* Ter o PostgreSQL instalado.
-* (Opcional) Ter o Postbird instalado.
-* (Opcional) Ter o Yarn instalado.
+- [Node.JS](https://nodejs.org/).
+- [PostgreSQL](https://www.postgresql.org/).
+- (Optional) [Yarn](https://yarnpkg.com/).
+- (Optional) [Postbird](https://www.electronjs.org/apps/postbird).
 
-### Instalando dependências &#128269;
+### :mag: Installing dependencies
 
-Com o Node.JS instalado, acesse cada um dos diretórios (**server**, **web** e **mobile**) via terminal e rode o comando `npm install`. Caso você prefira usar o Yarn, basta rodar o comando `yarn`.
+With Node.JS installed, access the project directory via terminal and run the command `npm install`. If you prefer to use Yarn, just run the `yarn` command.
 
-### Criando banco de dados e tabelas no PostgreSQL &#129405;
+### :game_die: Creating Databases and Tables in PostgreSQL
 
-Inicie o servidor e utilizando a ferramenta Postbird (ou de outra maneira, caso queira), crie através de queries um banco de dados chamado *foodfy*.
+Start the database and create through the queries below a database called *foodfy*.
 
 ```sql
 -- Criação do banco de dados
@@ -141,16 +140,28 @@ ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFE
 CREATE INDEX "IDX_session_expire" ON "session" ("expire");
 ```
 
-### Configurando o Nodemailer &#128231;
+### :e-mail: Configuring Nodemailer
 
-Acesse o arquivo */src/lib/mailer.js* e o abra no editor que preferir. Altere os parâmetros **user** e **pass** conforme seu servidor SMTP.
+Access the *src/lib/mailer.js* file and open it in the editor of your choice. Change **user** and **pass** parameters according to your SMTP server.
 
-### Configurando conexão com o servidor &#129520;
+### :toolbox: Setting up server connection
 
-Dentro da pasta do projeto entre em */src/config* e abra o arquivo *db.js* em uma IDE ou editor de código.
+Inside the project folder enter *src/config* and open the *db.js* file in an IDE or code editor.
 
-No arquivo, altere as informações de **user** e **password** (entre outras) de acordo com a configuração feita no PostgreSQL.
+In the file, change the **user** and **password** information (among others) according to the configuration made in PostgreSQL.
 
-### Definitivamente rodando o projeto! &#10024;
+### :dizzy: Definitely running the project!
 
-Se tudo deu certo, agora basta acessar a pasta do projeto pelo terminal e digitar o comando `npm start` ou `yarn start`. Uma aba será aberta no seu navegador padrão com o projeto rodando!
+If everything went well, now just access the project folder from the terminal and type the command `npm start` or `yarn start`. A tab will open in your default browser with the project running!
+
+## :tada: If everything went well...
+
+Now you are running the project beautifully!
+
+## :memo: License
+
+This project is under the MIT license. See the [LICENSE](LICENSE) for more information.
+
+---
+
+Made with :green_heart: by Lucas Coutinho :wave: [Get in touch!](https://www.linkedin.com/in/lucasmc64/)
